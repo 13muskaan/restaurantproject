@@ -3,6 +3,8 @@
 include ('../model/dbconnection.php');
 session_start();
 
+$_SESSION['error'] = '';
+
 $sql = "INSERT INTO reservation ( date, time, guestno, comment, memberID, functionID) VALUES ( :date, :time, :guestno, :comment, :memberID, :functionID);";
 	$stmt = $conn->prepare( $sql );
 
@@ -14,13 +16,13 @@ $sql = "INSERT INTO reservation ( date, time, guestno, comment, memberID, functi
 	$stmt->bindParam(':memberID', $_SESSION['userID'], PDO::PARAM_INT);
 
 $stmt->execute();
-if ( $conn->lastInsertId() > 0 ) {
+if ( $conn->lastInsertId() <= 0 ) {
 	$_SESSION[ 'message' ] = 'reservationid: ' . $conn->lastInsertId() . ' Created';
 	
 	$_SESSION['reservationid'] = $conn->lastInsertID();
 } else {
 	$_SESSION[ 'error' ] = 'Database error - Failed to insert reservation data';
-		echo 'error in submitting your reservation form, please try again';
+	header("location: ../member/reservation_member.php");
 }
 
 

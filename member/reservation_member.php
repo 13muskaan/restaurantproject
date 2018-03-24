@@ -1,14 +1,12 @@
 <?php include('navigationbar_member.php'); //include('../../control/session_start.php');?>
-<?
 
-?>
 <!doctype html>
 <html>
 
 <head>
 	<meta charset="utf-8">
 	<title>reservation</title>
-	<link href="../css/stylesheet.css" rel="stylesheet" type="text/css">
+	<link href="../view/css/stylesheet.css" rel="stylesheet" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--<script src="../javascript/reservation.js" type="text/javascript"></script>-->
 
@@ -17,7 +15,12 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<!-- Include Date Range Picker -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/> <!-- this is causing the error-->
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 	<style>
 		body {
 			font-family: Arial, Helvetica, sans-serif;
@@ -55,16 +58,28 @@
 		}
 	</style>
 	<script>
-		$( document ).ready( function () {
-			var date_input = $( 'input[name="date"]' ); //our date input has the name "date"
-			var container = $( '.bootstrap-iso form' ).length > 0 ? $( '.bootstrap-iso form' ).parent() : "body";
-			date_input.datepicker( {
-				format: 'dd/mm/yyyy',
-				container: container,
-				todayHighlight: true,
-				autoclose: true,
-			} )
-		} )
+		//$( document ).ready( function () {
+			//var date_input = $( 'input[name="date"]' ); //our date input has the name "date"
+			//var container = $( '.bootstrap-iso form' ).length > 0 ? $( '.bootstrap-iso form' ).parent() : "body";
+			//date_input.datepicker( {
+				//format: 'YYYY-MM-DD',
+				//container: container,
+				//todayHighlight: true,
+				//autoclose: true,
+				//startDate: "+0D"
+			//} )
+		//} )
+	</script>
+	<script>
+	$('#sandbox-container input').datepicker({
+    format: "mm/dd/yyyy",
+    startDate: "0+D",
+    maxViewMode: 1,
+    todayBtn: "linked",
+    keyboardNavigation: false,
+    todayHighlight: true,
+		startDate:"+0D",
+});
 	</script>
 </head>
 
@@ -72,6 +87,16 @@
 	<h2 style="text-align: center;">Reservation Booking Form</h2>
 	<p style="text-align: center;"> For any inquiries, please contact us on this number 07 3358 4006</p>
 	<div class="container">
+		
+		<?php 
+				if ( isset( $_SESSION[ 'error' ] ) ) {
+					if ( $_SESSION[ 'error' ] != "" ) {
+						echo '<div class="alert alert-danger"><strong>ERROR: </strong>'.$_SESSION['error'].'</div>';
+						$_SESSION[ 'error' ] = "";
+					}
+				}
+		?>
+		
 		<form action="../control/reservation_process.php" method="post">
 
 			<label for="functions">Function Type</label>
@@ -89,15 +114,17 @@
 			</select>
 
 
-			<label class="control-label" for="date">Date</label>
-			<input class="form-control" id="date" name="date" placeholder="select a date" type="text"/>
+			<!--<label class="control-label" for="date">Date</label>
+			<input class="form-control" id="date" name="date" placeholder="Select a date: YYYY-MM-DD" type="text"/>-->
+			
+			<input ="text" type="date" for="date" class="form-control">
 
 			<!-- Form code ends -->
 	<label for="time">Select time</label>
 	<select id="time" name="time">
-		<option value="morning">9:00am</option>
-		<option value="afternoon">12:00pm</option>
-		<option value="evening">9:00pm</option>
+		<option value="09:00:00.0000">9:00am</option>
+		<option value="12:00:00.0000">12:00pm</option>
+		<option value="17:00:00.0000">5:00pm</option>
 	</select>
 
 	<label for="subject">Comment</label>

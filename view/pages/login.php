@@ -5,6 +5,10 @@
 <meta charset="utf-8">
 <title>Untitled Document</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
@@ -73,24 +77,40 @@ span.psw {
 <body>
 
 		<h2>Login Form</h2>
-<?
+<?php
 	if (in_Array('LoginMsg', $_POST)) {
 		echo $_POST['LoginMsg'];
+	}
+	
+	if (isset($_SESSION['error'])) {
+		if ($_SESSION['error'] != ""){
+			
+			$email = $_SESSION['previousPOST']['email'];
+		}
 	}
 	?>
 <form action="../../control/login_process.php" method="post">
 
   <div class="container">
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input type="text" placeholder="Enter Email" name="email" value="<?php if (isset($email)) {echo $email;}?>" required>
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
         
+	  <?php
+				if ( isset( $_SESSION[ 'error' ] ) ) {
+					if ( $_SESSION[ 'error' ] != "" ) {
+						echo '<div class="alert alert-danger"><strong>ERROR: </strong>'.$_SESSION['error'].'</div>';
+						$_SESSION[ 'error' ] = "";
+					}
+				}
+				?>
+	  
     <button type="submit">Login</button>
 
   </div>
 </form>
-		<? include('footer.php');?>
+		<?php include('footer.php');?>
 </body>
 </html>
