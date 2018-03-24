@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2018 at 02:07 AM
+-- Generation Time: Mar 24, 2018 at 01:51 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -31,8 +31,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `adminID` int(10) NOT NULL,
   `email` varchar(40) NOT NULL,
-  `firstname` varchar(60) NOT NULL,
-  `lastname` varchar(60) NOT NULL,
   `password` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -40,8 +38,8 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`adminID`, `email`, `firstname`, `lastname`, `password`) VALUES
-(13, 'admin@gmail.com', 'admin', 'admin1', '1234567890');
+INSERT INTO `admin` (`adminID`, `email`, `password`) VALUES
+(3, 'admin@gmail.com', '1234567890');
 
 -- --------------------------------------------------------
 
@@ -68,18 +66,17 @@ CREATE TABLE `logdata` (
 
 CREATE TABLE `manager` (
   `managerID` int(10) NOT NULL,
-  `firstname` varchar(60) NOT NULL,
-  `lastname` varchar(60) NOT NULL,
-  `password` varchar(60) NOT NULL,
-  `email` varchar(40) NOT NULL
+  `email` varchar(40) NOT NULL,
+  `password` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `manager`
 --
 
-INSERT INTO `manager` (`managerID`, `firstname`, `lastname`, `password`, `email`) VALUES
-(1, 'manager', 'manager1', '1234567890', 'manager@gmail.com');
+INSERT INTO `manager` (`managerID`, `email`, `password`) VALUES
+(1, 'manager@gmail.com', '1234567890'),
+(2, 'manager2@gmail.com', '1234567890');
 
 -- --------------------------------------------------------
 
@@ -90,18 +87,20 @@ INSERT INTO `manager` (`managerID`, `firstname`, `lastname`, `password`, `email`
 CREATE TABLE `member` (
   `memberID` int(10) NOT NULL,
   `email` varchar(40) NOT NULL,
+  `password` varchar(60) NOT NULL,
   `firstname` varchar(60) NOT NULL,
-  `lastname` varchar(60) NOT NULL,
-  `password` varchar(60) NOT NULL
+  `lastname` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `member`
 --
 
-INSERT INTO `member` (`memberID`, `email`, `firstname`, `lastname`, `password`) VALUES
-(1, 'ginajingli@hotmail.com', 'Gina', 'Li', '1234567890'),
-(2, '13muskanbakshI@gmail.com', 'Muskaan', 'Bakshi', 'Varsha1998nani');
+INSERT INTO `member` (`memberID`, `email`, `password`, `firstname`, `lastname`) VALUES
+(1, '13muskanbakshi@gmail.com', '1234567890', 'Muskaan', 'Bakshi'),
+(2, 'ginajingli@hotmail.com', '1234567890', 'Gina', 'Li'),
+(3, 'hello@gmail.com', 'hello', 'hello', 'hello'),
+(26, 'steve@steve.com', 'Hello1234', 'Steve', 'Steveson');
 
 -- --------------------------------------------------------
 
@@ -111,9 +110,9 @@ INSERT INTO `member` (`memberID`, `email`, `firstname`, `lastname`, `password`) 
 
 CREATE TABLE `menu` (
   `dishID` int(10) NOT NULL,
-  `dishtitle` varchar(50) NOT NULL,
+  `dishtitle` varchar(30) NOT NULL,
   `dishdescription` text NOT NULL,
-  `dishprice` int(6) NOT NULL
+  `dishprice` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -121,9 +120,10 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`dishID`, `dishtitle`, `dishdescription`, `dishprice`) VALUES
-(1, 'Pea and Potato Samosa', 'Spicy peas and potato pastry parcels', 11),
-(2, 'Garlic Aloo Bondas', 'Golden battered spicy potato and garlic balls', 11),
-(3, 'Mirchi Vada', 'Special chilli fritter with a spicy potato stuffing in a potato and golden batter', 11);
+(19, 'Pea and Potato Samosa', 'Spicy peas and potato pastry parcels', '10.50'),
+(20, 'Garlic Aloo Bondas', 'Golden battered spicy potato and garlic balls', '10.50'),
+(21, 'Mirchi Vada', 'Special chilli fritter with a spicy potato stuffing in a potato and golden batter', '10.50'),
+(22, 'Tandoori Tiger Prawns', 'Marinated tiger prawns cooked in the tandoor', '16.50');
 
 -- --------------------------------------------------------
 
@@ -138,6 +138,15 @@ CREATE TABLE `party` (
   `adminID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `party`
+--
+
+INSERT INTO `party` (`functionID`, `functiontype`, `functiondescription`, `adminID`) VALUES
+(1, 'Anniversary', 'This is the anniversary function type.', 0),
+(2, 'Birthday', 'This is the birthday function type.', 0),
+(3, 'Corporate', 'This is the corporate function type.', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -146,14 +155,25 @@ CREATE TABLE `party` (
 
 CREATE TABLE `reservation` (
   `reservationID` int(10) NOT NULL,
-  `memberID` int(10) NOT NULL,
   `date` date NOT NULL,
   `time` time(4) NOT NULL,
-  `guestno.` int(10) NOT NULL,
-  `functionID` int(10) NOT NULL,
-  `managerID` int(10) NOT NULL,
-  `comment` text NOT NULL
+  `guestno` int(10) NOT NULL,
+  `comment` varchar(256) NOT NULL,
+  `memberID` int(10) NOT NULL,
+  `functionID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `reservation`
+--
+
+INSERT INTO `reservation` (`reservationID`, `date`, `time`, `guestno`, `comment`, `memberID`, `functionID`) VALUES
+(2, '0000-00-00', '00:00:00.0000', 10, 'hey', 1, 1),
+(3, '0000-00-00', '00:00:00.0000', 30, 'I would like to have a birthday party. ', 2, 2),
+(4, '0000-00-00', '00:00:00.0000', 30, 'I would like to have a birthday party. ', 2, 2),
+(5, '2018-03-23', '09:00:00.0000', 10, 'Heck', 26, 1),
+(6, '0000-00-00', '09:00:00.0000', 10, '', 26, 1),
+(7, '0000-00-00', '09:00:00.0000', 10, '', 26, 1);
 
 -- --------------------------------------------------------
 
@@ -163,10 +183,11 @@ CREATE TABLE `reservation` (
 
 CREATE TABLE `review` (
   `reviewID` int(10) NOT NULL,
-  `memberID` int(10) NOT NULL,
   `reviewtitle` varchar(60) NOT NULL,
+  `reviewscore` int(11) NOT NULL,
   `reviewcontent` text NOT NULL,
-  `reviewscore` int(11) NOT NULL
+  `memberID` int(10) NOT NULL,
+  `adminID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -184,9 +205,9 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `logdata`
   ADD PRIMARY KEY (`logID`),
-  ADD KEY `memberID` (`memberID`),
-  ADD KEY `adminID` (`adminID`),
-  ADD KEY `managerID` (`managerID`);
+  ADD KEY `memberlogdata` (`memberID`),
+  ADD KEY `adminlogdata` (`adminID`),
+  ADD KEY `managerlogdata` (`managerID`);
 
 --
 -- Indexes for table `manager`
@@ -198,8 +219,7 @@ ALTER TABLE `manager`
 -- Indexes for table `member`
 --
 ALTER TABLE `member`
-  ADD PRIMARY KEY (`memberID`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`memberID`);
 
 --
 -- Indexes for table `menu`
@@ -220,15 +240,15 @@ ALTER TABLE `party`
 ALTER TABLE `reservation`
   ADD PRIMARY KEY (`reservationID`),
   ADD KEY `memberID` (`memberID`),
-  ADD KEY `functionID` (`functionID`),
-  ADD KEY `managerID` (`managerID`);
+  ADD KEY `reservationfunction` (`functionID`);
 
 --
 -- Indexes for table `review`
 --
 ALTER TABLE `review`
-  ADD PRIMARY KEY (`reviewID`) USING BTREE,
-  ADD KEY `memberID` (`memberID`);
+  ADD PRIMARY KEY (`reviewID`),
+  ADD KEY `memberID` (`memberID`),
+  ADD KEY `adminID` (`adminID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -238,7 +258,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `adminID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `adminID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `logdata`
@@ -250,31 +270,31 @@ ALTER TABLE `logdata`
 -- AUTO_INCREMENT for table `manager`
 --
 ALTER TABLE `manager`
-  MODIFY `managerID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `managerID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `memberID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `memberID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `dishID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `dishID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `party`
 --
 ALTER TABLE `party`
-  MODIFY `functionID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `functionID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservationID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `reservationID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -287,32 +307,32 @@ ALTER TABLE `review`
 --
 
 --
+-- Constraints for table `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `adminfunction` FOREIGN KEY (`adminID`) REFERENCES `party` (`functionID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `adminmenu` FOREIGN KEY (`adminID`) REFERENCES `party` (`functionID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `logdata`
 --
 ALTER TABLE `logdata`
-  ADD CONSTRAINT `logdataadmin` FOREIGN KEY (`adminID`) REFERENCES `admin` (`adminID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `logdatamanager` FOREIGN KEY (`managerID`) REFERENCES `manager` (`managerID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `logdatamember` FOREIGN KEY (`memberID`) REFERENCES `member` (`memberID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `party`
---
-ALTER TABLE `party`
-  ADD CONSTRAINT `adminfunction` FOREIGN KEY (`functionID`) REFERENCES `admin` (`adminID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `adminlogdata` FOREIGN KEY (`adminID`) REFERENCES `admin` (`adminID`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `managerlogdata` FOREIGN KEY (`managerID`) REFERENCES `manager` (`managerID`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `memberlogdata` FOREIGN KEY (`memberID`) REFERENCES `member` (`memberID`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `reservation`
 --
 ALTER TABLE `reservation`
-  ADD CONSTRAINT `reservationmanager` FOREIGN KEY (`managerID`) REFERENCES `manager` (`managerID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reservationmember` FOREIGN KEY (`memberID`) REFERENCES `member` (`memberID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reservationparty` FOREIGN KEY (`functionID`) REFERENCES `party` (`functionID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `reservationfunction` FOREIGN KEY (`functionID`) REFERENCES `party` (`functionID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reservationmember` FOREIGN KEY (`memberID`) REFERENCES `member` (`memberID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `review`
 --
 ALTER TABLE `review`
-  ADD CONSTRAINT `reviewmember` FOREIGN KEY (`memberID`) REFERENCES `member` (`memberID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `adminreview` FOREIGN KEY (`reviewID`) REFERENCES `admin` (`adminID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
