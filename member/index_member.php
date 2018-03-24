@@ -1,4 +1,4 @@
-<?php include('navigationbar_member.php'); include('footer.php');?>
+<?php include('navigationbar_member.php'); include('footer_member.php');?>
 <!doctype html>
 <html>
 <head>

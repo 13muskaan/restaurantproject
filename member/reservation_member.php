@@ -12,14 +12,22 @@
 
 	<!-- frame work by bootsrap-->
 	<!-- Include jQuery -->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
 	<!-- Include Date Range Picker -->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/> <!-- this is causing the error-->
 	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script
+          src="http://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
+        <script
+          src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+          integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+          crossorigin="anonymous"></script> 
+        <link rel="stylesheet" href="../css/jquery-ui.min.css"/>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css"/>
+
 	
 	<style>
 		body {
@@ -58,28 +66,17 @@
 		}
 	</style>
 	<script>
-		//$( document ).ready( function () {
-			//var date_input = $( 'input[name="date"]' ); //our date input has the name "date"
-			//var container = $( '.bootstrap-iso form' ).length > 0 ? $( '.bootstrap-iso form' ).parent() : "body";
-			//date_input.datepicker( {
-				//format: 'YYYY-MM-DD',
-				//container: container,
-				//todayHighlight: true,
-				//autoclose: true,
-				//startDate: "+0D"
-			//} )
-		//} )
-	</script>
-	<script>
-	$('#sandbox-container input').datepicker({
-    format: "mm/dd/yyyy",
-    startDate: "0+D",
-    maxViewMode: 1,
-    todayBtn: "linked",
-    keyboardNavigation: false,
-    todayHighlight: true,
-		startDate:"+0D",
-});
+		$( document ).ready( function () {
+			var date_input = $( 'input[name="date"]' ); //our date input has the name "date"
+			var container = $( '.bootstrap-iso form' ).length > 0 ? $( '.bootstrap-iso form' ).parent() : "body";
+			date_input.datepicker( {
+				format: 'YYYY-MM-DD',
+				container: container,
+				todayHighlight: true,
+				autoclose: true,
+				startDate: "+0D"
+			} )
+		} )
 	</script>
 </head>
 
@@ -114,10 +111,9 @@
 			</select>
 
 
-			<!--<label class="control-label" for="date">Date</label>
-			<input class="form-control" id="date" name="date" placeholder="Select a date: YYYY-MM-DD" type="text"/>-->
-			
-			<input ="text" type="date" for="date" class="form-control">
+			<label class="control-label" for="date">Date</label>
+			<input class="form-control" id="date" name="date" placeholder="Select a date: YYYY-MM-DD" type="text"/>
+
 
 			<!-- Form code ends -->
 	<label for="time">Select time</label>
@@ -134,7 +130,7 @@
 	</form>
 	</div>
 </body>
-<?php  include('footer.php'); ?>
+<?php  include('footer_member.php'); ?>
 </body>
 
 </html>
