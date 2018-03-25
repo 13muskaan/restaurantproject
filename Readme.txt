@@ -14,12 +14,29 @@ If database is threatened, drop database and upload database from project folder
 
 View contents in website:
 
+*NOTE: There can only be one admin and one manager for this project.
+
 ADMIN:
 
-username: admin		password: qwerty
+username: admin@gmail.com	password: 1234567890
 privilege: manage users, manage website contents
 
 MANAGER: 
 
-username: manager	password: asdfg
+username: manager@gmail.com	password: 12334567890
 privilege: only manage reservations
+
+GITHUB URL: https://github.com/13muskaan/restaurantproject
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+ISSUES:
+
+- managers at this point can't delete: reservations, users, functions
+- admins at this point cannot:  delete users, update user information, view reviews, manage reviews, manage functions
+- members at this point can't: view reviews, post reviews, view functions
+
+- Index files are empty for each user
+- Contact pages are empty
+

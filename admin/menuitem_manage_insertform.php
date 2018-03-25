@@ -40,7 +40,7 @@
 		<a href="menuitem_manage.php"><button type="button">Go back</button></a>
 		<button type="submit">Submit</button>
 	</form>
-</body>
+	<?php include('footer_admin.php');?>
 
 </body>
 

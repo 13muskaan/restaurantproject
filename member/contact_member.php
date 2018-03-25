@@ -10,6 +10,6 @@
 <body>
 	<!--contact page-->
 	Contact page member
-	<?php include('footer.php'); ?>
+	<?php include('footer_member.php'); ?>
 </body>
 </html>

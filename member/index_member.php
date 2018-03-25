@@ -1,4 +1,4 @@
-<?php include('navigationbar_member.php'); include('footer_member.php');?>
+<?php include('navigationbar_member.php');?>
 <!doctype html>
 <html>
 <head>
@@ -10,8 +10,8 @@
 	<?php
 	session_start();
 	
-	print_r($_SESSION);
 	
+	include('footer_member.php');
 	?>
 	<!--- this is home/index page-->
 </body>

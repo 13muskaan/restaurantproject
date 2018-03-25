@@ -1,32 +1,30 @@
-<?php include('navigationbar_member.php'); //include('../../control/session_start.php');?>
+<?php 
+session_start();
+include('navigationbar_member.php'); //include('../../control/session_start.php');?>
 
 <!doctype html>
 <html>
 
 <head>
 	<meta charset="utf-8">
-	<title>reservation</title>
+	<title>MY BANYAN TREE | RESERVATION</title>
 	<link href="../view/css/stylesheet.css" rel="stylesheet" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--<script src="../javascript/reservation.js" type="text/javascript"></script>-->
-
-	<!-- frame work by bootsrap-->
-	<!-- Include jQuery -->
-
-	<!-- Include Date Range Picker -->
 	
-	<script
-          src="http://code.jquery.com/jquery-3.3.1.min.js"
-          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-          crossorigin="anonymous"></script>
-        <script
-          src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-          integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-          crossorigin="anonymous"></script> 
-        <link rel="stylesheet" href="../css/jquery-ui.min.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../view/css/jquery-ui.min.css"/>
+	
+	
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script> 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css"/>
+	
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css"/>
 
 	
 	<style>
@@ -89,7 +87,12 @@
 				if ( isset( $_SESSION[ 'error' ] ) ) {
 					if ( $_SESSION[ 'error' ] != "" ) {
 						echo '<div class="alert alert-danger"><strong>ERROR: </strong>'.$_SESSION['error'].'</div>';
-						$_SESSION[ 'error' ] = "";
+					}
+				}
+		
+				if (isset($_SESSION['message'])) {
+					if ($_SESSION['message'] != '') {
+						echo '<div class="alert alert-success"><strong>Success! </strong>'.$_SESSION['message'].'</div>';
 					}
 				}
 		?>

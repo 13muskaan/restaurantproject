@@ -8,5 +8,7 @@
 
 <body>
 	 Welcome Admin! This is the index page of admin.
+	
+		<?php include('footer_admin.php');?>
 </body>
 </html>

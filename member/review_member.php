@@ -8,5 +8,6 @@
 
 <body>
 	<!--review page--> This is the review page.
+	<?php include('footer_member.php');?>
 </body>
 </html>

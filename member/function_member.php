@@ -8,6 +8,6 @@
 
 <body>
 	<!-- restaurant function here-->
-	<?php  include('footer.php'); ?>
+	<?php  include('footer_member.php'); ?>
 	</body>
 </html>

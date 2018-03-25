@@ -28,7 +28,7 @@ $stmt->execute();
 if ( $conn->lastInsertId() > 0 ) {
 	$_SESSION[ 'message' ] = 'memberid: ' . $conn->lastInsertId() . ' Created';
 	
-	$_SESSION['member_id'] = $conn->lastInsertID();
+	$_SESSION['userID'] = $conn->lastInsertID();
 	
 	
 	//REPLACE THIS WITH A .php FILE THAT GRABS THIS INFORMATION WITH A SELECT STATEMENT BASED OFF OF THE user_id - Steve

@@ -21,7 +21,7 @@
 		$valid = true;
 		$_SESSION[ 'user_type' ] = 'member';
 		$_SESSION[ 'login_time' ] = time();
-		$_SESSION['message'] = 'success!';
+		$_SESSION['message'] = 'Login successful!';
 		
 		$result = $stmt->fetchAll();
 		$_SESSION['userID'] = $result[0]['memberID'];
@@ -41,6 +41,7 @@
 		$valid = true;
 		$_SESSION[ 'user_type' ] = 'manager';
 		$_SESSION[ 'login_time' ] = time();
+		$_SESSION['message'] = 'Login Successful!';
 		$result = $stmt->fetchAll();
 		$_SESSION['userID'] = $result[0]['managerID'];
 		header( "location: ../manager/index_manager.php" ); //this doesn't work header("location: ../view/pages/index.php"); 
@@ -57,7 +58,7 @@
 		$valid = true;
 		$_SESSION[ 'user_type' ] = 'admin';
 		$_SESSION[ 'login_time' ] = time();
-		$_SESSION['message'] = 'success!';
+		$_SESSION['message'] = 'Login Successful!';
 		$result = $stmt->fetchAll();
 		$_SESSION['userID'] = $result[0]['adminID'];
 		echo '<p> you are logged in!</p>';

@@ -8,5 +8,6 @@
 <body>
 	<!-- admin manages users in the database-->
 	Manger users here. Delete/Update.
+		<?php include('footer_admin.php');?>
 </body>
 </html>

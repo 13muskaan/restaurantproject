@@ -8,5 +8,6 @@
 <body>
 	<!-- admin manages the review page-->
 	Manage reviews here. Can only delete.
+		<?php include('footer_admin.php');?>
 </body>
 </html>

@@ -47,7 +47,7 @@
 	<script> $('h3 span:first-child').after("<span class=\"dots\"> </span>");</script>
 	
 		
-	<?php  include('footer.php');?>
+	<?php  include('footer_member.php');?>
 </body>
 
 </html>

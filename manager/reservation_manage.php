@@ -9,5 +9,7 @@
 <body>
 	<!-- manager manages reservations-->
 	This is where reservations can be managed by the manager.
+	
+	<?php include('footer_manager.php');?>
 </body>
 </html>

@@ -9,6 +9,7 @@
 <body>
 	<!-- admin manages the function page and function data-->
 	Edit function page here.
+		<?php include('footer_admin.php');?>
 
 </body>
 </html>
