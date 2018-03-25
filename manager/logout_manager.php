@@ -7,17 +7,8 @@
 //  session_destroy();
     
     unset($_SESSION['error']);
-    unset($_SESSION['memberid']);
+    //unset($_SESSION['memberid']);
+	unset($_SESSION['managerid']);
     $_SESSION['usertype'] = 0;
     $_SESSION['tries'] = 0;
     header('Location: ../view/pages/login.php');
-?><!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
-</head>
-
-<body>
-</body>
-</html>

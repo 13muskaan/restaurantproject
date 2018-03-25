@@ -28,17 +28,11 @@
                         <a href="#!">Link 1</a>
                     </li>
 					</div
-					<br><br>
+					><br><br>
 					</div>
 			</div>
 			</div>
 			</div>
 	</footer>
-	<!--footer file-->
-	<!-- incldue footer information here -->
-	<p style="float: left;">Content goes here</p>
-	
-	<!-- include error divs from all pages here -->
-	<div class="errordiv" style="float: left;"> Debug here</div>
 	</body>
 </html>

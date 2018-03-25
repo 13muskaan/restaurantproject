@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>review_manage</title>
+<title>REVIEW MANAGE</title>
 </head>
 <?php include('navigationbar_admin.php');?>
 <body>

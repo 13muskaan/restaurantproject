@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>reservation</title>
+	<title>MY BANYAN TREE | RESERVATION</title>
 	<link href="../css/stylesheet.css" rel="stylesheet" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--<script src="../javascript/reservation.js" type="text/javascript"></script>-->

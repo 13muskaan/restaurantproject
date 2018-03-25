@@ -1,4 +1,4 @@
-<?php include('navigationbar.php'); include('footer.php');?>
+<?php include('navigationbar.php');?>
 <!doctype html>
 <html>
 <head>
@@ -9,5 +9,6 @@
 <body>
 	
 	<!--- this is home/index page-->
+	<?php include('footer.php');?>
 </body>
 </html>

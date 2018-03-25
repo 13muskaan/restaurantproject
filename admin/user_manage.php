@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>user_manage</title>
+<title>USER MANAGE</title>
 </head>
 <?php include('navigationbar_admin.php');?>
 <body>

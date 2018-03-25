@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>contact</title>
+<title>MY BANYAN TREE | CONTACT</title>
 </head>
 
 <body>

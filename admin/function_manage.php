@@ -1,9 +1,10 @@
-<? include('../model/dbconnection.php');?>
+<? session_start();
+include('../model/dbconnection.php');?>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>function_manage</title>
+<title>FUNCTION MANAGE</title>
 </head>
 <?php include('navigationbar_admin.php'); ?>
 <body>

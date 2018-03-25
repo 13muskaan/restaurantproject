@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>function</title>
+<title>MY BANYAN TREE | FUNCTION</title>
 </head>
 
 <body>

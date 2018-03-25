@@ -1,10 +1,11 @@
-<?php include('navigationbar_member.php'); ?>
+<?php session_start();
+include('navigationbar_member.php'); ?>
 
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>contact</title>
+<title>MY BANYAN TREE | CONTACT</title>
 </head>
 
 <body>

@@ -7,7 +7,8 @@
 //  session_destroy();
     
     unset($_SESSION['error']);
-    unset($_SESSION['memberid']);
+    //unset($_SESSION['memberid']); 
+	unset($_SESSION['adminid']);
     $_SESSION['usertype'] = 0;
     $_SESSION['tries'] = 0;
     header('Location: ../view/pages/login.php');

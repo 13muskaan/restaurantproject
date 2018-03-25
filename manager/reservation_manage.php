@@ -1,9 +1,10 @@
-<?php include('navigationbar_manager.php');?>
+<?php session_start();
+include('navigationbar_manager.php');?>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>reservation_manage</title>
+<title>RESERVATION MANAGE</title>
 </head>
 
 <body>

@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Home (admin)</title>
+<title>HOME</title>
 </head>
 
 <body>

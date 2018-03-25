@@ -1,4 +1,4 @@
-	<?php
+	<?php session_start();
 	include( '../model/dbconnection.php' );?>
 <!doctype html>
 <html>
