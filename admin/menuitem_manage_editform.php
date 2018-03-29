@@ -1,6 +1,3 @@
-<!doctype html>
-<html>
-
 <head>
 	<meta charset="utf-8">
 	<title>Edit form</title>
@@ -22,20 +19,20 @@
 	</style>
 
 </head>
-<?php include('navigationbar_admin.php');
-	include('../model/dbconnection.php');
-	
-	$sql = "SELECT * from menu WHERE dishID=:id";
-	
-	$stmt = $conn->prepare( $sql );
-	$stmt->bindParam( ':id', $_GET['id'], PDO::PARAM_INT );
-	
-	$stmt->execute();
-	$menuitem = $stmt->fetchAll();
-	
-	
-	?>
+<?php
+include( '../view/pages/navigationbar.php' );
+include( '../model/dbconnection.php' );
 
+$sql = "SELECT * from menu WHERE dishID=:id";
+
+$stmt = $conn->prepare( $sql );
+$stmt->bindParam( ':id', $_GET[ 'id' ], PDO::PARAM_INT );
+
+$stmt->execute();
+$menuitem = $stmt->fetchAll();
+
+
+?>
 <body>
 	<form method="post" action="menuitem_manage_edit_process.php?id=<?php echo $_GET['id']; ?>">
 		<h2> Update Menu Item </h2>
@@ -54,7 +51,7 @@
 		<a href="menuitem_manage.php"><button type="button">Go back</button></a>
 		<button type="submit">Submit</button>
 	</form>
-	<?php include('footer_admin.php');?>
+	<?php include('../view/pages/footer.php');?>
 </body>
 
 </html>

@@ -1,24 +1,18 @@
-<!doctype html>
-<html>
-
 <head>
 	<meta charset="utf-8">
 	<title>Menu Manage</title>
 	<link href="../view/css/stylesheet.css" rel="stylesheet" type="text/css">
 </head>
-<?php  include('navigationbar_admin.php');?>
+
 
 <body>
+	<?php  include('../view/pages/navigationbar.php');?>
 	<!--restaurant menu will appear here-->
 	<div class="menuitem_view">
 		<h1 style="text-align: center;"> My Banyan menu.</h1>
-
-
-
 		<div class="container">
-
 			<?php
-			include('../model/dbconnection.php');
+			include( '../model/dbconnection.php' );
 			$servername = "localhost";
 			$username = "root";
 			$password = "";
@@ -40,20 +34,17 @@
 				//echo '<hr></div>';
 				echo '<a href="menuitem_manage_delete.php?id=' . $row[ 'dishID' ] . '" class="deletebutton"><button type="btn">Delete</button></a>';
 				echo '<a href="menuitem_manage_editform.php?id=' . $row[ 'dishID' ] . '" class="editbutton"><button type="btn">Edit</button></a>';
-				
+
 			}
 			?>
-			
 			<hr>
 			<a href="menuitem_manage_insertform.php" class="insertbutton"><button type="btn">Insert New Menu Item</button></a>
 		</div>
-		
+
 	</div>
 	<script>
 		$( 'h3 span:first-child' ).after( "<span class=\"dots\"> </span>" );
 	</script>
 
-		<?php include('footer_admin.php');?>
+	<?php include('../view/pages/footer.php');?>
 </body>
-
-</html>

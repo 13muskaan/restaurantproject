@@ -1,6 +1,3 @@
-<!doctype html>
-<html>
-
 <head>
 	<meta charset="utf-8">
 	<title>Edit form</title>
@@ -22,7 +19,7 @@
 	</style>
 
 </head>
-<?php include('navigationbar_admin.php');?>
+<?php include('../view/pages/navigationbar.php');?>
 
 <body>
 	<form action="menuitem_manage_insert_process.php" method="post">
@@ -40,8 +37,6 @@
 		<a href="menuitem_manage.php"><button type="button">Go back</button></a>
 		<button type="submit">Submit</button>
 	</form>
-	<?php include('footer_admin.php');?>
+	<?php include('../view/pages/footer.php');?>
 
 </body>
-
-</html>

@@ -1,25 +1,12 @@
 <?php include('navigationbar.php'); include('footer.php'); ?>
-<? include('../control/sessiondestroy');?>
 <?php
-    session_start();
-//  if we destroy the session, then we lose session_id() hashing for the user's browser,
-//  instead we'll unset all user-related $_SESSION values; 
-//  session_destroy();
-    
-    unset($_SESSION['error']);
-    unset($_SESSION['memberid']);
-    $_SESSION['usertype'] = 0;
-    $_SESSION['tries'] = 0;
-    header('Location: login.php');
-?>
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>logout</title>
-</head>
+session_start();
 
-<body>
-	<!--logout file-->
-</body>
-</html>
+$_SESSION[ 'error' ] = '';
+$_SESSION[ 'userID' ] = -1;
+$_SESSION[ 'user_type' ] = 'anon';
+$_SESSION[ 'tries' ] = 0;
+$_SESSION[ 'message' ] = 'You have logged out successfully.';
+
+header( 'Location: login.php' );
+?>

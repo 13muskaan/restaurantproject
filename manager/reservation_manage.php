@@ -1,16 +1,14 @@
-<?php session_start();
-include('navigationbar_manager.php');?>
-<!doctype html>
-<html>
+<?php
+include( '../view/pages/navigationbar.php' );
+?>
 <head>
-<meta charset="utf-8">
-<title>RESERVATION MANAGE</title>
+	<meta charset="utf-8">
+	<title>RESERVATION MANAGE</title>
 </head>
 
 <body>
 	<!-- manager manages reservations-->
 	This is where reservations can be managed by the manager.
-	
-	<?php include('footer_manager.php');?>
+
+	<?php include('../view/pages/footer.php');?>
 </body>
-</html>

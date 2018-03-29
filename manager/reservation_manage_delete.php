@@ -1,12 +1,7 @@
-<?php include('../model/dbconnection.php'); ?>
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>reservation_manage_delete</title>
-</head>
+<?php
+include( '../model/dbconnection.php' );
 
-<body>
-	<!-- delete function-->
-</body>
-</html>
+//Reservation deleting here.
+
+header( "location: reservation_manage.php" )
+?>

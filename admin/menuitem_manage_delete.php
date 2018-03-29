@@ -1,9 +1,11 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "restaurantproject";
-$id = htmlspecialchars($_GET["id"]);
+$id = htmlspecialchars( $_GET[ "id" ] );
 
 
 try {
@@ -12,11 +14,11 @@ try {
 	$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
 	// sql to delete a record
-	$sql = "DELETE FROM menu WHERE dishID=".$id; // use get here.
+	$sql = "DELETE FROM menu WHERE dishID=" . $id; // use get here.
 
 	// use exec() because no results are returned
 	$conn->exec( $sql );
-	echo "Record deleted successfully";
+	$_SESSION[ 'message' ] = "Menu item deleted successfully!";
 } catch ( PDOException $e ) {
 	echo $sql . "<br>" . $e->getMessage();
 }
@@ -25,14 +27,5 @@ $conn = null;
 
 echo '<hr><a href="menuitem_manage.php"><button type="button">Return To List</button></a>'; //another method 
 
-header('location: menuitem_manage.php');
-?><!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
-</head>
-
-<body>
-</body>
-</html>
+header( 'location: menuitem_manage.php' );
+?>

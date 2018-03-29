@@ -1,13 +1,13 @@
 <?php
-//require("../../control/GetUserInfo.php");
-include('navigationbar.php') include('footer.php');
+include( 'navigationbar.php' ); include( 'footer.php' );
 ?>
 
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>MY BANYAN TREE | CHANGE PASSWORD</title>
+	<meta charset="utf-8">
+	<title>MY BANYAN TREE | CHANGE PASSWORD</title>
 	<link href="../css/stylesheet.css" rel="stylesheet" type="text/css">
 	<script src="../javascript/javascript.js"></script>
 	<!-- loaded by bootstrap-->
@@ -21,7 +21,7 @@ include('navigationbar.php') include('footer.php');
 </head>
 
 <body>
-	
+
 	<div class="container">
 		<form class="well form-horizontal" action="../../control/userinfo_update_process.php" method="post" id="register_form">
 			<fieldset>
@@ -34,7 +34,7 @@ include('navigationbar.php') include('footer.php');
 					</center>
 				</legend><br>
 
-				
+
 
 				<!-- Text input-->
 
@@ -67,7 +67,7 @@ include('navigationbar.php') include('footer.php');
 				<!-- Button -->
 				<div class="form-group">
 					<label class="col-md-4 control-label"></label>
-					<div class="col-md-4"><br> 
+					<div class="col-md-4"><br>
 						<button type="submit" class="btn btn-warning"> SUBMIT <span class="glyphicon glyphicon-send"></span></button>
 					</div>
 				</div>
@@ -75,6 +75,7 @@ include('navigationbar.php') include('footer.php');
 			</fieldset>
 		</form>
 	</div>
-	
+
 </body>
+
 </html>

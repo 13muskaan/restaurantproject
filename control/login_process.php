@@ -1,75 +1,77 @@
-	<?php include('../model/dbconnection.php');	?>
-	<?php 
-	session_start();
+<?php include('../model/dbconnection.php');	?>
+<?php
+session_start();
 
-	$_SESSION['error'] = '';
+$_SESSION[ 'error' ] = '';
 
-	$email = $_POST[ 'email' ];
-	$pass = $_POST[ "psw" ];
-	$msg = "";
+$email = $_POST[ 'email' ];
+$pass = $_POST[ "psw" ];
+$msg = "";
 
-	$memberSql = "SELECT * FROM member WHERE email=:email AND password=:pass;";
-	$stmt = $conn->prepare( $memberSql );
-	$stmt->bindParam( ':email', $email, PDO::PARAM_STR );
-	$stmt->bindParam( ':pass', $pass, PDO::PARAM_STR );
+$memberSql = "SELECT * FROM member WHERE email=:email AND password=:pass;";
+$stmt = $conn->prepare( $memberSql );
+$stmt->bindParam( ':email', $email, PDO::PARAM_STR );
+$stmt->bindParam( ':pass', $pass, PDO::PARAM_STR );
 
-	$stmt->execute();
-	
-	$valid = false;
+$stmt->execute();
 
-	if ( $stmt->rowCount() >= 1 ) {
-		$valid = true;
-		$_SESSION[ 'user_type' ] = 'member';
-		$_SESSION[ 'login_time' ] = time();
-		$_SESSION['message'] = 'Login successful!';
-		
-		$result = $stmt->fetchAll();
-		$_SESSION['userID'] = $result[0]['memberID'];
-		header( "location: ../member/index_member.php" ); // charmi said do this: index.php  //this doesn't work header("location: ../view/pages/index.php"); ../view/pages/navigationbar_member.php
-	
-	}
+$valid = false;
 
-	$managerSql = "SELECT * FROM manager WHERE email=:email AND password=:pass;";
-	$stmt = $conn->prepare( $managerSql );
-	$stmt->bindParam( ':email', $email, PDO::PARAM_STR );
-	$stmt->bindParam( ':pass', $pass, PDO::PARAM_STR );
+if ( $stmt->rowCount() >= 1 ) {
+	$valid = true;
+	$_SESSION[ 'user_type' ] = 'member';
+	$_SESSION[ 'login_time' ] = time();
+	$_SESSION[ 'message' ] = 'Login successful!';
 
-	$stmt->execute();
-	echo $stmt->rowCount();
+	$result = $stmt->fetchAll();
+	$_SESSION[ 'userID' ] = $result[ 0 ][ 'memberID' ];
+	if ( isset( $_SESSION[ 'previousPOST' ] ) )unset( $_SESSION[ 'previousPOST' ] );
+	header( "location: ../view/pages/index.php" );
+}
 
-	if ( $stmt->rowCount() >= 1 ) {
-		$valid = true;
-		$_SESSION[ 'user_type' ] = 'manager';
-		$_SESSION[ 'login_time' ] = time();
-		$_SESSION['message'] = 'Login Successful!';
-		$result = $stmt->fetchAll();
-		$_SESSION['userID'] = $result[0]['managerID'];
-		header( "location: ../manager/index_manager.php" ); //this doesn't work header("location: ../view/pages/index.php"); 
-	
-	}
-	$adminSql = "SELECT * FROM admin WHERE email=:email AND password=:pass;";
-	$stmt = $conn->prepare( $adminSql );
-	$stmt->bindParam( ':email', $email, PDO::PARAM_STR );
-	$stmt->bindParam( ':pass', $pass, PDO::PARAM_STR );
+$managerSql = "SELECT * FROM manager WHERE email=:email AND password=:pass;";
+$stmt = $conn->prepare( $managerSql );
+$stmt->bindParam( ':email', $email, PDO::PARAM_STR );
+$stmt->bindParam( ':pass', $pass, PDO::PARAM_STR );
 
-	$stmt->execute();
+$stmt->execute();
+echo $stmt->rowCount();
 
-	if ( $stmt->rowCount() >= 1 ) {
-		$valid = true;
-		$_SESSION[ 'user_type' ] = 'admin';
-		$_SESSION[ 'login_time' ] = time();
-		$_SESSION['message'] = 'Login Successful!';
-		$result = $stmt->fetchAll();
-		$_SESSION['userID'] = $result[0]['adminID'];
-		echo '<p> you are logged in!</p>';
+if ( $stmt->rowCount() >= 1 ) {
+	$valid = true;
+	$_SESSION[ 'user_type' ] = 'manager';
+	$_SESSION[ 'login_time' ] = time();
+	$_SESSION[ 'message' ] = 'Login Successful!';
+	$result = $stmt->fetchAll();
+	$_SESSION[ 'userID' ] = $result[ 0 ][ 'managerID' ];
+	if ( isset( $_SESSION[ 'previousPOST' ] ) )unset( $_SESSION[ 'previousPOST' ] );
+	header( "location: ../manager/index_manager.php" );
 
-		header( "location: ../admin/index_admin.php" ); //this doesn't work header("location: ../view/pages/index.php")
-	}
+}
+$adminSql = "SELECT * FROM admin WHERE email=:email AND password=:pass;";
+$stmt = $conn->prepare( $adminSql );
+$stmt->bindParam( ':email', $email, PDO::PARAM_STR );
+$stmt->bindParam( ':pass', $pass, PDO::PARAM_STR );
 
-if (!$valid){
-		$_SESSION[ 'error' ] = 'Email or Password is wrong!'; // put this in footer - Muskaan
-		$_SESSION['previousPOST'] = $_POST;
-		header('location:../view/pages/login.php');
-	}
-	//$_SESSION['user_type'] = 'member';
-	?>
+$stmt->execute();
+
+if ( $stmt->rowCount() >= 1 ) {
+	$valid = true;
+	$_SESSION[ 'user_type' ] = 'admin';
+	$_SESSION[ 'login_time' ] = time();
+	$_SESSION[ 'message' ] = 'Login Successful!';
+	$result = $stmt->fetchAll();
+	$_SESSION[ 'userID' ] = $result[ 0 ][ 'adminID' ];
+	echo '<p> you are logged in!</p>';
+
+	if ( isset( $_SESSION[ 'previousPOST' ] ) )unset( $_SESSION[ 'previousPOST' ] );
+	header( "location: ../admin/index_admin.php" );
+}
+
+if ( !$valid ) {
+	$_SESSION[ 'error' ] = 'Email or Password is wrong!';
+	$_SESSION[ 'previousPOST' ] = $_POST;
+	header( 'location:../view/pages/login.php' );
+}
+//$_SESSION['user_type'] = 'member';
+?>

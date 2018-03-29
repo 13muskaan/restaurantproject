@@ -39,4 +39,4 @@ ISSUES:
 
 - Index files are empty for each user
 - Contact pages are empty
-
+- header file needs to be created (to store all styling)
