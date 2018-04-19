@@ -8,16 +8,7 @@ include( 'navigationbar.php' ); include( 'footer.php' );
 <head>
 	<meta charset="utf-8">
 	<title>MY BANYAN TREE | CHANGE PASSWORD</title>
-	<link href="../css/stylesheet.css" rel="stylesheet" type="text/css">
-	<script src="../javascript/javascript.js"></script>
-	<!-- loaded by bootstrap-->
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" type="text/css" rel="stylesheet">
-	<link href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css" type="text/css" rel="stylesheet">
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+
 </head>
 
 <body>

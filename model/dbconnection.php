@@ -12,4 +12,17 @@ try {
 	$_SESSION[ 'error' ] = "Connection failed: " . $e->getMessage();
 
 }
+
+if(isset($_GET['table'])) {
+	header( 'Content-Type: application/json' );
+	
+	$sql = "SELECT * FROM " . $_GET['table'] .";";
+	
+	$stmt = $conn->prepare($sql);
+	$stmt->execute();
+	
+	$results = $stmt->fetchAll();
+	
+	echo json_encode(Array('count' => count($results)));
+}
 ?>

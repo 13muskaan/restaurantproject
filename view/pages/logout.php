@@ -1,4 +1,3 @@
-<?php include('navigationbar.php'); include('footer.php'); ?>
 <?php
 session_start();
 

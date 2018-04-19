@@ -3,12 +3,9 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
 	<title>MY BANYAN TREE | LOGIN</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<script src="../javascript/FormValidation.js"></script>
 
 	<style>
 		body {
@@ -82,21 +79,18 @@
 </head>
 
 <body>
-
 	<h2>Login Form</h2>
+	<p> Please fill in your login cresidentials.</p>
 	<?php
 	if ( in_Array( 'LoginMsg', $_POST ) ) {
 		echo $_POST[ 'LoginMsg' ];
 	}
-
-	if ( isset( $_SESSION[ 'error' ] ) ) {
-		if ( $_SESSION[ 'error' ] != "" ) {
-
-			$email = $_SESSION[ 'previousPOST' ][ 'email' ];
-		}
+	
+	if ( isset ($_SESSION['lastEmail'])) {
+		$email = $_SESSION['lastEmail'];
 	}
 	?>
-	<form action="../../control/login_process.php" method="post">
+	<form action="../../control/login_process.php" method="post" id="login_form">
 
 		<div class="container">
 			<label for="email"><b>Email</b></label>

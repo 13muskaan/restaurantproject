@@ -1,20 +1,8 @@
 <?php include('navigationbar.php');?>
 
-<!doctype html>
-<html>
 
-<head>
-	<meta charset="utf-8">
 	<title>MY BANYAN TREE | REGISTER</title>
-	<link href="../css/stylesheet.css" rel="stylesheet" type="text/css">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 
 	<style>
 		* {
@@ -31,7 +19,7 @@
 			font-family: Raleway;
 			padding: 40px;
 			width: 70%;
-			min-width: 300px;
+			min-width: 00px;
 		}
 		
 		h1 {
@@ -47,11 +35,11 @@
 		}
 		/* Mark input boxes that gets an error on validation: */
 		
-		input:invalid {
+		input.invalid {
 			border: 3px solid #FF8888;
 		}
 		
-		input:valid {
+		input.valid {
 			border: 3px solid #88FF88;
 		}
 		/* Hide all steps by default: */
@@ -106,19 +94,12 @@
 			background-color: #4CAF50;
 		}
 	</style>
+
+
+
 </head>
 
-<body>
-
-	<?php
-	if ( isset( $_SESSION[ 'error' ] ) ) {
-		if ( $_SESSION[ 'error' ] != "" ) {
-
-			$fname = $_SESSION[ 'previousPOST' ][ 'firstname' ];
-			$lname = $_SESSION[ 'previousPOST' ][ 'lastname' ];
-		}
-	}
-	?>
+<body onload="hideAlertBoxes()">
 
 	<!-- register page here-->
 	<div class="container">
@@ -127,44 +108,47 @@
 			<h1>Registration Form</h1>
 			<!-- One "tab" for each step in the form: -->
 			<div>Name
-				<p><input placeholder="first name" oninput="this.className = 'input'" name="firstname" pattern="[a-zA-Z\- ]*" title="Letters, dashes and spaces only." value='<?php if (isset($fname)) {echo $fname;} ?>' required>
+				<p><input id="firstNameInput" placeholder="First name..." oninput="displayFirstNameError()" name="firstname">
 				</p>
-				<p><input placeholder="last name" oninput="this.className = 'input'" name="lastname" pattern="[a-zA-Z\- ]*" title="Letters, dashes and spaces only." value='<?php if (isset($lname)) {echo $lname;} ?>' required>
+				<div id="firstNameAlert" class="alert alert-danger" style="display: none;"></div>
+
+				<p><input id="lastNameInput" placeholder="Last name..." oninput="displayLastNameError()" name="lastname">
 				</p>
+				<div id="lastNameAlert" class="alert alert-danger" style="display: none;"></div>
+
 				Email & Password (*note email will be your username)
 
-				<p><input placeholder="e-mail..." oninput="this.className = 'input'" name="email" pattern="[a-zA-Z0-9-_\.]+@[a-zA-Z]+\.(com|org|edu|gov|info).?[a-zA-Z\.]*" title="Correct eMail format." required>
+				<p><input id="emailInput" placeholder="Email..." onchange="displayEmailError()" name="email">
+				</p>
+				<div id="emailAlert" class="alert alert-danger" style="display: none;"></div>
+
+				<p><input id="passwordInput" placeholder="Password..." type="password" oninput="displayPasswordError()" name="password" required>
 				</p>
 
-
-				<p><input placeholder="password" type="password" oninput="this.className = ''" name="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}" title="Must have at least:
-					- 8 characters
-					- 1 lowercase letter
-					- 1 upper case letter
-					- 1 number" required>
-				</p>
-				<?php
-				if ( isset( $_SESSION[ 'error' ] ) ) {
-					if ( $_SESSION[ 'error' ] != "" ) {
-						echo '<div class="alert alert-danger"><strong>ERROR: </strong>' . $_SESSION[ 'error' ] . '</div>';
-						$_SESSION[ 'error' ] = "";
-					}
-				}
-				?>
+				<div id="passwordAlert" class="alert alert-danger" style="display: none;"></div>
 
 			</div>
+			<p></p>
 			<div style="overflow:auto;">
-				<div style="float:right;">
-
-					<button type="submit">Submit</button>
-
+				<div id="container" style="float:none">
+						<div style="float: left"><input id="firstNameCheck" type="checkbox" class="checkerBox" disabled>First Name</input></div>
+					<div style="float: left"><input id="lastNameCheck" type="checkbox" class="checkerBox" disabled>Last Name</input></div>
+					<div style="float: left"><input id="eMailCheck" type="checkbox" class="checkerBox" disabled>eMail</input></div>
+					<div style="float: left"><input id="passwordCheck" type="checkbox" class="checkerBox" disabled>Password</input></div>
+						</div>
+				<div style="float:right; display: inline-block">
+					
+					<button id="submitButton" type="submit">Submit</button>
+					
 				</div>
 			</div>
 		</form>
-
+		<p></p> <!-- Single line buffer -->
 	</div>
 
 	<!-- /.container -->
+
+
 
 </body>
 <?php include('footer.php');?>

@@ -1,6 +1,6 @@
 Readme.txt
-
-Database: 
+============================================================================================================================================
+DATABASE:
 
 Server: localhost
 Hosting software to localhost: Mac (MAMP) Windows: (XAMPP)
@@ -8,9 +8,13 @@ Internet access to connect
 PHPMyAdmin database (SQL)
 PHPMyAdmin web link: http://localhost/phpmyadmin/index.php?token=95d3998d641379d1f57ab2132f869034
 Database name: restaurantproject	username:"root"		password:""	Privilege: all
-Possible hosting provider:
-Recommended browsers: Safari, Google Chrome, Firefox
+Possible hosting provider: Go Daddy
+Recommended browsers: Safari, Google Chrome, Firefox (For all devices)
 If database is threatened, drop database and upload database from project folder
+
+API:
+Google Maps - API KEY: AIzaSyBctR_0ZgN-uxBHmJafdjcUdR35NuOS7O4
+Restaurant coordinates: {lat: -27.456668, lng: 153.041047}
 
 View contents in website:
 
@@ -33,10 +37,12 @@ GITHUB URL: https://github.com/13muskaan/restaurantproject
 
 ISSUES:
 
-- managers at this point can't delete: reservations, users, functions
-- admins at this point cannot:  delete users, update user information, view reviews, manage reviews, manage functions
-- members at this point can't: view reviews, post reviews, view functions
+- managers at this point can't: manage reservations
+- admins at this point cannot:  delete users, update user information, view reviews, manage reviews, manage functions,  insert files
+- members at this point can't: view reviews, post reviews, view functions, download content
 
-- Index files are empty for each user
-- Contact pages are empty
-- header file needs to be created (to store all styling)
+- Index files are empty for admin and user
+- Contact page will include an Google Maps API and restaurant information.
+- Session file needs to be created to store user's session data to the database. 
+- Update User Info is empty for members. Used for members update their information e.g. password (name could be change to profile in future)
+- Image and URLs of users is not done yet. 
