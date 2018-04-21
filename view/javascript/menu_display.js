@@ -13,6 +13,7 @@ $.ajax({
 	datatype: 'json',
 	success: function(res){
 		setDatabaseCount(res.count);
+		EnableButtons();
 	},
 	error: function(a,b,c) {
 	console.log("FAILED");
@@ -42,11 +43,16 @@ function retrieveData() {
 			"use strict";
 			
 			menuHtml.innerHTML = res.html;
-			
+			EnableButtons();
 
 		}
 	});
 	
+	
+		
+}
+
+function EnableButtons() {
 	if (page <= 0) {
 		backButton.disabled = true;
 	} else {
@@ -58,18 +64,12 @@ function retrieveData() {
 	} else {
 		nextButton.disabled = false;
 	}
-		
 }
 
 function increasePage() {
 	page++;
 	
-	console.log("Page = "+page);
-	console.log("databaseCount = " + databaseCount);
-	
 	retrieveData();
-	
-	
 }
 
 function AtLimit() {
@@ -80,12 +80,6 @@ function decreasePage() {
 	page--;
 	
 	retrieveData();
-	
-	console.log("Page = "+page);
-	console.log("databaseCount = " + databaseCount);
-	
-	
-	
 }
 
 $(document).ready(function () {

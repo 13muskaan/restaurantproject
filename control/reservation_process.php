@@ -3,11 +3,11 @@
 function DateCorrect( $date, & $dateFormatted, & $error ) {
 	if ( $date == '' ) return false;
 
-	if ( $date == '00/00/0000' ) return false;
+	if ( $date == '0000-00-00' ) return false;
 
-	$year = substr( $date, 6 );
-	$month = substr( $date, 0, 2 );
-	$day = substr( $date, 3, 2 );
+	$year = substr( $date, 0,4 );
+	$month = substr( $date, 5, 2 );
+	$day = substr( $date, 8, 2 );
 
 	$dateFormatted = $year . "-" . $month . "-" . $day;
 

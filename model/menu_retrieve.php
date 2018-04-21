@@ -24,5 +24,4 @@ $contentquery = "SELECT * FROM menu limit " . $_GET['num'] * $_GET['page'] . ", 
 		}
 
 		echo json_encode(Array('html' => $html));
-
 ?>

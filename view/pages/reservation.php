@@ -1,6 +1,5 @@
 <?php
 include( 'navigationbar.php' );
-
 ?>
 
 <!doctype html>
@@ -40,25 +39,56 @@ include( 'navigationbar.php' );
 			background-color: #45a049;
 		}
 		
+		input[type=submit]:disabled {
+			background-color: #A3B5A4;
+		}
+		
 		.container {
 			border-radius: 5px;
 			background-color: #f2f2f2;
 			padding: 20px;
 		}
+		
+		.slidecontainer {
+	width: 100%;
+}
+.slider {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 5px;
+	border-radius: 5px;
+	background: #d3d3d3;
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+}
+.slider:hover {
+	opacity: 1;
+}
+ .slider::-webkit-slider-thumb {
+ -webkit-appearance: none;
+ appearance: none;
+ width: 15px;
+ height: 15px;
+ border: 3px solid #347737;
+ border-radius: 50%;
+ background: #4CAF50;
+ cursor: pointer;
+}
+ .slider::-moz-range-thumb {
+ width: 25px;
+ height: 25px;
+ border-radius: 50%;
+ background: #4CAF50;
+ cursor: pointer;
+}
+.timeSelect {
+	border: 4px solid #DDD;
+	border-radius: 4px;
+	background: #EEE;
+}
 	</style>
-	<script>
-		$( document ).ready( function () {
-			var date_input = $( 'input[name="date"]' ); //our date input has the name "date"
-			var container = $( '.bootstrap-iso form' ).length > 0 ? $( '.bootstrap-iso form' ).parent() : "body";
-			date_input.datepicker( {
-				format: 'YYYY-MM-DD',
-				container: container,
-				todayHighlight: true,
-				autoclose: true,
-				startDate: "+0D"
-			} )
-		} )
-	</script>
 </head>
 
 <body>
@@ -98,37 +128,49 @@ include( 'navigationbar.php' );
 			</select>
 
 			<label for="guests">No. of guests</label>
-			<select id="guestNo" name="guestNo">
-				<option value="10">10</option>
-				<option value="20">20</option>
-				<option value="30">30</option>
-			</select>
+			<div class="slidecontainer">
+  <input name="guestNo" type="range" min="30" max="120" value="30" class="slider" id="GuestSlider">
+  <br><p style="text-align: center">Value: <span id="GuestNumber"></span></p>
+</div>
 
 
 			<label class="control-label" for="date">Date</label>
-			<input class="form-control" id="date" name="date" placeholder="Select a date: YYYY-MM-DD" type="text"/>
+			<input class="form-control" id="date" name="date" placeholder="Select a date: YYYY-MM-DD" type="text">
 
-
-			<!-- Form code ends -->
+	
 	<label for="time">Select time</label>
-	<select id="time" name="time">
-		<option value="09:00:00.0000">9:00am</option>
-		<option value="12:00:00.0000">12:00pm</option>
-		<option value="17:00:00.0000">5:00pm</option>
-	</select>
+	<div id="selectTimeMessage" class="alert alert-warning">Please select a date first.
+	</div>
+	<div style="display: none" id="timeSelectDiv">
+	<div class="container">
+	<label class="radio-inline">
+      <input type="radio" name="time" onclick="EnableSubmit()" value="09:00:00" id="timeCheckboxMor" disabled>Morning<br>9am
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="time" onclick="EnableSubmit()" value="12:00:00" id="timeCheckboxAft" disabled>Afternoon<br>12pm
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="time" onclick="EnableSubmit()" value="17:00:00" id="timeCheckboxEve" disabled>Evening<br>5pm
+    </label>
+	</div>
+	</div>
+	
+	
+	<br>
 
 	<label for="subject">Comment</label>
 	<textarea id="comment" name="comment" placeholder="Write something.." style="height:200px"></textarea>
 
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" id="submit" disabled>
 	</form>
 	</div>
 </body>';
 	}
-	
 	?>
-</body>
-<?php  include('footer.php'); ?>
+	<link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+	<script type="text/javascript" src="../javascript/bootstrap-datepicker.js"></script>
+	<script src="../javascript/reservation.js" type="text/javascript"></script>
+	<?php  include('footer.php'); ?>
 </body>
 
 </html>
