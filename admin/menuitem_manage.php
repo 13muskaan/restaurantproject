@@ -13,11 +13,6 @@
 		<div class="container">
 			<?php
 			include( '../model/dbconnection.php' );
-			$servername = "localhost";
-			$username = "root";
-			$password = "";
-			$dbname = "restaurantproject";
-
 			$contentquery = "SELECT * FROM menu";
 			//$conn = dbConnect();
 			$stmt = $conn->prepare( $contentquery );

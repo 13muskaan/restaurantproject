@@ -1,6 +1,6 @@
 <head>
 	<meta charset="utf-8">
-	<title>Edit form</title>
+	<title>INSERT FORM</title>
 	<style>
 		input[type=text] {
 			width: 100%;

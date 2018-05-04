@@ -50,44 +50,139 @@ include( 'navigationbar.php' );
 		}
 		
 		.slidecontainer {
-	width: 100%;
-}
-.slider {
-	-webkit-appearance: none;
-	width: 100%;
-	height: 5px;
-	border-radius: 5px;
-	background: #d3d3d3;
-	outline: none;
-	opacity: 0.7;
-	-webkit-transition: .2s;
-	transition: opacity .2s;
-}
-.slider:hover {
-	opacity: 1;
-}
- .slider::-webkit-slider-thumb {
- -webkit-appearance: none;
- appearance: none;
- width: 15px;
- height: 15px;
- border: 3px solid #347737;
- border-radius: 50%;
- background: #4CAF50;
- cursor: pointer;
-}
- .slider::-moz-range-thumb {
- width: 25px;
- height: 25px;
- border-radius: 50%;
- background: #4CAF50;
- cursor: pointer;
-}
-.timeSelect {
-	border: 4px solid #DDD;
-	border-radius: 4px;
-	background: #EEE;
-}
+			width: 100%;
+		}
+		
+		.slider {
+			-webkit-appearance: none;
+			width: 100%;
+			height: 5px;
+			border-radius: 5px;
+			background: #d3d3d3;
+			outline: none;
+			opacity: 0.7;
+			-webkit-transition: .2s;
+			transition: opacity .2s;
+		}
+		
+		.slider:hover {
+			opacity: 1;
+		}
+		
+		.slider::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 15px;
+			height: 15px;
+			border: 3px solid #347737;
+			border-radius: 50%;
+			background: #4CAF50;
+			cursor: pointer;
+		}
+		
+		.slider::-moz-range-thumb {
+			width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			background: #4CAF50;
+			cursor: pointer;
+		}
+		
+		.timeSelect {
+			border: 4px solid #DDD;
+			border-radius: 4px;
+			background: #EEE;
+		}
+		/*loader*/
+		
+		.container {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			min-height: 100vh;
+			background-color: #ededed;
+		}
+		
+		.loader {
+			max-width: 15rem;
+			width: 100%;
+			height: auto;
+			stroke-linecap: round;
+		}
+		
+		circle {
+			fill: none;
+			stroke-width: 3.5;
+			-webkit-animation-name: preloader;
+			animation-name: preloader;
+			-webkit-animation-duration: 3s;
+			animation-duration: 3s;
+			-webkit-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+			-webkit-animation-timing-function: ease-in-out;
+			animation-timing-function: ease-in-out;
+			-webkit-transform-origin: 170px 170px;
+			transform-origin: 170px 170px;
+			will-change: transform;
+		}
+		
+		circle:nth-of-type(1) {
+			stroke-dasharray: 550;
+		}
+		
+		circle:nth-of-type(2) {
+			stroke-dasharray: 500;
+		}
+		
+		circle:nth-of-type(3) {
+			stroke-dasharray: 450;
+		}
+		
+		circle:nth-of-type(4) {
+			stroke-dasharray: 300;
+		}
+		
+		circle:nth-of-type(1) {
+			-webkit-animation-delay: -0.15s;
+			animation-delay: -0.15s;
+		}
+		
+		circle:nth-of-type(2) {
+			-webkit-animation-delay: -0.3s;
+			animation-delay: -0.3s;
+		}
+		
+		circle:nth-of-type(3) {
+			-webkit-animation-delay: -0.45s;
+			-moz-animation-delay: -0.45s;
+			animation-delay: -0.45s;
+		}
+		
+		circle:nth-of-type(4) {
+			-webkit-animation-delay: -0.6s;
+			-moz-animation-delay: -0.6s;
+			animation-delay: -0.6s;
+		}
+		
+		@-webkit-keyframes preloader {
+			50% {
+				-webkit-transform: rotate(360deg);
+				transform: rotate(360deg);
+			}
+		}
+		
+		@keyframes preloader {
+			50% {
+				-webkit-transform: rotate(360deg);
+				transform: rotate(360deg);
+			}
+		}
 	</style>
 </head>
 
@@ -141,6 +236,18 @@ include( 'navigationbar.php' );
 	<label for="time">Select time</label>
 	<div id="selectTimeMessage" class="alert alert-warning">Please select a date first.
 	</div>
+	
+	<div id="loader" class="loadercontainer" align="center" style="display: none;">
+	
+	<svg class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+		 <circle cx="170" cy="170" r="160" stroke="#E2007C"/>
+		 <circle cx="170" cy="170" r="135" stroke="#404041"/>
+		 <circle cx="170" cy="170" r="110" stroke="#E2007C"/>
+		 <circle cx="170" cy="170" r="85" stroke="#404041"/>
+	</svg>
+	
+</div>
+	
 	<div style="display: none" id="timeSelectDiv">
 	<div class="container">
 	<label class="radio-inline">

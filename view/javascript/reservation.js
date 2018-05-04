@@ -1,6 +1,10 @@
 // JavaScript Document
 /* reservation*/
 
+//Loader div
+var loader;
+
+
 // Slider Code
 var slider = document.getElementById("GuestSlider");
 var output = document.getElementById("GuestNumber");
@@ -33,6 +37,10 @@ function CheckDate() {
 	var date = document.getElementById("date");
 	var ajaxurl = "../../model/reservation-date_check.php?date=" + date.value;
 
+	//Display loader
+	document.getElementById("selectTimeMessage").style.display = "none";
+	loader.style.display = "block";
+	
 	$.ajax({
 		url: ajaxurl,
 		method: 'get',
@@ -52,10 +60,14 @@ function CheckDate() {
 function EnableTimes(results) {
 	"use strict";
 	
-	document.getElementById("selectTimeMessage").style.display = "none";
+	
 	document.getElementById("timeSelectDiv").style.display = "block";
 	
 	console.log("RESULTS RETRIEVED");
+	
+	//Hide Loader
+	loader.style.display = "none";
+	
 	for (var i = 0; i < results.length; i++) {
 		console.log(results[i]);
 		console.log(results[i]['time']);
@@ -94,4 +106,7 @@ function EnableSubmit() {
 
 $(document).ready( function() {
 	document.getElementById("date").onchange = function () {CheckDate();};
+	loader = document.getElementById("loader");
+	
+	loader.style.display = "none";
 });

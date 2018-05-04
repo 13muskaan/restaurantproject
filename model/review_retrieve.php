@@ -13,12 +13,8 @@ $staticresult = $stmt->fetchAll( PDO::FETCH_ASSOC );
 //echo '<div id="contentgroup">';
 $html = '';
 foreach ( $staticresult as $row ) {
-	//echo '<div class="contentItem" dishe_id="' . '">';
 
-	$html = $html . '<h3><span>' . $row[ 'dishtitle' ] . '</span>';
-	$html = $html . '<span style="float: right;">' . $row[ 'dishprice' ] . '</span></h3>'; //How to get the numbers on the right
-
-	$html = $html . '<p>' . $row[ 'dishdescription' ] . '</p>';
+//styling of posted reviews.
 
 	//echo '<hr></div>';
 }

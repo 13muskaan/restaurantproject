@@ -2,6 +2,8 @@
 session_start(); //YOU SHOULD REPLACE THIS WITH SESSIONHANDLER.PHP - Steve
 include( '../model/dbconnection.php' );
 
+print_r($_POST);
+
 $insert_sql = "INSERT INTO member (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)";
 //$conn = dbConnect();
 
@@ -22,13 +24,12 @@ if ( $conn->lastInsertId() > 0 ) {
 	$_SESSION[ 'user_type' ] = 'member';
 
 	$_SESSION[ 'login_time' ] = time();
-	header( 'location: ../view/pages/index.php' );
+	//header( 'location: ../view/pages/index.php' );
 } else {
 	$_SESSION[ 'error' ] = 'Database error - Failed to insert registration data';
 	echo 'error in submitting your registration data, please try again';
 
 }
-//header( 'Location: navigationbar.php' );
 
 
 ?>

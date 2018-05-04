@@ -1,6 +1,9 @@
 // Javascript for validating emails.
 //register form validation
 
+var emailLoader;
+
+
 function updateInputChecks(element, setting) { //element is an int between 0 - 3 refers to the type of check box, setting is boolean and will set the check boxes to true or false
 	"use strict";
 	var checkBox;
@@ -18,6 +21,8 @@ function updateInputChecks(element, setting) { //element is an int between 0 - 3
 		case (3):
 			checkBox = document.getElementById("passwordCheck");
 			break;
+		case(4):
+			checkBox = document.getElementById("imageCheck");
 
 	}
 
@@ -151,10 +156,15 @@ function validateEmail() {
 	}
 }
 
+
+
 function checkEmailAlreadyExists(email) {
 	"use strict";
 
-	//This is where you'd *display* the loader
+	//Display Loader
+	emailLoader.style.display = "block";
+	
+	
 
 	var checkurl = "../../control/register_check_email_exists.php?email=" + email;
 	$.ajax({
@@ -162,20 +172,26 @@ function checkEmailAlreadyExists(email) {
 		method: 'get',
 		datatype: 'json',
 		success: function (res) {
-			//This is where you hide the loader
 			displayEmailExists(res.emailexists);
-
 		}
 	});
 }
 
 function displayEmailExists(emailExists) {
 	"use strict";
+	
+	//Hide Loader
+	emailLoader.style.display = "none";
+	
 	var errorDiv = document.getElementById("emailAlert");
 	if (emailExists) {
+		//Display the Red X glyph
+		
 		errorDiv.style.display = 'block';
 		errorDiv.innerHTML = "<strong>ERROR:</strong> Email already exists.";
 	} else {
+		//Display the green tick glyph
+		
 		updateInputChecks(2, true);
 		errorDiv.style.display = 'none';
 	}
@@ -332,125 +348,72 @@ function validateLastName() {
 }
 
 
-
-
-/*//Johns code
-window.onload = function () { "use strict";
-	// Set Defaults
-	window.sessionStorage.setItem('emailexists', 'false');
-	
-	$('#register_form').form({
-		on: 'blur',
-		fields: {
-			fname: {
-				identifier: 'first name',
-				rules: [{
-					type: 'regExp[/^[A-Za-z -\']{2,32}$/]',
-					prompt: 'Please enter a valid First Name'
-				}, {
-					type: 'empty',
-					prompt: 'Please enter a value for First Name'
-				}]
-			},
-			lname: {
-				identifier: 'last name',
-				rules: [{
-					type: 'regExp[/^[A-Za-z -\']{2,32}$/]',
-					prompt: 'Please enter a valid Last Name'
-				}, {
-					type: 'empty',
-					prompt: 'Please enter a value for Last Name'
-				}]
-			}, //lname end
-			email: {
-				identifier: 'email',
-				rules: [{
-					type: 'email',
-					prompt: 'Please enter a valid Email'
-				}, {
-					type: 'hasEmail',
-					prompt: 'Email already exists'
-				}, {
-					type: 'empty',
-					prompt: 'Please enter a value'
-				}]
-			}, // email end
-
-			password: {
-				identifier: 'password',
-				rules: [{
-						type: 'empty',
-						prompt: 'Please enter a value for Password'
-					}, {
-						type: 'minLength[8]',
-						prompt: 'Your password must be at least {ruleValue} characters'
-					}, {
-						type: 'regExp[/[A-Z]/]',
-						prompt: 'Your password must contain one uppercase letter'
-					}, {
-						type: 'regExp[/[a-z]/]',
-						prompt: 'Your password must contain one lowercase letter'
-					}, {
-						type: 'regExp[/[0-9]/]',
-						prompt: 'Your password must be at least one number'
-					}] //rules end
-			}, //password end
-		}
-	});
-	//login form validation
-	$('#login_form').form({
-		on: 'blur',
-		fields: {
-			email: {
-				identifier: 'email',
-				rules: [{
-					type: 'email',
-					prompt: 'Please enter a valid Email'
-				}, {
-					type: 'empty',
-					prompt: 'Please enter a value'
-				}]
-			},
-
-			password: {
-				identifier: 'psw',
-				rules: [{
-					type: 'empty',
-					prompt: 'Please enter a value for Password'
-				}]
-			},
-		}
-	});
-
-	// Custom Validation for the Check if Email exists  
-	// Documentaion describes synchronous nature of this but .ajax is asynchronous! - Fix not yet obvious 
-	$.fn.form.settings.rules.hasEmail = function (value, donno) {
-		checkEmailExists();
-		if (window.sessionStorage.getItem('emailexists') === 'true') {
-			return false;
-		} else {
-			return true;
-		}
-	};
-}; //onload end
-
-//John's code for seeing if the email exists
-function checkEmailExists() {
+function displayImageError() {
 	"use strict";
-	var checkurl = "registration_check_email.php?email=" + email.value;
-	$.ajax({
-		url: checkurl,
-		method: 'get',
-		datatype: 'json',
-		success: function (res) {
-			if (res.emailexists === true) {
-				window.sessionStorage.setItem('emailexists', 'true');
-			} else {
-				window.sessionStorage.setItem('emailexists', 'false');
-			}
-		},
-		error: function (err) {
-			console.log(res);
+	var imgVal = validatePassword();
+	var errorDiv = document.getElementById("imageAlert");
+
+	if (imgVal === "") {
+		errorDiv.style.display = 'none';
+		
+		return;
+		
+	} else {
+		//Make bootstap display the error div, with the value of passVal inside it.
+		//Use -PasswordErrorDiv-.display.style = "block";
+		errorDiv.style.display = 'block';
+		//Use -PasswordErrorDiv-.innerHTML = passVal;
+		errorDiv.innerHTML = "<p><strong>ERROR:</strong> Chosen Image is invalid, because:</p>" + imgVal;	
+	}
+}
+
+//Image validator
+function validateImage() {
+	"use strict";
+	var ErrorTextStrings = [
+		"<p>- Must be an accepted file type:</p><ul><li>png</li><li>jpg</li><li>jpeg</li><li>gif</li></ul>",
+		"<p>- Must be under 1MB</p>"
+	];
+
+	var image = document.getElementById('fileToUpload').files[0];
+
+	if (!image) {
+		updateInputChecks(4, true);
+		return "";
+	}
+
+	var checks = [
+		false, // Accepted File Type
+		false // Under File Size
+	];
+
+	checks[0] = (
+		image.type == 'jpg' || 
+		image.type == "png" || 
+		image.type == "jpeg" || 
+		image.type == "gif");
+
+	checks[1] = image.size <= 1024 * 1024 ;
+	
+	//Setup the return variable - a string that contains the errors
+	var returnVal = "";
+
+	updateInputChecks(1, true);
+	
+	for (var i = 0; i < checks.length; i++) {
+		if (!checks[i]) {
+			returnVal = returnVal + ErrorTextStrings[i];
+			updateInputChecks(1, false);
 		}
-	});
-}*/
+	}
+
+	return returnVal;
+}
+
+
+
+
+$(document).ready( function() {
+	emailLoader = document.getElementById("emailLoader");
+	emailLoader.style.display= "none";
+});

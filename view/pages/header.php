@@ -20,12 +20,13 @@
 			?>
 		<!-- 3rd party (BOOTSTRAP)-->
 		<!-- index.php & login.php & navigatiobar.php>&register.php-->
-		<script src="../javascript/FormValidation.js"></script>
+		
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 		<link href="../css/stylesheet.css" rel="stylesheet" type="text/css">
+		<link href="../css/loader.css" rel="stylesheet" type="text/css">
 		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -55,8 +56,6 @@
 
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js" integrity="sha256-VNIbBnZ4TQyYO71Ak4mHcK3vqTLYm3LIr9iBg6GRcqc= sha384-Zzs5x1/YUvlxpCu06c197tRCubLCMA7pCoHbZeoZuz/oEgYD6NVmvLzDSKYBoc3J sha512-LZ2DxwpD99xOV0FgvTSYhiu6oC9TX/j8LPRIeOVySMT6WgO3s436hYJaf6ztqJZKcELvGBWZPhou7lVq51JHYA==" crossorigin="anonymous"></script>
 
-		<script src="https://code.jquery.com/jquery-1.11.1.min.js" integrity="sha256-VAvG3sHdS5LqTT+5A/aeq/bZGa/Uj04xKxY8KM/w9EE=" crossorigin="anonymous"></script>
-
 
 
 		<!--updateuserinfo-->
@@ -77,15 +76,6 @@
 		<!-- reservation.php -->
 		
 		
-		
-		
-		
-		
-		<!-- used this code of John's for datepicker-->
-		<!--<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="../css/jquery-ui.min.css"/>
--->
 
 
 

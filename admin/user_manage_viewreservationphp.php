@@ -1,7 +1,6 @@
-s
 <head>
 	<meta charset="utf-8">
-	<title>USER MANAGE</title>
+	<title>MEMBER RESERVATION</title>
 	<style>
 		body {
 			padding-top: 30px;
@@ -58,10 +57,25 @@ s
 		<div class="row">
 			<div class="panel panel-default widget">
 				<div class="panel-heading">
-					<h3 class="panel-title">Members</h3>
+					<?php 
+						include( '../model/dbconnection.php' );
+										$contentquery = "SELECT * FROM reservation WHERE memberID=:id";
 
-					<span style="float:right;">
-						<?php echo '<a href="user_manage_insertform.php?id=" class="insertbutton"><button type="btn">Insert</button></a>';?> </span>
+										//$conn = dbConnect();
+										$stmt = $conn->prepare( $contentquery );
+										$stmt->bindParam( ':id', $_GET[ 'id' ], PDO::PARAM_INT );
+										$stmt->execute();
+										$staticresult = $stmt->fetchAll( PDO::FETCH_ASSOC );$stmt-> execute();
+					$stmt-> execute();
+$firstname = $stmt->fetchAll();
+					$stmt-> execute();
+$lastname = $stmt->fetchAll();
+					?>
+					<h3 class="panel-title" value="<? echo $firstname?> <?php echo $lastname?>" </h3>
+
+				
+
+					<span style="float:right;"></span>
 				</div>
 				<div class="panel-body">
 					<ul class="list-group">
@@ -73,22 +87,15 @@ s
 								<div class="col-xs-10 col-md-11">
 									<div>
 										<?php
-										include( '../model/dbconnection.php' );
-										$contentquery = "SELECT * FROM member";
-										//$conn = dbConnect();
-										$stmt = $conn->prepare( $contentquery );
-										$stmt->execute();
-										$staticresult = $stmt->fetchAll( PDO::FETCH_ASSOC );
 										//echo '<div id="contentgroup">';
-										foreach( $staticresult as $row ) {
+										foreach ( $staticresult as $row ) {
 											//echo '<div class="contentItem" dishe_id="' . '">';
-											echo '<h3><span>', $row[ 'firstname' ], $row[ 'lastname' ], ' </span>';
-											echo '<div class="mic-info"> <span> Member ID:', $row[ 'memberID' ], 'email:', $row[ 'email' ], 'password:' . $row[ 'password' ], '
-                                    </div>
-                                </div>';
-											echo '<a href="user_manage_delete.php?id=' . $row[ 'memberID' ] . '" class="deletebutton"><button type="btn">Delete</button></a>';
-											echo '<a href="user_manage_editform.php?id=' . $row[ 'memberID' ] . '" class="editbutton"><button type="btn">Edit</button></a>';
-											echo '<a href="user_manage_viewreservation.php?id=' . $row[ 'memberID' ] . '" class="viewreservation"><button type="btn">View</button></a>
+											echo '<h3> <span>', $row[ 'reservationID' ], $row[ 'date' ], $row[ 'time' ], $row[ 'guestno' ], $row[ 'comment' ], $row[ 'functionID' ], '</h3> </span>';
+											',
+                            </div>
+                        </div>
+                    </li>
+										
 
                             </div>
                         </div>
@@ -101,5 +108,6 @@ s
 			</div>
 		</div>
 	</div>
+	<a href="user_manage.php"><button type="button">Go back</button></a>
 	<?php include('../view/pages/footer.php');?>
 </body>

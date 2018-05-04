@@ -4,8 +4,6 @@
 
 <head>
 	<title>MY BANYAN TREE | LOGIN</title>
-	
-	<script src="../javascript/FormValidation.js"></script>
 
 	<style>
 		body {
@@ -79,39 +77,55 @@
 </head>
 
 <body>
-	<h2>Login Form</h2>
-	<p> Please fill in your login cresidentials.</p>
+	<h2>Login</h2>
+	<p> Welcome Back! Please fill in your user cresidentials to continue.</p>
 	<?php
 	if ( in_Array( 'LoginMsg', $_POST ) ) {
 		echo $_POST[ 'LoginMsg' ];
 	}
-	
-	if ( isset ($_SESSION['lastEmail'])) {
-		$email = $_SESSION['lastEmail'];
+
+	if ( isset( $_SESSION[ 'lastEmail' ] ) ) {
+		$email = $_SESSION[ 'lastEmail' ];
 	}
 	?>
-	<form action="../../control/login_process.php" method="post" id="login_form">
 
-		<div class="container">
-			<label for="email"><b>Email</b></label>
-			<input type="text" placeholder="Enter Email" name="email" value="<?php if (isset($email)) {echo $email;}?>" required>
+	<div id="loader" class="loadercontainer" align="center" style="display: none;">
 
-			<label for="psw"><b>Password</b></label>
-			<input type="password" placeholder="Enter Password" name="psw" required>
+		<svg class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+			<circle cx="170" cy="170" r="160" stroke="#E2007C"/>
+			<circle cx="170" cy="170" r="135" stroke="#404041"/>
+			<circle cx="170" cy="170" r="110" stroke="#E2007C"/>
+			<circle cx="170" cy="170" r="85" stroke="#404041"/>
+		</svg>
 
-			<?php
-			if ( isset( $_SESSION[ 'error' ] ) ) {
-				if ( $_SESSION[ 'error' ] != "" ) {
-					echo '<div class="alert alert-danger"><strong>ERROR: </strong>' . $_SESSION[ 'error' ] . '</div>';
-					$_SESSION[ 'error' ] = "";
+	</div>
+	<div id="form">
+		<form action="../../control/login_process.php" method="post" id="login_form">
+
+			<div class="container">
+				<img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+                    alt=""><br>
+				<label for="email"><b>Email</b></label>
+				<input type="text" placeholder="Enter Email" name="email" value="<?php if (isset($email)) {echo $email;}?>" required>
+
+				<label for="psw"><b>Password</b></label>
+				<input type="password" placeholder="Enter Password" name="psw" required>
+
+				<?php
+				if ( isset( $_SESSION[ 'error' ] ) ) {
+					if ( $_SESSION[ 'error' ] != "" ) {
+						echo '<div class="alert alert-danger"><strong>ERROR: </strong>' . $_SESSION[ 'error' ] . '</div>';
+						$_SESSION[ 'error' ] = "";
+					}
 				}
-			}
-			?>
+				?>
 
-			<button type="submit">Login</button>
+				<button type="submit" onClick="SubmitButton()">Login</button>
 
-		</div>
-	</form>
+			</div>
+		</form>
+	</div>
+	<script src="../javascript/login.js" type="text/javascript"></script>
 	<?php include('footer.php');?>
 </body>
 
