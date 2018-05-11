@@ -39,5 +39,13 @@
 			echo "<p>" . print_r( $_SESSION ) . "</p></span>";
 		}
 		?>
+			
+			<p id="browserTest">Browser Test</p>
+	
+	<script>
+	
+		document.getElementById("browserTest").innerHTML = "Mobile: " + isMobileDevice() + "\nBrowser: " + BrowserDetection();
+	
+	</script>
 	</div>
 </footer>

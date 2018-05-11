@@ -27,7 +27,11 @@ if ( $stmt->rowCount() >= 1 ) {
 	$_SESSION[ 'userID' ] = $result[ 0 ][ 'memberID' ];
 	$_SESSION['lastEmail'] = $result[0]['email'];
 	if ( isset( $_SESSION[ 'previousPOST' ] ) )unset( $_SESSION[ 'previousPOST' ] );
+	if (isset($_GET['originpage'])) {
+	header( "location: ../view/pages/".$_GET['originpage'].".php" );	
+	} else {
 	header( "location: ../view/pages/index.php" );
+	}
 }
 
 $managerSql = "SELECT * FROM manager WHERE email=:email AND password=:pass;";

@@ -95,7 +95,7 @@ include( 'navigationbar.php' );
 		}
 		/*loader*/
 		
-		.container {
+		.loadercontainer {
 			display: -webkit-box;
 			display: -ms-flexbox;
 			display: flex;
@@ -183,19 +183,216 @@ include( 'navigationbar.php' );
 				transform: rotate(360deg);
 			}
 		}
+		/*login modal*/
+		
+		@import url(http://fonts.googleapis.com/css?family=Roboto);
 	</style>
+
+	<style>
+		/* MODAL STYLES */
+		
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		/* Full-width input fields */
+		
+		input[type=text],
+		input[type=password] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+		/* Set a style for all buttons */
+		
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			cursor: pointer;
+			width: 100%;
+		}
+		
+		button:hover {
+			opacity: 0.8;
+		}
+		/* Extra styles for the cancel button */
+		
+		.cancelbtn {
+			width: auto;
+			padding: 10px 18px;
+			background-color: #f44336;
+		}
+		/* Center the image and position the close button */
+		
+		.imgcontainer {
+			text-align: center;
+			margin: 24px 0 12px 0;
+			position: relative;
+		}
+		
+		img.avatar {
+			width: 40%;
+			border-radius: 50%;
+		}
+		
+		.mcontainer {
+			padding: 16px;
+		}
+		
+		span.psw {
+			float: right;
+			padding-top: 16px;
+		}
+		/* The Modal (background) */
+		
+		.modal {
+			display: none;
+			/* Hidden by default */
+			position: fixed;
+			/* Stay in place */
+			z-index: 1;
+			/* Sit on top */
+			left: 0;
+			top: 0;
+			width: 100%;
+			/* Full width */
+			height: 100%;
+			/* Full height */
+			overflow: auto;
+			/* Enable scroll if needed */
+			background-color: rgba(0, 0, 0, 0.4);
+			/* Black w/ opacity */
+			padding-top: 60px;
+		}
+		/* Modal Content/Box */
+		
+		.modal-content {
+			background-color: #fefefe;
+			margin: 5% auto 15% auto;
+			/* 5% from the top, 15% from the bottom and centered */
+			border: 1px solid #888;
+			width: 80%;
+			/* Could be more or less, depending on screen size */
+			border-radius: 10px;
+		}
+		/* The Close Button (x) */
+		
+		.close {
+			position: absolute;
+			right: 25px;
+			top: 0;
+			color: #000;
+			font-size: 35px;
+			font-weight: bold;
+		}
+		
+		.close:hover,
+		.close:focus {
+			color: red;
+			cursor: pointer;
+		}
+		/* Add Zoom Animation */
+		
+		.animate {
+			-webkit-animation: animatezoom 0.6s;
+			animation: animatezoom 0.6s
+		}
+		
+		@-webkit-keyframes animatezoom {
+			from {
+				-webkit-transform: scale(0)
+			}
+			to {
+				-webkit-transform: scale(1)
+			}
+		}
+		
+		@keyframes animatezoom {
+			from {
+				transform: scale(0)
+			}
+			to {
+				transform: scale(1)
+			}
+		}
+		/* Change styles for span and cancel button on extra small screens */
+		
+		@media screen and (max-width: 300px) {
+			span.psw {
+				display: block;
+				float: none;
+			}
+			.cancelbtn {
+				width: 100%;
+			}
+		}
+	</style>
+
+
+	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
 	<h2 style="text-align: center;">Reservation Form</h2>
-	<p style="text-align: center;"> For any inquiries, please contact us on this number 07 3358 4006</p>
+	<p style="text-align: center;"> For any inquiries, please contact us on this number 07 3358 4006 <br> <strong> *Note. This form is only to book your reservation. Prior to your booking date, please finalise all your function requirements no longer than a week. </strong>
+	</p>
+
+
 
 	<?php // logged in then show form.
 	if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] == 'anon') {
-		echo '<p> You are not logged in. Please login, or register in order to make a reservation.
-		<a href="login.php" style="float:none;"><button type="button">Login</button></a>
-		<a href="register.php" style="float:none;"><button type="button">Register</button></a>
-	</p>';
+		echo '<p style="text-align: center;"> You are not logged in. Please login, or register in order to make a reservation. <br>
+		<!--<a href="login.php" style="float:none;"><button type="button">Login</button></a>
+		<a href="register.php" style="float:none;"><button type="button">Register</button></a>-->
+
+		<button class="btn btn-primary" onclick="document.getElementById(\'id01\').style.display=\'block\'" style="width:auto;">Login</button></p>
+
+		<div id="id01" class="modal">
+
+			<div class="modal-content animate" action="/action_page.php">
+				<div id="loader" class="loadercontainer" align="center" style="display: none;">
+
+					<svg class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+						<circle cx="170" cy="170" r="160" stroke="#E2007C"/>
+						<circle cx="170" cy="170" r="135" stroke="#404041"/>
+						<circle cx="170" cy="170" r="110" stroke="#E2007C"/>
+						<circle cx="170" cy="170" r="85" stroke="#404041"/>
+					</svg>
+
+				</div>
+				<div id="form">
+					<form action="../../control/login_process.php?originpage=reservation" method="post" id="login_form">
+
+						<div class="mcontainer">
+							<img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt=""><br>
+							<label for="email"><b>Email</b></label>
+							<input type="text" placeholder="Enter Email" name="email" required>
+
+							<label for="psw"><b>Password</b></label>
+							<input type="password" placeholder="Enter Password" name="psw" required>
+
+							<button type="submit" onClick="SubmitButton()">Login</button>
+
+						</div>
+					</form>
+					
+					
+				</div>
+				<script src="../javascript/login.js" type="text/javascript"></script>
+<div class="mcontainer" style="background-color:#f1f1f1">
+					<button type="button" onclick="document.getElementById(\'id01\').style.display=\'none\'" class="cancelbtn">Cancel</button>
+				</div>
+				
+			</div>
+		</div>
+';
 	} else {
 		echo '<div class="container">';
 		
@@ -266,9 +463,9 @@ include( 'navigationbar.php' );
 	<br>
 
 	<label for="subject">Comment</label>
-	<textarea id="comment" name="comment" placeholder="Write something.." style="height:200px"></textarea>
+	<textarea id="comment" name="comment" placeholder="Write something.." style="height:200px; width:100%"></textarea>
 
-	<input type="submit" value="Submit" id="submit" disabled>
+	<br><input type="submit" value="Submit" id="submit" disabled>
 	</form>
 	</div>
 </body>';
@@ -277,6 +474,19 @@ include( 'navigationbar.php' );
 	<link rel="stylesheet" href="../css/bootstrap-datepicker.css">
 	<script type="text/javascript" src="../javascript/bootstrap-datepicker.js"></script>
 	<script src="../javascript/reservation.js" type="text/javascript"></script>
+
+	<script>
+		// Get the modal
+		var modal = document.getElementById( 'id01' );
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function ( event ) {
+			if ( event.target == modal ) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+
 	<?php  include('footer.php'); ?>
 </body>
 

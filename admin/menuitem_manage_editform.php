@@ -23,7 +23,7 @@
 include( '../view/pages/navigationbar.php' );
 include( '../model/dbconnection.php' );
 
-$sql = "SELECT * from menu WHERE dishID=:id";
+$sql = "SELECT * FROM menu WHERE dishID=:id";
 
 $stmt = $conn->prepare( $sql );
 $stmt->bindParam( ':id', $_GET[ 'id' ], PDO::PARAM_INT );
