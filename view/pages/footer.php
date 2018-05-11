@@ -34,6 +34,7 @@
 
 			echo '<p><strong>User Type: </strong>' . $_SESSION[ 'user_type' ] . '</p>';
 			echo '<p><strong>User ID: </strong>' . $_SESSION[ 'userID' ] . '</p>';
+			echo '<p><strong>User firstname: </strong>' . $_SESSION[ 'firstname' ] . '</p>';
 			echo '<p><strong>Last Server Massage: </strong>' . $_SESSION[ 'message' ] . '</p>';
 			echo '<p><strong>Current $_SESSION values: </strong></p>';
 			echo "<p>" . print_r( $_SESSION ) . "</p></span>";

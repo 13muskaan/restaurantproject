@@ -4,23 +4,18 @@ include( 'navigationbar.php' );
 <?php
 
 //$contentquery = "SELECT * FROM member WHERE memberID:id";
-$contentquery = "SELECT * FROM member";
+$contentquery = "SELECT * FROM member WHERE memberID=:id";
 $stmt = $conn->prepare( $contentquery );
-$stmt->execute();
-$staticresult = $stmt->fetchAll( PDO::FETCH_ASSOC );
-foreach ( $staticresult as $row )
-	$stmt = $conn->prepare( $contentquery );
-$stmt->bindParam( ':id', $_GET[ 'id' ], PDO::PARAM_INT );
+$stmt->bindParam( ':id', $_SESSION[ 'userID' ], PDO::PARAM_INT );
 
 $stmt->execute();
-//$stmt->fetchAll();
-$firstname = $stmt->fetchAll();
-$stmt->execute();
-$lastname = $stmt->fetchAll();
-$stmt->execute();
-$email = $stmt->fetchAll();
-$stmt->execute();
-$password = $stmt->fetchAll();
+$results = $stmt->fetchAll();
+
+$firstname = $results[0]['firstname'];
+$lastname = $results[0]['lastname'];
+$email = $results[0]['email'];
+$password = $results[0]['password'];
+
 ?>
 
 <!doctype html>
@@ -85,8 +80,8 @@ $password = $stmt->fetchAll();
 
 	<div class="container" style="padding-top: 1px;">
 		<h1 class="page-header" style="text-align: center;">
-			<?php echo $firstname[0]['firstname']?> <span></span>
-			<?php echo $lastname[0]['lastname']?>
+			<?php echo $firstname?> <span></span>
+			<?php echo $lastname?>
 		</h1>
 		<div class="row">
 			<!-- left column -->
@@ -99,46 +94,41 @@ $password = $stmt->fetchAll();
 			</div>
 			<!-- edit form column -->
 			<div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-				<!--<div class="alert alert-info alert-dismissable">
-					<a class="panel-close close" data-dismiss="alert">×</a>
-					<i class="fa fa-coffee"></i> This is an <strong>.alert</strong>. Use this to show important messages to the user.
-				</div>-->
 				<?php if (isset ($_SESSION ['error'])){
 	if ($_SESSION['error'] != ""){
 		echo 'div class="alert alert-danger"<strong>ERROR:</strong>' . $_SESSION['error'] . '</div>';
 	}
 }
 				?>
-				<form class="form-horizontal" role="form" method="post" id=action="../../control/memberprofile_updateprocess.php?id=<?php echo $_GET['id'];?>">
+				<form class="form-horizontal" role="form" method="post" id=action="../../control/memberprofile_updateprocess.php?id=<?php echo $_SESSION['userID'];?>">
 					<h4>Manage Your Profile.</h4>
 					<div class="form-group">
 						<label class="col-lg-3 control-label" id="firstname">First name</label>
 						<div class="col-lg-8">
-							<input class="form-control" value="<?php echo $firstname[0]['firstname']?>" type="text">
+							<input class="form-control" value="<?php echo $firstname?>" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-lg-3 control-label" id="lastname">Last name</label>
 						<div class="col-lg-8">
-							<input class="form-control" value="<?php echo $lastname[0]['lastname']?>" type="text">
+							<input class="form-control" value="<?php echo $lastname?>" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-lg-3 control-label" id="email">Email</label>
 						<div class="col-lg-8">
-							<input class="form-control" value="<?php echo $email[0]['email']?>" type="text">
+							<input class="form-control" value="<?php echo $email?>" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label" id="password">Password</label>
 						<div class="col-md-8">
-							<input class="form-control" value="<?php echo $password[0]['password']?>" type="text">
+							<input class="form-control" value="<?php echo $password?>" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label"></label>
 						<div class="col-md-8">
-							<!--<a href="../../control/memberprofile_updateprocess.php" class="btn btn-primary" value="Save Changes" type="button" </a>-->
 							<input class="btn btn-primary" value="save changes" type="button" onClick="../../control/memberprofile)updateprocess.php">
 
 							<span></span>
@@ -151,7 +141,7 @@ $password = $stmt->fetchAll();
 	</div>
 	<h4 style="text-align: center;"> Your reservations.</h4>
 	<?php
-	$contentquery = "SELECT * FROM reservation LIMIT 3";
+	$contentquery = "SELECT * FROM reservation WHERE date >= CURRENT_DATE AND memberID = ". $_SESSION["userID"];
 	//$conn = dbConnect();
 	$stmt = $conn->prepare( $contentquery );
 	$stmt->execute();
@@ -159,8 +149,8 @@ $password = $stmt->fetchAll();
 	//echo '<div id="contentgroup">';
 	foreach ( $staticresult as $row ) {
 		//echo '<div class="contentItem" dishe_id="' . '">';
-		echo '<h3><span>', 'Reservation ID:', $row[ 'reservationID' ], 'Date:', $row[ 'date' ], ' </span>';
-		echo '<div class="mic-info"> <span> Time:', $row[ 'time' ], 'Guest No:', $row[ 'guestno' ], 'Comments:' . $row[ 'comment' ], '
+		echo '<h3><span>', 'Reservation ID:', $row[ 'reservationID' ], ' Date:', $row[ 'date' ], ' </span>';
+		echo '<div class="mic-info"> <span> Time:', $row[ 'time' ], ' Guest No:', $row[ 'guestno' ], ' Comments:' . $row[ 'comment' ], '
                                     </h3>
                                 </span>';
 	}

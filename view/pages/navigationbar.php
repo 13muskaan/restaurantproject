@@ -66,11 +66,11 @@ if ( !isset( $_SESSION[ 'user_type' ] ) || ( $_SESSION[ 'user_type' ] == 'anon' 
 				} else {
 
 					if ( $_SESSION[ 'user_type' ] != 'member' ) {
-						echo '<li class="active"><a href="memberprofile.php">MemberProfile</a>
+						echo '<li class="active"><a href="memberprofile.php">Profile</a>
 				</li>';
 						echo '<li class="active"><a href="../view/pages/logout.php">Logout</a></li>';
 					} else {
-						echo '<li class="active"><a href="memberprofile.php">MemberProfile</a></li>';
+						echo '<li class="active"><a href="memberprofile.php">'. $_SESSION['firstname'] .'</a></li>';
 						echo '<li class="active"><a href="logout.php">Logout</a></li>';
 
 					}

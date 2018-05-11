@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2018 at 03:16 AM
+-- Generation Time: May 11, 2018 at 12:50 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -39,7 +39,19 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`adminID`, `email`, `password`) VALUES
-(1, 'admin@gmail.com', '1234567890');
+(3, 'admin@gmail.com', '1234567890');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `files`
+--
+
+CREATE TABLE `files` (
+  `name` varchar(50) NOT NULL,
+  `file` longblob NOT NULL,
+  `dateinserted` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -110,20 +122,22 @@ CREATE TABLE `member` (
   `email` varchar(40) NOT NULL,
   `password` varchar(60) NOT NULL,
   `firstname` varchar(60) NOT NULL,
-  `lastname` varchar(60) NOT NULL
+  `lastname` varchar(60) NOT NULL,
+  `imagePath` varchar(255) NOT NULL DEFAULT '../img/userPictures/defaultUser.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `member`
 --
 
-INSERT INTO `member` (`memberID`, `email`, `password`, `firstname`, `lastname`) VALUES
-(1, '13muskanbakshi@gmail.com', '1234567890', 'Muskaan', 'Bakshi'),
-(2, 'ginajingli@hotmail.com', '1234567890', 'Gina', 'Li'),
-(3, 'steve@steve.com', 'Hello1234', 'Steve', 'Steveson'),
-(4, '123@gmail.com', 'Varsha998nani', 'Muskan', 'Bakshi'),
-(5, 'qwerty@uiop.com', 'Qwerty123', 'Qwerty', 'uiop'),
-(6, 'rayshamasengi@hotmail.com', 'Varsha1998nani', 'Raysha', 'Masengi');
+INSERT INTO `member` (`memberID`, `email`, `password`, `firstname`, `lastname`, `imagePath`) VALUES
+(1, '13muskanbakshi@gmail.com', '1234567890', 'Muskaan', 'Bakshi', '../img/userPictures/defaultUser.png'),
+(41, 'Steve@Steve.Steve', 'Steve123', 'Steve', 'Steve', '../img/userPictures/defaultUser.png'),
+(44, 'ginajingli@hotmail.com', '1234567890', 'Gina', 'Li', '../img/userPictures/defaultUser.png'),
+(45, 'rayshamasengi@hotmail.com', '1234567890', 'Raysha', 'Masengi', '../img/userPictures/defaultUser.png'),
+(46, '1rayshamasengi@hotmail.com', '12345Raysha', 'Raysha', 'Masengi', '../img/userPictures/defaultUser.png'),
+(47, '123@gmail.com', '1111Gina', 'Gina', 'Li', '../img/userPictures/defaultUser.png'),
+(48, 'Steve@Mac.com', 'Steve123', 'Steve', 'Mac', '../img/userPictures/defaultUser.png');
 
 -- --------------------------------------------------------
 
@@ -143,10 +157,15 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`dishID`, `dishtitle`, `dishdescription`, `dishprice`) VALUES
-(1, 'Pea and Potato Samosa', 'Spicy peas and potato pastry parcels', '10.50'),
-(2, 'Garlic Aloo Bondas', 'Golden battered spicy potato and garlic balls', '10.50'),
-(3, 'Mirchi Vada', 'Special chilli fritter with a spicy potato stuffing in a potato and golden batter', '10.50'),
-(4, 'Tandoori Tiger Prawns', 'Marinated tiger prawns cooked in the tandoor', '16.50');
+(19, 'Pea and Potato Samosa', 'Spicy peas and potato pastry parcels', '10.50'),
+(20, 'Garlic Aloo Bondas', 'Golden battered spicy potato and garlic balls', '10.50'),
+(21, 'Mirchi Vada', 'Special chilli fritter with a spicy potato stuffing in a potato and golden batter', '10.50'),
+(22, 'Tandoori Tiger Prawns', 'Marinated tiger prawns cooked in the tandoor', '16.50'),
+(24, 'f', 'f', 'f'),
+(25, 'k', 'k', 'k'),
+(26, '2', '2', '3'),
+(27, 'g', 'g', 'g'),
+(28, 'j', 'j', 'j');
 
 -- --------------------------------------------------------
 
@@ -169,7 +188,11 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`reservationID`, `date`, `time`, `guestno`, `comment`, `memberID`, `functionID`) VALUES
-(1, '2018-03-30', '12:00:00.0000', 10, 'Annual Meeting of Banyan Corp.', 1, 3);
+(42, '2018-03-30', '17:00:00.0000', 20, 'test.', 1, 2),
+(43, '2018-04-18', '09:00:00.0000', 10, '', 1, 1),
+(45, '2018-05-11', '09:00:00.0000', 30, 'HIIIIIIIIIIIIIIII ', 1, 3),
+(46, '2018-05-31', '09:00:00.0000', 30, 'Hello, my name is Elder Price', 1, 2),
+(47, '2018-06-30', '12:00:00.0000', 120, 'I AM INVITING THE ENTIRE VILLAGE TO MY BIRTHDAY!\r\n\r\nExcept you Nathan, screw you Nathan >:(', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -272,25 +295,25 @@ ALTER TABLE `logdata`
 -- AUTO_INCREMENT for table `manager`
 --
 ALTER TABLE `manager`
-  MODIFY `managerID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `managerID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `memberID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `memberID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `dishID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `dishID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservationID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `reservationID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `review`

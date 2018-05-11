@@ -123,9 +123,9 @@
 		<form id="register_form">
 			<h1>Registration Form</h1>
 			<!-- One "tab" for each step in the form: -->
-				Please upload a Display Image.
+				<!--Please upload a Display Image.
 		<input type="file" name="fileToUpload" id="fileToUpload" size="50" onChange="displayImageError()"><br>
-			<div id="imageAlert" class="alert alert-danger" style="display: none;"></div>
+			<div id="imageAlert" class="alert alert-danger" style="display: none;"></div>-->
 			<div>Name
 				<p><input id="firstNameInput" placeholder="First name..." oninput="displayFirstNameError()" name="firstname">
 				</p>

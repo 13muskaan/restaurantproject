@@ -25,6 +25,7 @@ if ( $stmt->rowCount() >= 1 ) {
 
 	$result = $stmt->fetchAll();
 	$_SESSION[ 'userID' ] = $result[ 0 ][ 'memberID' ];
+	$_SESSION['firstname'] = $result[0]['firstname'];
 	$_SESSION['lastEmail'] = $result[0]['email'];
 	if ( isset( $_SESSION[ 'previousPOST' ] ) )unset( $_SESSION[ 'previousPOST' ] );
 	if (isset($_GET['originpage'])) {

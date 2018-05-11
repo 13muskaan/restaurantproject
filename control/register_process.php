@@ -20,6 +20,7 @@ $stmt->execute();
 if ( $conn->lastInsertId() > 0 ) {
 	$_SESSION[ 'message' ] = 'User successfully created! Welcome ' . $_POST[ 'firstname' ] . "!";
 	$_SESSION[ 'userID' ] = $conn->lastInsertID();
+	$_SESSION['firstname'] = $_POST['firstname'];
 	$_SESSION[ 'lastEmail'] = $_POST['email'];
 	$_SESSION[ 'user_type' ] = 'member';
 

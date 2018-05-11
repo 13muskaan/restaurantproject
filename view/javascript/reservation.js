@@ -4,6 +4,11 @@
 //Loader div
 var loader;
 
+//FormDivs
+var timeDiv;
+var functionDiv;
+var submitDiv;
+
 
 // Slider Code
 var slider = document.getElementById("GuestSlider");
@@ -15,18 +20,6 @@ slider.oninput = function () {
 }
 
 //Date picker
-/*$(document).ready(function () {
-	var date_input = $('input[name="date"]'); //our date input has the name "date"
-	var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-	date_input.datepicker({
-		format: 'YYYY-MM-DD',
-		container: container,
-		todayHighlight: true,
-		autoclose: true,
-		startDate: "+0D"
-	})
-})*/
-
 $('input[name="date"]').datepicker({
 	format: "yyyy-mm-dd",
 	startDate: "+0D",
@@ -34,6 +27,9 @@ $('input[name="date"]').datepicker({
 });
 
 function CheckDate() {
+	//Disable times if enabled
+	DisableTime();
+	
 	var date = document.getElementById("date");
 	var ajaxurl = "../../model/reservation-date_check.php?date=" + date.value;
 
@@ -60,8 +56,7 @@ function CheckDate() {
 function EnableTimes(results) {
 	"use strict";
 	
-	
-	document.getElementById("timeSelectDiv").style.display = "block";
+	timeDiv.style.display = "block";
 	
 	console.log("RESULTS RETRIEVED");
 	
@@ -100,8 +95,31 @@ function EnableTimes(results) {
 
 }
 
+
+
+function EnableFunction() {
+	console.log("FISH");
+	functionDiv.style.display = "block";
+}
+
 function EnableSubmit() {
+	submitDiv.style.display = "block";
 	document.getElementById("submit").disabled = false;
+}
+
+function DisableTime(){
+	timeDiv.style.display = "none";
+	DisableFunction();
+}
+
+function DisableFunction() {
+	functionDiv.style.display = "none";
+	DisableSubmit();
+}
+
+function DisableSubmit() {
+	submitDiv.style.display = "none";
+	document.getElementById("submit").disabled = true;
 }
 
 $(document).ready( function() {
@@ -109,4 +127,8 @@ $(document).ready( function() {
 	loader = document.getElementById("loader");
 	
 	loader.style.display = "none";
+	
+	timeDiv = document.getElementById("timeSelectDiv");
+	functionDiv = document.getElementById("functionSelectDiv");
+	submitDiv = document.getElementById("submitDiv");
 });

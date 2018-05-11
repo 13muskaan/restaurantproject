@@ -43,10 +43,14 @@ include( 'navigationbar.php' );
 			background-color: #A3B5A4;
 		}
 		
-		.container {
+		.formcontainer {
+			align-self: center;
 			border-radius: 5px;
 			background-color: #f2f2f2;
 			padding: 20px;
+			width: 50%;
+			padding: 20px;
+			margin: 0 auto;
 		}
 		
 		.slidecontainer {
@@ -354,7 +358,23 @@ include( 'navigationbar.php' );
 
 		<button class="btn btn-primary" onclick="document.getElementById(\'id01\').style.display=\'block\'" style="width:auto;">Login</button></p>
 
-		<div id="id01" class="modal">
+		<div id="id01" style="display: none;
+			/* Hidden by default */
+			position: fixed;
+			/* Stay in place */
+			z-index: 1;
+			/* Sit on top */
+			left: 0;
+			top: 0;
+			width: 100%;
+			/* Full width */
+			height: 100%;
+			/* Full height */
+			overflow: auto;
+			/* Enable scroll if needed */
+			background-color: rgba(0, 0, 0, 0.4);
+			/* Black w/ opacity */
+			padding-top: 60px;">
 
 			<div class="modal-content animate" action="/action_page.php">
 				<div id="loader" class="loadercontainer" align="center" style="display: none;">
@@ -373,10 +393,10 @@ include( 'navigationbar.php' );
 						<div class="mcontainer">
 							<img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt=""><br>
 							<label for="email"><b>Email</b></label>
-							<input type="text" placeholder="Enter Email" name="email" required>
+							<input type="text" placeholder="Enter Email" name="email" style="height: 20px;" required>
 
 							<label for="psw"><b>Password</b></label>
-							<input type="password" placeholder="Enter Password" name="psw" required>
+							<input style="height: 20px;" type="password" placeholder="Enter Password" name="psw" required>
 
 							<button type="submit" onClick="SubmitButton()">Login</button>
 
@@ -394,7 +414,7 @@ include( 'navigationbar.php' );
 		</div>
 ';
 	} else {
-		echo '<div class="container">';
+		echo '<div class="formcontainer">';
 		
 		
 				if ( isset( $_SESSION[ 'error' ] ) ) {
@@ -412,18 +432,7 @@ include( 'navigationbar.php' );
 		
 		echo '<form action="../../control/reservation_process.php" method="post">
 
-			<label for="functions">Function Type</label>
-			<select id="functionID" name="functionID">
-				<option value="1">Anniversary</option>
-				<option value="2">Birthday</option>
-				<option value="3">Corporate</option>
-			</select>
-
-			<label for="guests">No. of guests</label>
-			<div class="slidecontainer">
-  <input name="guestNo" type="range" min="30" max="120" value="30" class="slider" id="GuestSlider">
-  <br><p style="text-align: center">Value: <span id="GuestNumber"></span></p>
-</div>
+			
 
 
 			<label class="control-label" for="date">Date</label>
@@ -445,30 +454,46 @@ include( 'navigationbar.php' );
 	
 </div>
 	
-	<div style="display: none" id="timeSelectDiv">
-	<div class="container">
+	<div style="display: none;" id="timeSelectDiv">
+	<div>
 	<label class="radio-inline">
-      <input type="radio" name="time" onclick="EnableSubmit()" value="09:00:00" id="timeCheckboxMor" disabled>Morning<br>9am
+      <input type="radio" name="time" onChange="EnableFunction()" value="09:00:00" id="timeCheckboxMor" disabled>Morning<br>9am
     </label>
     <label class="radio-inline">
-      <input type="radio" name="time" onclick="EnableSubmit()" value="12:00:00" id="timeCheckboxAft" disabled>Afternoon<br>12pm
+      <input type="radio" name="time" onChange="EnableFunction()" value="12:00:00" id="timeCheckboxAft" disabled>Afternoon<br>12pm
     </label>
     <label class="radio-inline">
-      <input type="radio" name="time" onclick="EnableSubmit()" value="17:00:00" id="timeCheckboxEve" disabled>Evening<br>5pm
+      <input type="radio" name="time" onChange="EnableFunction()" value="17:00:00" id="timeCheckboxEve" disabled>Evening<br>5pm
     </label>
 	</div>
 	</div>
 	
-	
+	<div style="display: none" id="functionSelectDiv">
+	<label for="functions">Select Function Type</label>
+			<select id="functionID" name="functionID"  onChange="EnableSubmit()">
+				<option value="" disabled selected>Function Type...</option>
+				<option value="1">Anniversary</option>
+				<option value="2">Birthday</option>
+				<option value="3">Corporate</option>
+			</select>
+</div>
+<div style="display: none" id="submitDiv">
+			<label for="guests">No. of guests</label>
+			<div class="slidecontainer">
+  <input name="guestNo" type="range" min="30" max="120" value="30" class="slider" id="GuestSlider">
+  <br><p style="text-align: center">Value: <span id="GuestNumber"></span></p>
+</div>
 	<br>
+
 
 	<label for="subject">Comment</label>
 	<textarea id="comment" name="comment" placeholder="Write something.." style="height:200px; width:100%"></textarea>
 
-	<br><input type="submit" value="Submit" id="submit" disabled>
-	</form>
+	<br>
 	</div>
-</body>';
+	<input type="submit" value="Submit" id="submit" disabled>
+	</form>
+	</div><br>';
 	}
 	?>
 	<link rel="stylesheet" href="../css/bootstrap-datepicker.css">
@@ -488,6 +513,8 @@ include( 'navigationbar.php' );
 	</script>
 
 	<?php  include('footer.php'); ?>
+	
+	
 </body>
 
 </html>

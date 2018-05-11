@@ -1,7 +1,3 @@
-<!-- PART A - Declarations
-1. All 3 rd party JavaScript libraries accessed via CDN with integrity verification included
-2. The above only declared once inside
-<header> accomplished with includes on the server-side 3. Check to see if mobile or desktop browser-->
 
 	<html>
 
@@ -78,9 +74,14 @@
 				}
 			}
 		</script>
-		<?php // inlude database connection & session files here.
-			
-			include('../../model/dbconnection.php'); //this causes an error in admin and manager.
+		<?php
+		// inlude database connection & session files here.
+			if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == "manager" || $_SESSION['user_type'] == "admin")) {
+				include('../model/dbconnection.php');
+			} else {
+				include('../../model/dbconnection.php'); 
+			}
+			//this causes an error in admin and manager.
 			//include('../control/session.php');
 			?>
 		<!-- 3rd party (BOOTSTRAP)-->
