@@ -88,7 +88,11 @@
 	</head>
 
 	<body>
-
+	<div class="header">
+  <div class="jumbotron">
+    <h1 style="text-align:center;background-image: url(../img/headermap1.jpeg)">Reviews</h1>
+  </div>     
+</div>
 		<div class="container">
 			<h1>Our member's reviews.</h1>
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick="review_post">

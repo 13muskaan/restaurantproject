@@ -313,7 +313,11 @@ img.hover-shadow {
 </head>
 
 <body>
-	<!-- restaurant function here-->
+		<div class="header">
+  <div class="jumbotron">
+    <h1 style="text-align:center;background-image: url(../img/headermap1.jpeg)">Functions</h1>
+  </div>     
+</div>
 	<h2 style="text-align: center;"> Our functions.</h2>
 <!-- code here for downloading pdf files that were inserted via admin database-->
 	<div class="container text-center">

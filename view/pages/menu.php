@@ -2,6 +2,11 @@
 
 
 <title>MY BANYAN TREE | MENU</title>
+	<div class="header">
+  <div class="jumbotron">
+    <h1 style="text-align:center;background-image: url(../img/headermap1.jpeg)">Menu</h1>
+  </div>     
+</div>
 
 <div class="menuitem_view">
 	<h1 style="text-align: center;"> My Banyan menu.</h1>

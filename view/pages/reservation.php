@@ -344,12 +344,19 @@ include( 'navigationbar.php' );
 </head>
 
 <body>
+		<div class="header">
+  <div class="jumbotron">
+    <h1 style="text-align:center;background-image: url(../img/headermap1.jpeg)">Reservation</h1>
+  </div>     
+</div>
 	<h2 style="text-align: center;">Reservation Form</h2>
-	<p style="text-align: center;"> For any inquiries, please contact us on this number 07 3358 4006 <br> <strong> *Note. This form is only to book your reservation. Prior to your booking date, please finalise all your function requirements no longer than a week. </strong>
+	<p style="text-align: center;"> Please fill in your reservation details in the form. <br>For any further inquiry please contact us on this (07) 3358 4006. <br> <strong> *Note: This form is only to book your reservation. Please, at least one week before your chosen date finialise all your function requirements. </strong>
 	</p>
-
-
-
+	<div class="downloadfile" style="align-content: center; width: 10%;">
+		<button type="button" class="btn btn-outline-danger" download a href="../../files/">Function Menu</button>
+</div>
+	
+<br>
 	<?php // logged in then show form.
 	if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] == 'anon') {
 		echo '<p style="text-align: center;"> You are not logged in. Please login, or register in order to make a reservation. <br>
@@ -432,9 +439,6 @@ include( 'navigationbar.php' );
 		
 		echo '<form action="../../control/reservation_process.php" method="post">
 
-			
-
-
 			<label class="control-label" for="date">Date</label>
 			<input class="form-control" id="date" name="date" placeholder="Select a date: YYYY-MM-DD" type="text">
 
@@ -487,7 +491,7 @@ include( 'navigationbar.php' );
 
 
 	<label for="subject">Comment</label>
-	<textarea id="comment" name="comment" placeholder="Write something.." style="height:200px; width:100%"></textarea>
+	<textarea id="comment" name="comment" placeholder="Write your message here..." style="height:200px; width:100%"></textarea>
 
 	<br>
 	</div>
@@ -496,6 +500,8 @@ include( 'navigationbar.php' );
 	</div><br>';
 	}
 	?>
+	
+	
 	<link rel="stylesheet" href="../css/bootstrap-datepicker.css">
 	<script type="text/javascript" src="../javascript/bootstrap-datepicker.js"></script>
 	<script src="../javascript/reservation.js" type="text/javascript"></script>

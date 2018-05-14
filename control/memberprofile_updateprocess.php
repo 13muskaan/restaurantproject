@@ -2,17 +2,15 @@
 
 include('../model/dbconnection.php');
 
-try {;
+try {
 
-	$sql = "UPDATE member SET firstname=:firstname, lastname=:lastname, email=:email, password=:password WHERE memberID=" . $_GET['id'];
+	$sql = "UPDATE member SET firstname=:firstname, lastname=:lastname, email=:email, newpassword=:newpassword WHERE memberID=" . $_GET['id'];
 
     // Prepare statement
-    $stmt = $conn->prepare($sql);
-	$stmt -> bindParam(':firstname' $_POST ['firstname'], PDO::PARAM_STR);
-	$stmt -> bindParam(':lastname' $_POST ['lastname'], PDO::PARAM_STR);
-	$stmt -> bindParam(':email' $_POST ['email'], PDO::PARAM_STR);
-	$stmt -> bindParam(':password' $_POST ['password'], PDO::PARAM_STR);
-
+	$stmt->bindParam( ':firstname', $_POST[ 'firstname' ], PDO::PARAM_STR );
+	$stmt->bindParam( ':lastname', $_POST[ 'lastname' ], PDO::PARAM_STR );
+	$stmt->bindParam( ':email', $_POST[ 'email' ], PDO::PARAM_STR );
+	$stmt->bindParam( ':newpassword', $_POST[ 'newpassword' ], PDO::PARAM_STR );
     // execute the query
     $stmt->execute();
 
@@ -25,6 +23,5 @@ catch(PDOException $e)
     }
 
 $conn = null;
-header('location: ../view/pages/memberprofile.php');
 ?>
 <body>  <a href="../view/pages/memberprofile.php"><button type="button">Go Back.</button></a></body>

@@ -13,14 +13,20 @@ if ( !isset( $_SESSION[ 'user_type' ] ) || ( $_SESSION[ 'user_type' ] == 'anon' 
 ?>
 
 <?php include('header.php');?>
-
+<head> 
+<style> 
+	img{
+		border-bottom-radius: 75%;
+	}
+	</style>
+</head>
 
 <body>
 
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href=<?php echo $indexLink; ?>>MY BANYAN TREE (LOGO)</a>
+				<a class="navbar-brand" href=<?php echo $indexLink; ?>><img src="../img/mybanyantreelogonavbar.png" style=" height: 100px; width: auto;"> <span style="display: inline-block;"</span></a>
 			</div>
 			<?php 
 			if (!isset($_SESSION['user_type']) || ($_SESSION['user_type'] == 'anon' || $_SESSION['user_type'] == 'member'))  {

@@ -11,10 +11,10 @@ $stmt->bindParam( ':id', $_SESSION[ 'userID' ], PDO::PARAM_INT );
 $stmt->execute();
 $results = $stmt->fetchAll();
 
-$firstname = $results[0]['firstname'];
-$lastname = $results[0]['lastname'];
-$email = $results[0]['email'];
-$password = $results[0]['password'];
+$firstname = $results[ 0 ][ 'firstname' ];
+$lastname = $results[ 0 ][ 'lastname' ];
+$email = $results[ 0 ][ 'email' ];
+$password = $results[ 0 ][ 'password' ];
 
 ?>
 
@@ -23,10 +23,10 @@ $password = $results[0]['password'];
 
 <head>
 	<title>MY BANYAN TREE | PROFILE</title>
-<style>
-	/*reservation*/
-	
-			body {
+	<style>
+		/*reservation*/
+		
+		body {
 			padding-top: 30px;
 		}
 		
@@ -77,12 +77,14 @@ $password = $results[0]['password'];
 </head>
 
 <body>
+		<div class="header" style="background-image: url(../img/leavesbheader.jpg);">
+  <div class="jumbotron">
+    <h1 style="text-align:center;color:black;"><?php echo $firstname?> <span></span>
+			<?php echo $lastname?></h1>
+  </div>     
+</div>
 
 	<div class="container" style="padding-top: 1px;">
-		<h1 class="page-header" style="text-align: center;">
-			<?php echo $firstname?> <span></span>
-			<?php echo $lastname?>
-		</h1>
 		<div class="row">
 			<!-- left column -->
 			<div class="col-md-4 col-sm-6 col-xs-12">
@@ -101,7 +103,8 @@ $password = $results[0]['password'];
 }
 				?>
 				<form class="form-horizontal" role="form" method="post" id=action="../../control/memberprofile_updateprocess.php?id=<?php echo $_SESSION['userID'];?>">
-					<h4>Manage Your Profile.</h4>
+					<h4 style="text-align: right; margin-right: 70px;">Manage Your Profile.</h4>
+					<br>
 					<div class="form-group">
 						<label class="col-lg-3 control-label" id="firstname">First name</label>
 						<div class="col-lg-8">
@@ -117,19 +120,26 @@ $password = $results[0]['password'];
 					<div class="form-group">
 						<label class="col-lg-3 control-label" id="email">Email</label>
 						<div class="col-lg-8">
-							<input class="form-control" value="<?php echo $email?>" type="text">
+							<input class="form-control" style="background-color: white;" value="<?php echo $email?>" type="text" disabled>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 control-label" id="password">Password</label>
+						<label class="col-md-3 control-label" id="password">Current Password</label>
 						<div class="col-md-8">
-							<input class="form-control" value="<?php echo $password?>" type="text">
+							<input class="form-control" style="background-color: white;" value="<?php echo $password?>" type="password" disabled>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label" id="newpassword">Update Password</label>
+						<div class="col-md-8">
+							<input class="form-control" value="" placeholder="new password..." type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label"></label>
 						<div class="col-md-8">
-							<input class="btn btn-primary" value="save changes" type="button" onClick="../../control/memberprofile)updateprocess.php">
+							<!--<input class="btn btn-primary" value="save changes" type="button" id="update userinfo" onClick="../../control/memberprofile_updateprocess.php">-->
+							<button class="btn btn-primary" value="submit" id="updateuserinfo"><a href="../../control/memberprofile_updateprocess.php"></a>Save</button>
 
 							<span></span>
 							<input class="btn btn-default" value="Cancel" type="reset">
@@ -139,23 +149,40 @@ $password = $results[0]['password'];
 			</div>
 		</div>
 	</div>
-	<h4 style="text-align: center;"> Your reservations.</h4>
-	<?php
-	$contentquery = "SELECT * FROM reservation WHERE date >= CURRENT_DATE AND memberID = ". $_SESSION["userID"];
-	//$conn = dbConnect();
-	$stmt = $conn->prepare( $contentquery );
+
+	<div class="container" style="text-align: center;">
+		<h4 style="text-align: right; margin-right: 70px;"> Your Reservations.</h4>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Reservation ID</th>
+					<th>Function ID</th>
+					<th> Date</th>
+					<th>Time</th>
+					<th> Guest No.</th>
+					<th> Comments</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php 
+		$contentquery = "SELECT * FROM reservation WHERE date >= CURRENT_DATE AND memberID = ". $_SESSION["userID"];
+			$stmt = $conn->prepare( $contentquery );
 	$stmt->execute();
 	$staticresult = $stmt->fetchAll( PDO::FETCH_ASSOC );
 	//echo '<div id="contentgroup">';
 	foreach ( $staticresult as $row ) {
-		//echo '<div class="contentItem" dishe_id="' . '">';
-		echo '<h3><span>', 'Reservation ID:', $row[ 'reservationID' ], ' Date:', $row[ 'date' ], ' </span>';
-		echo '<div class="mic-info"> <span> Time:', $row[ 'time' ], ' Guest No:', $row[ 'guestno' ], ' Comments:' . $row[ 'comment' ], '
-                                    </h3>
-                                </span>';
-	}
-	?>
+		echo '<tr>', '<td>', $row[ 'reservationID' ], '</td>';
+		echo '<td>', $row['functionID'], '</td>';
+	echo '<td>', $row['date'], '</td>';
+		echo '<td>', $row['time'], '</td>';
+		echo '<td>', $row['guestno'], '</td>';
+		echo '<td>', $row['comment'], '</td>';}
+		?>
+			</tbody>
+		</table>
 	</div>
+	</div>
+	<br>
 	<?php include('footer.php');?>
 </body>
 

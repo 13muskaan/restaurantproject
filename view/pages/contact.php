@@ -13,38 +13,12 @@
 			width: 50%;
 			/*fix this */
 		}
-		/*style search bar*/
-		
-		#custom-search-input {
-			padding: 3px;
-			border: solid 1px #E4E4E4;
-			border-radius: 6px;
-			background-color: #fff;
-		}
-		
-		#custom-search-input input {
-			border: 0;
-			box-shadow: none;
-		}
-		
-		#custom-search-input button {
-			margin: 2px 0 0 0;
-			background: none;
-			box-shadow: none;
-			border: 0;
-			color: #666666;
-			padding: 0 8px 0 10px;
-			border-left: solid 1px #ccc;
-		}
-		
-		#custom-search-input button:hover {
-			border: 0;
-			box-shadow: none;
-			border-left: solid 1px #ccc;
-		}
-		
-		#custom-search-input .glyphicon-search {
-			font-size: 23px;
+		/*backgroung img header*/
+		.jumbotron{
+			background-image: url(../img/headermap1.jpeg) solid{
+				width: auto;
+				height: 100%;	
+			}
 		}
 	</style>
 	<script>
@@ -68,53 +42,46 @@
 </head>
 
 <body>
-	<!--contact page-->
+	<div class="header">
+  <div class="jumbotron">
+    <h1 style="text-align:center;background-image: url(../img/headermap1.jpeg);">Contact Us</h1>
+  </div>     
+</div>
 
-	<div class="container">
-		<div class="containersearch" style="float: right;">
-			<div class="row">
-				<div class="col-md-6">
-					<div id="custom-search-input">
-						<div class="input-group col-md-12">
-							<input type="text" class="form-control input-lg" placeholder="Search directions..."/>
-							<span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="submit">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </span>
-						
-
-						</div>
-					</div>
+	<div class="container" style="width:60%">
+		<h2 style="text-align:center;"> Locate us.</h2>
+		<div class="form-group">
+			<form action="http://maps.google.com/maps" method="get" target="_blank">
+				<label class="col-lg-3 control-label" id="searchdirections"></label>
+				<div class="col-lg-8">
+					<input class="form-control" value="" type="text" placeholder="search directions...">
+				<button type="submit" class="btn btn-primary" a href="http://maps.google.com/maps"><span class="glyphicon glyphicon-search"></span></button>
 				</div>
-			</div>
+			</form>
 		</div>
-		<div class="row-fluid">
-			<div class="span8">
-				<h2> Locate us here.</h2>
+	</div>
+	<hr style="margin-bottom:5px !important; margin-top:5px !important; width:90%; " />
+
+			<!--<div class="span8">
+				<h2 style="text-align:left; padding-left: 250px;"> Locate us.</h2>
 				<div id="map"></div>
+			</div>-->
+<div class="container">
+	<div class="row-fluid">
+        <div class="span8">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d56646.471818570026!2d153.006027437271!3d-27.456664021325793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x6b91598d9ce523bb%3A0xe96341f947fa04da!2s4%2F9+Doggett+Street%2C+Fortitude+Valley+QLD%2C+Australia!3m2!1d-27.456668399999998!2d153.041047!5e0!3m2!1sen!2sus!4v1526271187569" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+				<!--<div id="map"></div>-->
 			</div>
+    	</div>
 
-			<div class="span4">
-				<h4>Our Contact details.</h4>
-				<address>
-    			<strong>My Banyan Tree</strong><br>
-    			4/9 Doggett Street<br>
-    			Fortitude Valley
-    			Brisbane
-    			4006<br>
-    			<abbr title="Phone">P:</abbr> 07 3358 4006<br>
-    			<abbr title="Phone">P:</abbr> 07 3358 4009<br>
-				<abbr title="Email">E: </abbr> bakshi.muskaan@gmail.com<br>
-   				<abbr title="OpeingTime"> <strong> Open Hours</strong></abbr> <br>
-   				Mon-Fri 	5pm-10pm 	<br>
-   				Sat-Sun 	5pm-10pm<br>
-    		</address>
-			
-
-
-			</div>
-		</div>
+            <div class="container1">   
+				 <h2 style="text-align: center;border-bottom: black solid 1px;">Contact Details</h2>
+				   <ul class="container details" style="text-align: center;">
+                            <p><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span> (07) 3358 3006 & (07) 3358 4006</p>
+                            <p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>bakshi.muskaan@gmail.com</p>
+                            <p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>4/9 Doggett Street Fortitude Valley 4006</p>
+                          </ul>
+    </div>
 	</div>
 	<!-- end here-->
 	<?php include('footer.php'); ?>

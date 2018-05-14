@@ -6,11 +6,11 @@
 
 			<!--First column-->
 			<div class="col-md-6">
-				<h5 class="text-uppercase">Footer Content</h5>
-				<p>Here you can use rows and columns here to organize your footer content.</p>
+				<h5 class="text-uppercase">My Banyan Tree Indian Restaurant</h5>
+				<p>&copy;My Banyan Tree Pty Ltd. 2018</p>
 			</div>
 			<!--/.First column-->
-
+			
 			<!--Second column-->
 			<div class="col-md-6">
 				<h5 class="text-uppercase">Links</h5>
