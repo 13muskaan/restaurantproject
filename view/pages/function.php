@@ -360,10 +360,75 @@ img.hover-shadow {
                                     <img src="https://s6.postimg.org/50w2vzj01/slider_down_Arrow.png">
                                 </div>
                                 <div>
-                                  <h1>Islamabad</h1>
-                                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                                  <h1>Birthday</h1>
+                                  <p>Celebrate and cherish your memorable day with your family and us.</p>
                                 </div>
                             </div>
+							<div class="panel-body">
+									<h2 style="text-align:center">Our latest.</h2>
+
+<div class="row">
+  <div class="column">
+    <img src="../img/family.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="../img/family.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="../img/family.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="../img/family.jpg"style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+  </div>
+</div>
+
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 4</div>
+      <img src="../img/family.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">2 / 4</div>
+      <img src="../img/family.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">3 / 4</div>
+      <img src="../img/family.jpg" style="width:100%">
+    </div>
+    
+    <div class="mySlides">
+      <div class="numbertext">4 / 4</div>
+      <img src="../img/family.jpg" style="width:100%">
+    </div>
+    
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+
+    <div class="column">
+      <img class="demo cursor" src="../img/family.jpg" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../img/family.jpg"style="width:100%" onclick="currentSlide(2)" alt="Trolltunga, Norway">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../img/family.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../img/family.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+    </div>
+  </div>
+</div>
+							</div>
                         </div>
                     </div>
                     <div class="panel panel-default">
@@ -373,8 +438,8 @@ img.hover-shadow {
                                     <img src="https://s6.postimg.org/50w2vzj01/slider_down_Arrow.png">
                                 </div>
                                 <div>
-                                  <h1>Karachi</h1>
-                                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                                  <h1>Anniversary</h1>
+                                  <p>Wedding anniversary, re-union with friends and family? Celebrate with us.</p>
                                 </div>
                             </div>
                         </div>
@@ -382,13 +447,7 @@ img.hover-shadow {
                     <div class="panel panel-default">
                         <div id="collapseThree" class="panel-collapse collapse">
                        <div class="panel-body">
-                                <div class="center-down-arrow">
-                                    <img src="https://s6.postimg.org/50w2vzj01/slider_down_Arrow.png">
-                                </div>
-                                <div>
-                                  <h1>Dubai</h1>
-                                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-									<h2 style="text-align:center">Lightbox</h2>
+									<h2 style="text-align:center">Our latest.</h2>
 
 <div class="row">
   <div class="column">
