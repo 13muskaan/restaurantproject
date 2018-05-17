@@ -1,5 +1,5 @@
 <?php
-include( '../view/pages/navigationbar.php' );
+include( '../pages/navigationbar.php' );
 ?>
 <?php
 
@@ -151,7 +151,7 @@ $password = $results[0]['password'];
 	}
 	?>
 	</div>
-	<?php include('../view/pages/footer.php');?>
+	<?php include('../pages/footer.php');?>
 </body>
 
 </html>

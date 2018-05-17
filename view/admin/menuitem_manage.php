@@ -1,18 +1,18 @@
 <head>
 	<meta charset="utf-8">
 	<title>Menu Manage</title>
-	<link href="../view/css/stylesheet.css" rel="stylesheet" type="text/css">
+	<link href="../css/stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 
 
 <body>
-	<?php  include('../view/pages/navigationbar.php');?>
+	<?php  include('../pages/navigationbar.php');?>
 	<!--restaurant menu will appear here-->
 	<div class="menuitem_view">
 		<h1 style="text-align: center;"> My Banyan menu.</h1>
 		<div class="container">
 			<?php
-			include( '../model/dbconnection.php' );
+			include( '../../model/dbconnection.php' );
 			$contentquery = "SELECT * FROM menu";
 			//$conn = dbConnect();
 			$stmt = $conn->prepare( $contentquery );
@@ -41,5 +41,5 @@
 		$( 'h3 span:first-child' ).after( "<span class=\"dots\"> </span>" );
 	</script>
 
-	<?php include('../view/pages/footer.php');?>
+	<?php include('../pages/footer.php');?>
 </body>

@@ -1,18 +1,14 @@
 <!doctype html>
-<?php
-session_start();
+<?php include('header.php');
 
-if ( !isset( $_SESSION[ 'user_type' ] ) || ( $_SESSION[ 'user_type' ] == 'anon' || $_SESSION[ 'user_type' ] == 'member' ) ) {
+if ( !isset($_SESSION[ 'user_type' ]) || ( $_SESSION[ 'user_type' ] == 'anon' || $_SESSION[ 'user_type' ] == 'member' ) ) {
 	$indexLink = 'index.php';
 } else if ( $_SESSION[ 'user_type' ] == 'admin' ) { //once index is compressed remove if section
 	$indexLink = 'index_admin.php'; //once index is compressed --- $indexLink = '../view/pages/index.php';
 } else { //Once index is compressed remove this section
 	$indexLink = 'index_manager.php';
 }
-
 ?>
-
-<?php include('header.php');?>
 <head> 
 <style> 
 	img{
@@ -74,7 +70,7 @@ if ( !isset( $_SESSION[ 'user_type' ] ) || ( $_SESSION[ 'user_type' ] == 'anon' 
 					if ( $_SESSION[ 'user_type' ] != 'member' ) {
 						echo '<li class="active"><a href="memberprofile.php">Profile</a>
 				</li>';
-						echo '<li class="active"><a href="../view/pages/logout.php">Logout</a></li>';
+						echo '<li class="active"><a href="../pages/logout.php">Logout</a></li>';
 					} else {
 						echo '<li class="active"><a href="memberprofile.php">'. $_SESSION['firstname'] .'</a></li>';
 						echo '<li class="active"><a href="logout.php">Logout</a></li>';

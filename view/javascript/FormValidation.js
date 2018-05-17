@@ -172,6 +172,7 @@ function checkEmailAlreadyExists(email) {
 		method: 'get',
 		datatype: 'json',
 		success: function (res) {
+			
 			displayEmailExists(res.emailexists);
 		}
 	});

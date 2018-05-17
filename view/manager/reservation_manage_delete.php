@@ -1,5 +1,5 @@
 <?php
-include( '../model/dbconnection.php' );
+include( '../../model/dbconnection.php' );
 
 //Reservation deleting here.
 

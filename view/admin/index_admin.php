@@ -1,4 +1,4 @@
-<?php include('../view/pages/navigationbar.php');?>
+<?php include('../pages/navigationbar.php');?>
 <!doctype html>
 <html>
 
@@ -10,7 +10,7 @@
 <body>
 	Welcome Admin! This is the index page of admin.
 
-	<?php include('../view/pages/footer.php');?>
+	<?php include('../pages/footer.php');?>
 </body>
 
 </html>

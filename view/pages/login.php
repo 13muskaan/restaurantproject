@@ -75,8 +75,8 @@
 		}
 	</style>
 </head>
-
-<body>
+<br> <br>
+<body style="text-align: center">
 	<h2>Login</h2>
 	<p> Welcome Back! Please fill in your user cresidentials to continue.</p>
 	<?php
@@ -99,12 +99,17 @@
 		</svg>
 
 	</div>
-	<div id="form">
+	<div id="form" width="0px;">
 		<form action="../../control/login_process.php" method="post" id="login_form">
 
-			<div class="container">
-				<!--<img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
-                    alt=""><br>-->
+			<div class="container" align="center">
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="text-center">
+						<img src="<?php echo $image ?>" class="avatar img-circle img-thumbnail" alt="avatar">
+
+					</div>
+				</div>
+				<br><br>
 				<label for="email"><b>Email</b></label>
 				<input type="text" placeholder="Enter Email" name="email" value="<?php if (isset($email)) {echo $email;}?>" required>
 

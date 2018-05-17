@@ -76,13 +76,10 @@
 		</script>
 		<?php
 		// inlude database connection & session files here.
-			if(isset($_SESSION['user_type']) && ($_SESSION['user_type'] == "manager" || $_SESSION['user_type'] == "admin")) {
-				include('../model/dbconnection.php');
-			} else {
-				include('../../model/dbconnection.php'); 
-			}
-			//this causes an error in admin and manager.
-			//include('../control/session.php');
+		
+				include('../../model/dbconnection.php');
+				include('../../control/session.php');	
+			
 			?>
 		<!-- 3rd party (BOOTSTRAP)-->
 		<!-- index.php & login.php & navigatiobar.php>&register.php-->

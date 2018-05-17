@@ -1,10 +1,6 @@
-<?
-session_start();
-include( '../model/dbconnection.php' );
-?>
 <title>FUNCTION MANAGE</title>
 </head>
-<?php include('../view/pages/navigationbar.php'); ?>
+<?php include('../pages/navigationbar.php'); ?>
 <body>
 	<!-- admin manages the function page and function data-->
 	Edit function page here.
@@ -13,6 +9,6 @@ include( '../model/dbconnection.php' );
 		<input type="file" name="fileToUpload" id="fileToUpload" size="50"><br>
 		<input type="submit" value="Uploadfile" name="submit">
 	</form>
-	<?php include('../view/pages/footer.php');?>
+	<?php include('../pages/footer.php');?>
 
 </body>

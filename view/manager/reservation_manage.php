@@ -1,5 +1,5 @@
 <?php
-include( '../view/pages/navigationbar.php' );
+include( '../pages/navigationbar.php' );
 ?>
 <head>
 	<meta charset="utf-8">
@@ -10,5 +10,5 @@ include( '../view/pages/navigationbar.php' );
 	<!-- manager manages reservations-->
 	This is where reservations can be managed by the manager.
 
-	<?php include('../view/pages/footer.php');?>
+	<?php include('../pages/footer.php');?>
 </body>

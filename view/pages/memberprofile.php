@@ -4,7 +4,7 @@ include( 'navigationbar.php' );
 <?php
 
 //$contentquery = "SELECT * FROM member WHERE memberID:id";
-$contentquery = "SELECT * FROM member WHERE memberID=:id";
+$contentquery = "SELECT * FROM users WHERE userID=:id";
 $stmt = $conn->prepare( $contentquery );
 $stmt->bindParam( ':id', $_SESSION[ 'userID' ], PDO::PARAM_INT );
 
@@ -15,6 +15,7 @@ $firstname = $results[ 0 ][ 'firstname' ];
 $lastname = $results[ 0 ][ 'lastname' ];
 $email = $results[ 0 ][ 'email' ];
 $password = $results[ 0 ][ 'password' ];
+$image = $results[0]['imageLink'];
 
 ?>
 
@@ -73,6 +74,22 @@ $password = $results[ 0 ][ 'password' ];
 			border-top-left-radius: 0px;
 			border-top-right-radius: 0px;
 		}
+		              /*button to go up*/
+      #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color:#AD1C1E;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 80px;
+      }
 	</style>
 </head>
 
@@ -89,9 +106,13 @@ $password = $results[ 0 ][ 'password' ];
 			<!-- left column -->
 			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="text-center">
-					<img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
+					<img src="<?php echo $image ?>" class="avatar img-circle img-thumbnail" alt="avatar">
 					<h6>Upload a different photo...</h6>
-					<input type="file" class="text-center center-block well well-sm">
+					<form action="../../control/upload_file.php" method="POST" enctype="multipart/form-data">
+					<input type="file" name="image" id="fileToUpload" size="50" class="text-center center-block well well-sm">
+						
+						<button type="submit" class="btn btn-primary" id="imageSubmit">Submit Image</button>
+					</form>
 				</div>
 			</div>
 			<!-- edit form column -->
@@ -120,13 +141,13 @@ $password = $results[ 0 ][ 'password' ];
 					<div class="form-group">
 						<label class="col-lg-3 control-label" id="email">Email</label>
 						<div class="col-lg-8">
-							<input class="form-control" style="background-color: white;" value="<?php echo $email?>" type="text" disabled>
+							<input class="form-control" style="background-color: white;" value="<?php echo $email?>" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label" id="password">Current Password</label>
 						<div class="col-md-8">
-							<input class="form-control" style="background-color: white;" value="<?php echo $password?>" type="password" disabled>
+							<input class="form-control" style="background-color: white;" value="<?php echo $password?>" type="password">
 						</div>
 					</div>
 					<div class="form-group">
@@ -155,24 +176,24 @@ $password = $results[ 0 ][ 'password' ];
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>Reservation ID</th>
-					<th>Function ID</th>
-					<th> Date</th>
-					<th>Time</th>
-					<th> Guest No.</th>
-					<th> Comments</th>
+					<th style="text-align: center;">Reservation ID</th>
+					<th style="text-align: center;">Function Type</th>
+					<th style="text-align: center;"> Date</th>
+					<th style="text-align: center;">Time</th>
+					<th style="text-align: center;"> Guest No.</th>
+					<th style="text-align: center;"> Comments</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php 
-		$contentquery = "SELECT * FROM reservation WHERE date >= CURRENT_DATE AND memberID = ". $_SESSION["userID"];
+		$contentquery = "SELECT reservation.reservationID, functions.functiontype, reservation.date, reservation.time , reservation.guestno , reservation.comment  FROM reservation INNER JOIN functions ON reservation.functionID = functions.functionID WHERE date >= CURRENT_DATE AND memberID = ". $_SESSION["userID"];
 			$stmt = $conn->prepare( $contentquery );
 	$stmt->execute();
 	$staticresult = $stmt->fetchAll( PDO::FETCH_ASSOC );
 	//echo '<div id="contentgroup">';
 	foreach ( $staticresult as $row ) {
 		echo '<tr>', '<td>', $row[ 'reservationID' ], '</td>';
-		echo '<td>', $row['functionID'], '</td>';
+		echo '<td>', $row['functiontype'], '</td>';
 	echo '<td>', $row['date'], '</td>';
 		echo '<td>', $row['time'], '</td>';
 		echo '<td>', $row['guestno'], '</td>';
@@ -184,6 +205,25 @@ $password = $results[ 0 ][ 'password' ];
 	</div>
 	<br>
 	<?php include('footer.php');?>
+	 <button onclick="topFunction()" id="myBtn" title="Go to top">Scroll Up</button>
+      <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              document.getElementById("myBtn").style.display = "block";
+          } else {
+              document.getElementById("myBtn").style.display = "none";
+          }
+      }
+      
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+      }
+      </script>
 </body>
 
 </html>

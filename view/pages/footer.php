@@ -23,7 +23,7 @@
 
 
 		<?php
-		if ( isset( $_SESSION[ 'user_type' ] ) && $_SESSION[ 'user_type' ] != 'anon' ) {
+		//if ( isset( $_SESSION[ 'user_type' ] ) && $_SESSION[ 'user_type' ] != 'anon' ) {
 			echo '<hr><span style="color: gray;"><h1 text-align="center">Debug Information:</h3>';
 
 			if ( isset( $_SESSION[ 'error' ] ) ) {
@@ -38,7 +38,7 @@
 			echo '<p><strong>Last Server Massage: </strong>' . $_SESSION[ 'message' ] . '</p>';
 			echo '<p><strong>Current $_SESSION values: </strong></p>';
 			echo "<p>" . print_r( $_SESSION ) . "</p></span>";
-		}
+		//}
 		?>
 			
 			<p id="browserTest">Browser Test</p>

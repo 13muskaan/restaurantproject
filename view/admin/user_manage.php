@@ -52,7 +52,7 @@ s
 		}
 	</style>
 </head>
-<?php include('../view/pages/navigationbar.php');?>
+<?php include('../pages/navigationbar.php');?>
 <body>
 	<div class="container">
 		<div class="row">
@@ -73,8 +73,8 @@ s
 								<div class="col-xs-10 col-md-11">
 									<div>
 										<?php
-										include( '../model/dbconnection.php' );
-										$contentquery = "SELECT * FROM member";
+										include( '../../model/dbconnection.php' );
+										$contentquery = "SELECT * FROM users";
 										//$conn = dbConnect();
 										$stmt = $conn->prepare( $contentquery );
 										$stmt->execute();
@@ -83,12 +83,12 @@ s
 										foreach( $staticresult as $row ) {
 											//echo '<div class="contentItem" dishe_id="' . '">';
 											echo '<h3><span>', $row[ 'firstname' ], $row[ 'lastname' ], ' </span>';
-											echo '<div class="mic-info"> <span> Member ID:', $row[ 'memberID' ], 'email:', $row[ 'email' ], 'password:' . $row[ 'password' ], '
+											echo '<div class="mic-info"> <span> Member ID:', $row[ 'userID' ], 'email:', $row[ 'email' ], 'password:' . $row[ 'password' ], '
                                     </div>
                                 </div>';
-											echo '<a href="user_manage_delete.php?id=' . $row[ 'memberID' ] . '" class="deletebutton"><button type="btn">Delete</button></a>';
-											echo '<a href="user_manage_editform.php?id=' . $row[ 'memberID' ] . '" class="editbutton"><button type="btn">Edit</button></a>';
-											echo '<a href="user_manage_viewreservation.php?id=' . $row[ 'memberID' ] . '" class="viewreservation"><button type="btn">View</button></a>
+											echo '<a href="user_manage_delete.php?id=' . $row[ 'userID' ] . '" class="deletebutton"><button type="btn">Delete</button></a>';
+											echo '<a href="user_manage_editform.php?id=' . $row[ 'userID' ] . '" class="editbutton"><button type="btn">Edit</button></a>';
+											echo '<a href="user_manage_viewreservation.php?id=' . $row[ 'userID' ] . '" class="viewreservation"><button type="btn">View</button></a>
 
                             </div>
                         </div>
@@ -101,5 +101,5 @@ s
 			</div>
 		</div>
 	</div>
-	<?php include('../view/pages/footer.php');?>
+	<?php include('../pages/footer.php');?>
 </body>
