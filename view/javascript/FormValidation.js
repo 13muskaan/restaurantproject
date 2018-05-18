@@ -1,47 +1,63 @@
 // Javascript for validating emails.
 //register form validation
 
-var emailLoader;
+//order is - firstname - lastname - email - password - currentPassword
+var firstNameIndex = 0;
+var lastNameIndex = 1;
+var emailIndex = 2;
+var passwordIndex = 3;
+var currentPasswordIndex = 4;
+
+var possibleInputIDs = ["firstNameInput", "lastNameInput", "emailInput", "passwordInput", "currentPasswordInput"];
+var possibleAlertIDs = ["firstNameAlert", "lastNameAlert", "emailAlert", "passwordAlert", "currentPasswordAlert"];
+var possibleGlyphIDs = ["firstNameGlyph", "lastNameGlyph", "emailGlyph", "passwordGlyph", "currentPasswordGlyph"];
+var inputs = [null,null,null,null,null]; //array of element
+var alerts = [null,null,null,null,null]; //array of element
+var glyphs = [null,null,null,null,null]; //array of element
+
+var emailLoader; //element
+var passwordLoader; //element
+
+var glyphIcons = ["glyphicon glyphicon-minus", "glyphicon glyphicon-ok", "glyphicon glyphicon-remove"]; //array of string
+var glyphColors = ["#555", "#00aa00","#aa0000"];
+
+var inputBackgroundColors = ["#ffffff","#ccffcc","#ffcccc"];
+var inputBorderColors = ["#000", "#55aa55", "#cc5555"];
+
+var submitButtonColors = ["#999999", "#ff0000", "#999999"]
+
+var empty = 0;
+var valid = 1;
+var error = 2;
 
 
-function updateInputChecks(element, setting) { //element is an int between 0 - 3 refers to the type of check box, setting is boolean and will set the check boxes to true or false
+function updateInputGlyphs(element, setting) { //Element is a number which refers to the input element, setting is the type of glyph to set
 	"use strict";
-	var checkBox;
 
-	switch (element) {
-		case (0):
-			checkBox = document.getElementById("firstNameCheck");
-			break;
-		case (1):
-			checkBox = document.getElementById("lastNameCheck");
-			break;
-		case (2):
-			checkBox = document.getElementById("eMailCheck");
-			break;
-		case (3):
-			checkBox = document.getElementById("passwordCheck");
-			break;
-		case(4):
-			checkBox = document.getElementById("imageCheck");
-
-	}
-
-	checkBox.checked = setting;
-
+	glyphs[element].className = glyphIcons[setting];
+	glyphs[element].style.color = glyphColors[setting];
+	
+	inputs[element].style.backgroundColor = inputBackgroundColors[setting];
+	inputs[element].style.borderColor = inputBorderColors[setting];
+	
 	updateSubmitButton();
 }
 
 function updateSubmitButton() {
 	"use strict";
-	
-	var checkBoxes = document.getElementsByClassName("checkerBox");
 	var submitButton = document.getElementById("submitButton");
 	
 	submitButton.disabled = false;
+	submitButton.style.backgroundColor = submitButtonColors[valid];
 	
-	for (var i = 0; i < checkBoxes.length ;i++) {
-		if (!checkBoxes[i].checked) {
+	for (var i = 0; i < glyphs.length ;i++) {
+		if (glyphs[i] != null && glyphs[i].className != glyphIcons[valid]) {
+			
+			
+			submitButton.style.backgroundColor = submitButtonColors[(glyphs[i].className == glyphIcons[error]) ? error : empty];
+			
 			submitButton.disabled = true;
+			return;
 		}
 	}
 	
@@ -68,10 +84,10 @@ function validatePassword() {
 		"<p>- Password must have <strong>at least one lowercase letter</strong>.</p>"
 	];
 
-	var password = document.getElementById('passwordInput').value;
+	var password = inputs[passwordIndex].value;
 
 	if (password == "") {
-		updateInputChecks(3, false);
+		updateInputGlyphs(passwordIndex, empty);
 		return "";
 	}
 
@@ -97,13 +113,13 @@ function validatePassword() {
 	//Setup the return variable - a string that contains the errors
 	var returnVal = "";
 
-	updateInputChecks(3, true);
+	updateInputGlyphs(passwordIndex, valid);
 	
 	for (var i = 0; i < checks.length; i++) {
 		if (!checks[i]) {
 			returnVal = returnVal + ErrorTextStrings[i];
 			
-			updateInputChecks(3, false);
+			updateInputGlyphs(passwordIndex, error);
 		}
 	}
 
@@ -137,13 +153,13 @@ function displayPasswordError() {
 //email
 function validateEmail() {
 	"use strict";
-	updateInputChecks(2, false);
 	
 	var ErrorTextString = "Email is not formatted correctly.";
 
-	var email = document.getElementById('emailInput').value;
+	var email = inputs[emailIndex].value;
 
-	if (email == "") {
+	if (email == "" || email == inputs[emailIndex].placeholder) {
+		updateInputGlyphs(emailIndex, empty);
 		return "";
 	}
 
@@ -152,6 +168,7 @@ function validateEmail() {
 		checkEmailAlreadyExists(email);
 		return "";
 	} else {
+		updateInputGlyphs(emailIndex, error);
 		return ErrorTextString;
 	}
 }
@@ -183,17 +200,19 @@ function displayEmailExists(emailExists) {
 	
 	//Hide Loader
 	emailLoader.style.display = "none";
+	glyphs[2].style.display = "block";
 	
 	var errorDiv = document.getElementById("emailAlert");
 	if (emailExists) {
 		//Display the Red X glyph
+		updateInputGlyphs(emailIndex, error);
 		
 		errorDiv.style.display = 'block';
 		errorDiv.innerHTML = "<strong>ERROR:</strong> Email already exists.";
 	} else {
 		//Display the green tick glyph
 		
-		updateInputChecks(2, true);
+		updateInputGlyphs(emailIndex, valid);
 		errorDiv.style.display = 'none';
 	}
 }
@@ -244,10 +263,10 @@ function validateFirstName() {
 		"<p>- Firstname <strong> cannot have symbols.</strong> (Hyphen (-) is acceptable)</p>"
 	];
 
-	var firstname = document.getElementById('firstNameInput').value;
+	var firstname = inputs[firstNameIndex].value;
 
 	if (firstname == "") {
-		updateInputChecks(0, false);
+		updateInputGlyphs(firstNameIndex, empty);
 		return "";
 	}
 
@@ -269,12 +288,12 @@ function validateFirstName() {
 	//Setup the return variable - a string that contains the errors
 	var returnVal = "";
 
-	updateInputChecks(0, true);
+	updateInputGlyphs(firstNameIndex, valid);
 	
 	for (var i = 0; i < checks.length; i++) {
 		if (!checks[i]) {
 			returnVal = returnVal + ErrorTextStrings[i];
-			updateInputChecks(0, false);
+			updateInputGlyphs(firstNameIndex, error);
 		}
 	}
 
@@ -309,10 +328,10 @@ function validateLastName() {
 		"<p>- Last name <strong> cannot have symbols.</strong> (Hyphen (-) is acceptable)</p>"
 	];
 
-	var lastname = document.getElementById('lastNameInput').value;
+	var lastname = inputs[lastNameIndex].value;
 
 	if (lastname == "") {
-		updateInputChecks(1, false);
+		updateInputGlyphs(lastNameIndex, empty);
 		return "";
 	}
 
@@ -334,12 +353,12 @@ function validateLastName() {
 	//Setup the return variable - a string that contains the errors
 	var returnVal = "";
 
-	updateInputChecks(1, true);
+	updateInputGlyphs(lastNameIndex, valid);
 	
 	for (var i = 0; i < checks.length; i++) {
 		if (!checks[i]) {
 			returnVal = returnVal + ErrorTextStrings[i];
-			updateInputChecks(1, false);
+			updateInputGlyphs(lastNameIndex, error);
 		}
 	}
 
@@ -379,7 +398,7 @@ function validateImage() {
 	var image = document.getElementById('fileToUpload').files[0];
 
 	if (!image) {
-		updateInputChecks(4, true);
+		updateInputGlyphs(currentPasswordIndex, valid);
 		return "";
 	}
 
@@ -398,23 +417,87 @@ function validateImage() {
 	
 	//Setup the return variable - a string that contains the errors
 	var returnVal = "";
-
-	updateInputChecks(1, true);
 	
 	for (var i = 0; i < checks.length; i++) {
 		if (!checks[i]) {
 			returnVal = returnVal + ErrorTextStrings[i];
-			updateInputChecks(1, false);
 		}
 	}
 
 	return returnVal;
 }
 
+//Current Password (updateuserinfo)
+function validateCurrentPassword(userID) {
+	"use strict";
+	updateInputGlyphs(currentPasswordIndex, empty);
 
+	var passwordInput = document.getElementById('currentPasswordInput').value;
+
+	if (passwordInput == "") {
+		return;
+	}
+		checkPasswordMatches(userID, passwordInput);
+		return;
+}
+
+
+
+function checkPasswordMatches(userID, pass) {
+	"use strict";
+
+	//Display Loader
+	passwordLoader.style.display = "block";
+	glyphs[4].style.display = "none";
+	
+	
+
+	var checkurl = "../../control/userInfo_check_password_matches.php?userID= " + userID + "&password=" + pass;
+	$.ajax({
+		url: checkurl,
+		method: 'get',
+		datatype: 'json',
+		success: function (res) {
+			
+			displayPasswordMatches(res.passwordMatches);
+		}
+	});
+}
+
+function displayPasswordMatches(passwordMatches) {
+	"use strict";
+	
+	//Hide Loader
+	passwordLoader.style.display = "none";
+	glyphs[4].style.display = "block";
+	
+	var errorDiv = document.getElementById("currentPasswordAlert");
+	if (!passwordMatches) {
+		//Display the Red X glyph
+		updateInputGlyphs(currentPasswordIndex, error);
+		
+		errorDiv.style.display = 'block';
+		errorDiv.innerHTML = "<strong>ERROR:</strong> Password doesn't match.";
+	} else {
+		//Display the green tick glyph
+		
+		updateInputGlyphs(currentPasswordIndex, valid);
+		errorDiv.style.display = 'none';
+	}
+}
 
 
 $(document).ready( function() {
+	
+	for (var i = 0; i < possibleInputIDs.length; i++) {
+		inputs[i] = document.getElementById(possibleInputIDs[i]);
+		alerts[i] = document.getElementById(possibleAlertIDs[i]);
+		glyphs[i] = document.getElementById(possibleGlyphIDs[i]);
+	}
+	
+	
 	emailLoader = document.getElementById("emailLoader");
-	emailLoader.style.display= "none";
+	passwordLoader = document.getElementById("passwordLoader");
+	
+	updateSubmitButton();
 });

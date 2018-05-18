@@ -15,7 +15,7 @@ $firstname = $results[ 0 ][ 'firstname' ];
 $lastname = $results[ 0 ][ 'lastname' ];
 $email = $results[ 0 ][ 'email' ];
 $password = $results[ 0 ][ 'password' ];
-$image = $results[0]['imageLink'];
+$image = $results[ 0 ][ 'imageLink' ];
 
 ?>
 
@@ -74,32 +74,45 @@ $image = $results[0]['imageLink'];
 			border-top-left-radius: 0px;
 			border-top-right-radius: 0px;
 		}
-		              /*button to go up*/
-      #myBtn {
-        display: none;
-        position: fixed;
-        bottom: 20px;
-        right: 30px;
-        z-index: 99;
-        font-size: 18px;
-        border: none;
-        outline: none;
-        background-color:#AD1C1E;
-        color: white;
-        cursor: pointer;
-        padding: 15px;
-        border-radius: 80px;
-      }
+		/*button to go up*/
+		
+		#myBtn {
+			display: none;
+			position: fixed;
+			bottom: 20px;
+			right: 30px;
+			z-index: 99;
+			font-size: 18px;
+			border: none;
+			outline: none;
+			background-color: #AD1C1E;
+			color: white;
+			cursor: pointer;
+			padding: 15px;
+			border-radius: 80px;
+		}
+		
+		.glyphContainer {
+			/*background-color: #EEE;
+			border-width: 1px;
+			border-style: solid;
+			border-color: #aaaaaa;
+			border-radius: 5px;*/
+			width: 32px;
+			height: 32px;
+		}
 	</style>
 </head>
 
 <body>
-		<div class="header" style="background-image: url(../img/leavesbheader.jpg);">
-  <div class="jumbotron">
-    <h1 style="text-align:center;color:black;"><?php echo $firstname?> <span></span>
-			<?php echo $lastname?></h1>
-  </div>     
-</div>
+	<div class="header" style="background-image: url(../img/leavesbheader.jpg);">
+		<div class="jumbotron">
+			<h1 style="text-align:center;color:black;">
+				<?php echo $firstname?> <span></span>
+				<?php echo $lastname?>
+			</h1>
+		</div>
+	</div>
 
 	<div class="container" style="padding-top: 1px;">
 		<div class="row">
@@ -109,8 +122,8 @@ $image = $results[0]['imageLink'];
 					<img src="<?php echo $image ?>" class="avatar img-circle img-thumbnail" alt="avatar">
 					<h6>Upload a different photo...</h6>
 					<form action="../../control/upload_file.php" method="POST" enctype="multipart/form-data">
-					<input type="file" name="image" id="fileToUpload" size="50" class="text-center center-block well well-sm">
-						
+						<input type="file" name="image" id="fileToUpload" size="50" class="text-center center-block well well-sm">
+
 						<button type="submit" class="btn btn-primary" id="imageSubmit">Submit Image</button>
 					</form>
 				</div>
@@ -123,52 +136,101 @@ $image = $results[0]['imageLink'];
 	}
 }
 				?>
-				<form class="form-horizontal" role="form" method="post" id=action="../../control/memberprofile_updateprocess.php?id=<?php echo $_SESSION['userID'];?>">
+				<form class="form-horizontal" role="form" method="post" id="userInfoUpdate" action="../../control/memberprofile_updateprocess.php?id=<?php echo $_SESSION['userID'];?>">
 					<h4 style="text-align: right; margin-right: 70px;">Manage Your Profile.</h4>
 					<br>
 					<div class="form-group">
 						<label class="col-lg-3 control-label" id="firstname">First name</label>
-						<div class="col-lg-8">
-							<input class="form-control" value="<?php echo $firstname?>" type="text">
+						<div class="col-lg-7">
+							<input id="firstNameInput" class="form-control" value="<?php echo $firstname?>" type="text">
+							<div id="firstNameAlert" class="alert alert-danger" style="display: none;"></div>
+						</div>
+						<div class="col-lg-1">
+							<span class="glyphContainer" style="float: right;">
+								
+							</span>
+
+						
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-lg-3 control-label" id="lastname">Last name</label>
-						<div class="col-lg-8">
-							<input class="form-control" value="<?php echo $lastname?>" type="text">
+						<div class="col-lg-7">
+							<input id="lastNameInput" class="form-control" value="<?php echo $lastname?>" type="text">
+							<div id="lastNameAlert" class="alert alert-danger" style="display: none;"></div>
 						</div>
+						<div class="col-lg-1">
+							<span class="glyphContainer" style="float: right;">
+								
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+
+
 					</div>
 					<div class="form-group">
 						<label class="col-lg-3 control-label" id="email">Email</label>
-						<div class="col-lg-8">
-							<input class="form-control" style="background-color: white;" value="<?php echo $email?>" type="text">
+						<div class="col-lg-7">
+							<input id="emailInput" class="form-control" style="background-color: white;" align="left" type="text" placeholder="<?php echo $email?>" onchange="displayEmailError()" name="email" value="<?php echo $email?>">
 						</div>
+						<div class="col-lg-1">
+							<span class="glyphContainer" style="float: right;">
+								<div id="emailLoader" class="textloadercontainer" align="right">
+									<svg class="textloader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" width="30px">
+										<circle class="text" cx="170" cy="170" r="160" stroke="#E2007C"/>
+										<circle cx="170" cy="170" r="135" stroke="#404041"/>
+										<circle cx="170" cy="170" r="110" stroke="#E2007C"/>
+										<circle cx="170" cy="170" r="85" stroke="#404041"/>
+									</svg>
+								</div>
+							</span>
+						</div>
+
+
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label" id="password">Current Password</label>
-						<div class="col-md-8">
-							<input class="form-control" style="background-color: white;" value="<?php echo $password?>" type="password">
+						<div class="col-lg-7">
+							<input id="currentPasswordInput" class="form-control" placeholder="Input current password..." onchange="validateCurrentPassword()">
+						</div>
+						<div class="col-lg-1">
+							<span class="glyphContainer" style="float: right;">
+								<div id="passwordLoader" class="textloadercontainer" align="right">
+									<svg class="textloader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" width="30px">
+										<circle class="text" cx="170" cy="170" r="160" stroke="#E2007C"/>
+										<circle cx="170" cy="170" r="135" stroke="#404041"/>
+										<circle cx="170" cy="170" r="110" stroke="#E2007C"/>
+										<circle cx="170" cy="170" r="85" stroke="#404041"/>
+									</svg>
+								</div>
+							</span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label" id="newpassword">Update Password</label>
-						<div class="col-md-8">
-							<input class="form-control" value="" placeholder="new password..." type="text">
+						<div class="col-md-7">
+							<input id="passwordInput" class="form-control" value="" placeholder="new password..." type="text">
+						</div>
+						<div class="col-lg-1">
+							<span class="glyphContainer" style="float: right;">
+								
+							</span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 control-label"></label>
-						<div class="col-md-8">
-							<!--<input class="btn btn-primary" value="save changes" type="button" id="update userinfo" onClick="../../control/memberprofile_updateprocess.php">-->
-							<button class="btn btn-primary" value="submit" id="updateuserinfo"><a href="../../control/memberprofile_updateprocess.php"></a>Save</button>
-
-							<span></span>
-							<input class="btn btn-default" value="Cancel" type="reset">
-						</div>
-					</div>
-				</form>
+				<label class="col-md-3 control-label"></label>
+				<div class="col-md-8">
+					<button class="btn btn-primary" value="submit" id="updateuserinfo">Save</button>
+					<span></span>
+					<input class="btn btn-default" value="Reset" type="reset">
+				</div>
 			</div>
+			</div>
+			
+			</form>
 		</div>
+	</div>
 	</div>
 
 	<div class="container" style="text-align: center;">
@@ -205,25 +267,28 @@ $image = $results[0]['imageLink'];
 	</div>
 	<br>
 	<?php include('footer.php');?>
-	 <button onclick="topFunction()" id="myBtn" title="Go to top">Scroll Up</button>
-      <script>
-      // When the user scrolls down 20px from the top of the document, show the button
-      window.onscroll = function() {scrollFunction()};
-      
-      function scrollFunction() {
-          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-              document.getElementById("myBtn").style.display = "block";
-          } else {
-              document.getElementById("myBtn").style.display = "none";
-          }
-      }
-      
-      // When the user clicks on the button, scroll to the top of the document
-      function topFunction() {
-          document.body.scrollTop = 0;
-          document.documentElement.scrollTop = 0;
-      }
-      </script>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Scroll Up</button>
+<script src="../javascript/FormValidation.js" type="text/javascript"></script>
+	<script>
+		// When the user scrolls down 20px from the top of the document, show the button
+		window.onscroll = function () {
+			scrollFunction()
+		};
+
+		function scrollFunction() {
+			if ( document.body.scrollTop > 20 || document.documentElement.scrollTop > 20 ) {
+				document.getElementById( "myBtn" ).style.display = "block";
+			} else {
+				document.getElementById( "myBtn" ).style.display = "none";
+			}
+		}
+
+		// When the user clicks on the button, scroll to the top of the document
+		function topFunction() {
+			document.body.scrollTop = 0;
+			document.documentElement.scrollTop = 0;
+		}
+	</script>
 </body>
 
 </html>

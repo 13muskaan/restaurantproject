@@ -14,15 +14,17 @@ if (isset($_GET['imageLink'])) {
 
 try {
 
-	$sql = "UPDATE users SET firstname=:firstname, lastname=:lastname, email=:email, newpassword=:newpassword WHERE memberID=" . $_SESSION['userID'];
+	$sql = "UPDATE users SET firstname=:firstname, lastname=:lastname, email=:email, password=:newpassword WHERE userID=" . $_SESSION['userID'];
 	
-	//sql = "UPDATE users SET firstname=:firstname, lastnamne=:lastname, email=:email,  newpassword=:new
-
     // Prepare statement
+	$stmt->prepare($sql);
+	
+	// Sanitise inputs
 	$stmt->bindParam( ':firstname', $_POST[ 'firstname' ], PDO::PARAM_STR );
 	$stmt->bindParam( ':lastname', $_POST[ 'lastname' ], PDO::PARAM_STR );
 	$stmt->bindParam( ':email', $_POST[ 'email' ], PDO::PARAM_STR );
 	$stmt->bindParam( ':newpassword', $_POST[ 'newpassword' ], PDO::PARAM_STR );
+	
     // execute the query
     $stmt->execute();
 

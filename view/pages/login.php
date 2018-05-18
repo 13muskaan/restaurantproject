@@ -8,42 +8,45 @@
 	<style>
 		body {
 			font-family: Arial, Helvetica, sans-serif;
+			text-align: center;
 		}
 		
 		form {
-			border: 3px solid #f1f1f1;
+			border: 3px solid black;
 		}
 		
 		input[type=text],
 		input[type=password] {
-			width: 100%;
+			/*width: 100%; original */
+			width: 30%;
 			padding: 12px 20px;
 			margin: 8px 0;
 			display: inline-block;
 			border: 1px solid #ccc;
 			box-sizing: border-box;
+			text-align: center;
 		}
 		
 		button {
-			background-color: #4CAF50;
+			background-color: #D93033;
 			color: white;
 			padding: 14px 20px;
 			margin: 8px 0;
 			border: none;
 			cursor: pointer;
-			width: 100%;
+			width: 10%;
+			border-radius: 25px;
 		}
 		
 		button:hover {
 			opacity: 0.8;
+		}	
+.
+		.container {
+			width: 20%;
+			padding: 16px;
 		}
-		
-		.cancelbtn {
-			width: auto;
-			padding: 10px 18px;
-			background-color: #f44336;
-		}
-		
+				
 		.imgcontainer {
 			text-align: center;
 			margin: 24px 0 12px 0;
@@ -52,10 +55,6 @@
 		img.avatar {
 			width: 40%;
 			border-radius: 50%;
-		}
-		
-		.container {
-			padding: 16px;
 		}
 		
 		span.psw {
@@ -69,16 +68,12 @@
 				display: block;
 				float: none;
 			}
-			.cancelbtn {
-				width: 100%;
-			}
-		}
 	</style>
 </head>
 <br> <br>
-<body style="text-align: center">
+<body>
 	<h2>Login</h2>
-	<p> Welcome Back! Please fill in your user cresidentials to continue.</p>
+	<p> Welcome Back! Please fill in your user cresidentials.</p>
 	<?php
 	if ( in_Array( 'LoginMsg', $_POST ) ) {
 		echo $_POST[ 'LoginMsg' ];
@@ -99,20 +94,19 @@
 		</svg>
 
 	</div>
-	<div id="form" width="0px;">
+	<div id="form">
 		<form action="../../control/login_process.php" method="post" id="login_form">
 
-			<div class="container" align="center">
+<div class="container" align="center">
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="text-center">
-						<img src="<?php echo $image ?>" class="avatar img-circle img-thumbnail" alt="avatar">
+						<img src="<?php echo $image ['$_SESSION']?>" class="avatar img-circle img-thumbnail" alt="avatar">
 
 					</div>
-				</div>
-				<br><br>
+				</div
+				<br><br><br>
 				<label for="email"><b>Email</b></label>
 				<input type="text" placeholder="Enter Email" name="email" value="<?php if (isset($email)) {echo $email;}?>" required>
-
 				<label for="psw"><b>Password</b></label>
 				<input type="password" placeholder="Enter Password" name="psw" required>
 

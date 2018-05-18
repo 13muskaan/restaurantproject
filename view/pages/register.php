@@ -122,16 +122,26 @@
 
 		<form id="register_form">
 			<h1>Registration Form</h1>
-			<!-- One "tab" for each step in the form: -->
-				<!--Please upload a Display Image.
-		<input type="file" name="fileToUpload" id="fileToUpload" size="50" onChange="displayImageError()"><br>
-			<div id="imageAlert" class="alert alert-danger" style="display: none;"></div>-->
 			<div>Name
-				<p><input id="firstNameInput" placeholder="First name..." oninput="displayFirstNameError()" name="firstname">
+				<p>
+					<div class="input-group">
+						<input id="firstNameInput" placeholder="First name..." oninput="displayFirstNameError()" name="firstname">
+						<span class="input-group-addon">
+							<span id="firstNameGlyph" class="glyphicon glyphicon-minus"></span>
+					
+						</span>
+					</div>
 				</p>
 				<div id="firstNameAlert" class="alert alert-danger" style="display: none;"></div>
 
-				<p><input id="lastNameInput" placeholder="Last name..." oninput="displayLastNameError()" name="lastname">
+				<p>
+					<div class="input-group">
+						<input id="lastNameInput" placeholder="Last name..." oninput="displayLastNameError()" name="lastname">
+						<span class="input-group-addon">
+							<span id="lastNameGlyph" class="glyphicon glyphicon-minus"></span>
+					
+						</span>
+					</div>
 				</p>
 				<div id="lastNameAlert" class="alert alert-danger" style="display: none;"></div>
 
@@ -143,14 +153,17 @@
 
 						<input id="emailInput" placeholder="Email..." onchange="displayEmailError()" name="email">
 						<span class="input-group-addon">
-							<div id="emailLoader" class="textloadercontainer" align="right">
-								<svg class="textloader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" width="30px">
-									<circle class="text" cx="170" cy="170" r="160" stroke="#E2007C"/>
-									<circle cx="170" cy="170" r="135" stroke="#404041"/>
-									<circle cx="170" cy="170" r="110" stroke="#E2007C"/>
-									<circle cx="170" cy="170" r="85" stroke="#404041"/>
-								</svg>
-							</div>
+							<span id= "emailGlyph" class="glyphicon glyphicon-minus"></span>
+					
+
+						<div id="emailLoader" class="textloadercontainer" align="right" style="display: none;">
+							<svg class="textloader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" width="30px">
+								<circle class="text" cx="170" cy="170" r="160" stroke="#E2007C"/>
+								<circle cx="170" cy="170" r="135" stroke="#404041"/>
+								<circle cx="170" cy="170" r="110" stroke="#E2007C"/>
+								<circle cx="170" cy="170" r="85" stroke="#404041"/>
+							</svg>
+						</div>
 						</span>
 					</div>
 
@@ -163,7 +176,13 @@
 
 				<div id="emailAlert" class="alert alert-danger" style="display: none;"></div>
 
-				<p><input id="passwordInput" placeholder="Password..." type="password" oninput="displayPasswordError()" name="password" required>
+				<p>
+					<div class="input-group"><input id="passwordInput" placeholder="Password..." type="password" oninput="displayPasswordError()" name="password" required>
+						<span class="input-group-addon">
+							<span id="passwordGlyph" class="glyphicon glyphicon-minus"></span>
+					
+						</span>
+					</div>
 				</p>
 
 				<div id="passwordAlert" class="alert alert-danger" style="display: none;"></div>
@@ -172,24 +191,13 @@
 			<p></p>
 		</form>
 
-		<div style="overflow:auto;">
-				<div id="container" style="float:none">
-					<div style="float: left"><input id="firstNameCheck" type="checkbox" class="checkerBox" disabled>First Name</input>
-					</div>
-					<div style="float: left"><input id="lastNameCheck" type="checkbox" class="checkerBox" disabled>Last Name</input>
-					</div>
-					<div style="float: left"><input id="eMailCheck" type="checkbox" class="checkerBox" disabled>eMail</input>
-					</div>
-					<div style="float: left"><input id="passwordCheck" type="checkbox" class="checkerBox" disabled>Password</input>
-					</div>
-				</div>
-				<div style="float:right; display: inline-block">
 
-					<button id="submitButton" type="submit" onClick="submitData()" disabled>Submit</button>
+		<div style="float:right; display: inline-block; padding: 10px;">
 
-				</div>
-			</div>
-		
+			<button id="submitButton" type="submit" onClick="submitData()" disabled>Submit</button>
+
+		</div>
+
 		<br>
 		<!-- Single line buffer -->
 	</div>
