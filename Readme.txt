@@ -45,4 +45,3 @@ ISSUES:
 - Contact page will include an Google Maps API and restaurant information.
 - Session file needs to be created to store user's session data to the database. 
 - Update User Info is empty for members. Used for members update their information e.g. password (name could be change to profile in future)
-- Image and URLs of users is not done yet. 
