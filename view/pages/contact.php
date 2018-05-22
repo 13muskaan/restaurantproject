@@ -44,10 +44,9 @@
 <body>
 	<div class="header">
   <div class="jumbotron">
-    <h1 style="text-align:center;background-image: url(../img/headermap1.jpeg);">Contact Us</h1>
+    <h1 style="text-align:center;">Contact Us</h1>
   </div>     
 </div>
-
 	<div class="container" style="width:60%">
 		<h2 style="text-align:center;"> Locate us.</h2>
 		<div class="form-group">

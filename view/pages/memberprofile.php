@@ -107,7 +107,6 @@
     <body>
         <div class="header" style="background-color:white;">
             <div class="jumbotron">
-             <h1 class="display-1">Display 1</h1>
                 <h1 style="text-align:center;color:black;text-decoration: underline;font-weight: normal;">
                     <?php echo $firstname?> <span></span>
                     <?php echo $lastname?>
