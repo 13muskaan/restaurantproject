@@ -44,11 +44,12 @@ function CheckDate() {
 		success: function (res) {
 			EnableTimes(res);
 		},
-		error: function (a, b, c) {
+		error: function (a, b, c, d) {
 			console.log("FAILED");
 			console.log(a.status);
 			console.log(b.toString());
 			console.log(c.toString());
+			console.log(d);
 		}
 	}); //End AJAX	
 }

@@ -24,7 +24,7 @@ var glyphColors = ["#555", "#00aa00","#aa0000"];
 var inputBackgroundColors = ["#ffffff","#ccffcc","#ffcccc"];
 var inputBorderColors = ["#000", "#55aa55", "#cc5555"];
 
-var submitButtonColors = ["#999999", "#ff0000", "#999999"]
+var submitButtonColors = ["#999999", "#ff0000", "#999999"];
 
 var empty = 0;
 var valid = 1;

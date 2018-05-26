@@ -35,8 +35,9 @@ function DateCorrect( $date, & $dateFormatted, & $error ) {
 	return true;
 }
 
-include( '../model/dbconnection.php' );
 session_start();
+include( '../model/dbconnection.php' );
+
 
 $_SESSION[ 'error' ] = '';
 

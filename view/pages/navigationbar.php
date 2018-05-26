@@ -1,13 +1,18 @@
 <!doctype html>
 <?php include('header.php');
 
-if ( !isset($_SESSION[ 'user_type' ]) || ( $_SESSION[ 'user_type' ] == 'anon' || $_SESSION[ 'user_type' ] == 'member' ) ) {
-	$indexLink = 'index.php';
-} else if ( $_SESSION[ 'user_type' ] == 'admin' ) { //once index is compressed remove if section
-	$indexLink = 'index_admin.php'; //once index is compressed --- $indexLink = '../view/pages/index.php';
+if ( !isset($_SESSION[ 'user_type' ]) || ( $_SESSION[ 'user_type' ] == 0 || $_SESSION[ 'user_type' ] == 1 ) ) {
+	$indexLink = '../pages/index.php';
+	
+} else if ( $_SESSION[ 'user_type' ] == 3 ) { //once index is compressed remove if section
+	$indexLink = '/index_admin.php'; //once index is compressed --- $indexLink = '../view/pages/index.php';
+	$indexLink = "../" . $usertype['usertypename'] . $indexLink;
 } else { //Once index is compressed remove this section
-	$indexLink = 'index_manager.php';
+	$indexLink = '/index_manager.php';
+	$indexLink = "../" . $usertype['usertypename'] . $indexLink;
 }
+
+
 ?>
 <head> 
 <style> 
@@ -22,38 +27,38 @@ if ( !isset($_SESSION[ 'user_type' ]) || ( $_SESSION[ 'user_type' ] == 'anon' ||
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href=<?php echo $indexLink; ?>><img src="../img/mybanyantreelogonavbar.png" style=" height: 100px; width: auto;"> <span style="display: inline-block;"</span></a>
+				<a class="navbar-brand" style="padding-top: 5px; padding-left: 5px;" href=<?php echo $indexLink; ?>><img src="../img/mybanyantreelogonavbar.png" style=" height: 40px; width: auto; border-radius: 5px;"> <span style="display: inline-block;"</span></a>
 			</div>
 			<?php 
-			if (!isset($_SESSION['user_type']) || ($_SESSION['user_type'] == 'anon' || $_SESSION['user_type'] == 'member'))  {
+			if (!isset($_SESSION['user_type']) || ($_SESSION['user_type'] == 0 || $_SESSION['user_type'] == 1))  {
 			echo '<ul class="nav navbar-nav">
-				<li class="active"><a href="menu.php">Menu</a>
+				<li class="active"><a href="../pages/menu.php">Menu</a>
 				</li>
-				<li class="active"><a href="function.php">Function</a>
+				<li class="active"><a href="../pages/function.php">Function</a>
 				</li>
-				<li class="active"><a href="review.php">Review</a>
+				<li class="active"><a href="../pages/review.php">Review</a>
 				</li>
-				<li class="active"><a href="contact.php">Contact</a>
+				<li class="active"><a href="../pages/contact.php">Contact</a>
 				</li>
-				<li class="active"><a href="reservation.php">Reservation</a>
+				<li class="active"><a href="../pages/reservation.php">Reservation</a>
 				</li>
 				
 			</ul>';
-			} else if ($_SESSION['user_type'] == 'manager') {
+			} else if ($_SESSION['user_type'] == 2) {
 					echo '<ul class="nav navbar-nav">
-				<li class="active"><a href="reservation_manage.php">Reservation Manage</a>
+				<li class="active"><a href="../manager/reservation_manage.php">Reservation Manage</a>
 				</li>
 			</ul>';
 				
-			} else if ($_SESSION['user_type'] == 'admin') {
+			} else if ($_SESSION['user_type'] == 3) {
 				echo '<ul class="nav navbar-nav">
-				<li class="active"><a href="function_manage.php">Function Manage</a>
+				<li class="active"><a href="../admin/function_manage.php">Function Manage</a>
 				</li>
-				<li class="active"><a href="menuitem_manage.php">Menuitem Manage</a>
+				<li class="active"><a href="../admin/menuitem_manage.php">Menuitem Manage</a>
 				</li>
-				<li class="active"><a href="user_manage.php">User Manage</a>
+				<li class="active"><a href="../admin/user_manage.php">User Manage</a>
 				</li>
-				<li class="active"><a href="review_manage.php">Review Manage</a>
+				<li class="active"><a href="../admin/review_manage.php">Review Manage</a>
 				</li>
 			</ul>';
 				
@@ -61,14 +66,14 @@ if ( !isset($_SESSION[ 'user_type' ]) || ( $_SESSION[ 'user_type' ] == 'anon' ||
 			?>
 			<ul class="nav navbar-nav navbar-right" style="align-content: center padding:10%" ;>
 				<?php
-				if ( !isset( $_SESSION[ 'user_type' ] ) || $_SESSION[ 'user_type' ] == 'anon' ) {
+				if ( !isset( $_SESSION[ 'user_type' ] ) || $_SESSION[ 'user_type' ] == 0 ) {
 					echo '<li class="active"><a href="register.php">Register</a> </li>
 							<li class="active"><a href="login.php">Login</a> </li>';
 
 				} else {
 
-					if ( $_SESSION[ 'user_type' ] != 'member' ) {
-						echo '<li class="active"><a href="memberprofile.php">Profile</a>
+					if ( $_SESSION[ 'user_type' ] != 1 ) {
+						echo '<li class="active"><a href="../pages/memberprofile.php">Profile</a>
 				</li>';
 						echo '<li class="active"><a href="../pages/logout.php">Logout</a></li>';
 					} else {

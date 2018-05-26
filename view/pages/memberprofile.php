@@ -1,26 +1,26 @@
-<?php
-include( 'navigationbar.php' );
-?>
-<?php
+	<?php
+	include( 'navigationbar.php' );
+	?>
+	<?php
 
-//$contentquery = "SELECT * FROM member WHERE memberID:id";
-$contentquery = "SELECT * FROM users WHERE userID=:id";
-$stmt = $conn->prepare( $contentquery );
-$stmt->bindParam( ':id', $_SESSION[ 'userID' ], PDO::PARAM_INT );
+	//$contentquery = "SELECT * FROM member WHERE memberID:id";
+	$contentquery = "SELECT * FROM users WHERE userID=:id";
+	$stmt = $conn->prepare( $contentquery );
+	$stmt->bindParam( ':id', $_SESSION[ 'userID' ], PDO::PARAM_INT );
 
-$stmt->execute();
-$results = $stmt->fetchAll();
+	$stmt->execute();
+	$results = $stmt->fetchAll();
 
-$firstname = $results[ 0 ][ 'firstname' ];
-$lastname = $results[ 0 ][ 'lastname' ];
-$email = $results[ 0 ][ 'email' ];
-$password = $results[ 0 ][ 'password' ];
-$image = $results[ 0 ][ 'imageLink' ];
+	$firstname = $results[ 0 ][ 'firstname' ];
+	$lastname = $results[ 0 ][ 'lastname' ];
+	$email = $results[ 0 ][ 'email' ];
+	$password = $results[ 0 ][ 'password' ];
+	$image = $results[ 0 ][ 'imageLink' ];
 
-?>
+	?>
 
 <!doctype html>
-<html>
+<html lang="eng">
 
 <head>
 	<title>MY BANYAN TREE | PROFILE</title>
@@ -94,10 +94,10 @@ $image = $results[ 0 ][ 'imageLink' ];
 		
 		.glyphContainer {
 			/*background-color: #EEE;
-			border-width: 1px;
-			border-style: solid;
-			border-color: #aaaaaa;
-			border-radius: 5px;*/
+                border-width: 1px;
+                border-style: solid;
+                border-color: #aaaaaa;
+                border-radius: 5px;*/
 			width: 32px;
 			height: 32px;
 		}
@@ -105,9 +105,9 @@ $image = $results[ 0 ][ 'imageLink' ];
 </head>
 
 <body>
-	<div class="header" style="background-image: url(../img/leavesbheader.jpg);">
+	<div class="header" style="background-color:white;">
 		<div class="jumbotron">
-			<h1 style="text-align:center;color:black;">
+			<h1 style="text-align:center;color:black;text-decoration: underline;font-weight: normal;">
 				<?php echo $firstname?> <span></span>
 				<?php echo $lastname?>
 			</h1>
@@ -116,7 +116,7 @@ $image = $results[ 0 ][ 'imageLink' ];
 
 	<div class="container" style="padding-top: 1px;">
 		<div class="row">
-			<!-- left column -->
+			<!-- display picture and upload/insert profile image form -->
 			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="text-center">
 					<img src="<?php echo $image ?>" class="avatar img-circle img-thumbnail" alt="avatar">
@@ -131,108 +131,130 @@ $image = $results[ 0 ][ 'imageLink' ];
 			<!-- edit form column -->
 			<div class="col-md-8 col-sm-6 col-xs-12 personal-info">
 				<?php if (isset ($_SESSION ['error'])){
-	if ($_SESSION['error'] != ""){
-		echo 'div class="alert alert-danger"<strong>ERROR:</strong>' . $_SESSION['error'] . '</div>';
-	}
-}
-				?>
+        if ($_SESSION['error'] != ""){
+            echo '<div class="alert alert-danger"><strong>ERROR:</strong>' . $_SESSION['error'] . '</div>';
+			$_SESSION['error'] = "";
+        }
+    }
+                    ?>
 				<form class="form-horizontal" role="form" method="post" id="userInfoUpdate" action="../../control/memberprofile_updateprocess.php?id=<?php echo $_SESSION['userID'];?>">
 					<h4 style="text-align: right; margin-right: 70px;">Manage Your Profile.</h4>
 					<br>
+					<!--Firstname div-->
 					<div class="form-group">
-						<label class="col-lg-3 control-label" id="firstname">First name</label>
-						<div class="col-lg-7">
-							<input id="firstNameInput" class="form-control" value="<?php echo $firstname?>" type="text">
+						<label class="col-lg-3 control-label" placeholder "Firstname...">First name</label>
+						<div class="col-lg-8">
+							<div class="input-group">
+								<input id="firstNameInput" class="form-control" oninput="displayFirstnameError()" name="firstname" value="<?php echo $firstname?>" type="text">
+								<span class="input-group-addon">
+                                <span id="firstNameGlyph" class="glyphicon glyphicon-minus"></span>
+							
+
+								</span>
+							</div>
 							<div id="firstNameAlert" class="alert alert-danger" style="display: none;"></div>
 						</div>
-						<div class="col-lg-1">
-							<span class="glyphContainer" style="float: right;">
-								
-							</span>
-
-						
-						</div>
 					</div>
+					<!-- Error div-->
+					<div id="firstNameAlert" class="alert alert-danger" style="display: none;"></div>
+					<!--Lastname div-->
 					<div class="form-group">
-						<label class="col-lg-3 control-label" id="lastname">Last name</label>
-						<div class="col-lg-7">
-							<input id="lastNameInput" class="form-control" value="<?php echo $lastname?>" type="text">
+						<label class="col-lg-3 control-label" inputid="lastname" placeholder="Lastname...">Last name</label>
+						<div class="col-lg-8">
+							<div class="input-group">
+								<input id="lastNameInput" class="form-control" oninput="displayLastNameError()" name="lastname" value="<?php echo $lastname?>" type="text">
+								<span class="input-group-addon">
+                              <span id="lastNameGlyph" class="glyphicon glyphicon-minus"></span>
+							
+								</span>
+							</div>
 							<div id="lastNameAlert" class="alert alert-danger" style="display: none;"></div>
 						</div>
-						<div class="col-lg-1">
-							<span class="glyphContainer" style="float: right;">
-								
-							</span>
-						</div>
 					</div>
+					<!-- Email div-->
 					<div class="form-group">
+						<label class="col-lg-3 control-label" id="email" placeholder "Email..">Email</label>
+						<div class="col-lg-8">
+							<div class="input-group">
+								<input id="emailInput" class="form-control" style="background-color: white;" align="left" type="text" placeholder="<?php echo $email?>" onchange="displayEmailError()" name="email" value="<?php echo $email?>">
 
-
-					</div>
-					<div class="form-group">
-						<label class="col-lg-3 control-label" id="email">Email</label>
-						<div class="col-lg-7">
-							<input id="emailInput" class="form-control" style="background-color: white;" align="left" type="text" placeholder="<?php echo $email?>" onchange="displayEmailError()" name="email" value="<?php echo $email?>">
-						</div>
-						<div class="col-lg-1">
-							<span class="glyphContainer" style="float: right;">
+								<span class="input-group-addon">
+                              <span id= "emailGlyph" class="glyphicon glyphicon-minus"></span>
 								<div id="emailLoader" class="textloadercontainer" align="right">
-									<svg class="textloader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" width="30px">
+									<svg class="textloader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" width="20px">
 										<circle class="text" cx="170" cy="170" r="160" stroke="#E2007C"/>
 										<circle cx="170" cy="170" r="135" stroke="#404041"/>
 										<circle cx="170" cy="170" r="110" stroke="#E2007C"/>
 										<circle cx="170" cy="170" r="85" stroke="#404041"/>
 									</svg>
 								</div>
-							</span>
+								</span>
+							</div>
+							<div id="emailAlert" class="alert alert-danger" style="display: none;"></div>
 						</div>
-
-
 					</div>
+
+					<!--Current Password div-->
 					<div class="form-group">
 						<label class="col-md-3 control-label" id="password">Current Password</label>
-						<div class="col-lg-7">
-							<input id="currentPasswordInput" class="form-control" placeholder="Input current password..." onchange="validateCurrentPassword()">
-						</div>
-						<div class="col-lg-1">
-							<span class="glyphContainer" style="float: right;">
+						<div class="col-lg-8">
+							<div class="input-group">
+								<input id="currentPasswordInput" class="form-control" placeholder="Current password..." onchange="validateCurrentPassword()">
+								<span class="input-group-addon">
+										<span id="currentPasswordGlyph" class="glyphicon glyphicon-minus"></span>
+							
 								<div id="passwordLoader" class="textloadercontainer" align="right">
-									<svg class="textloader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" width="30px">
+									<svg class="textloader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" width="20px">
 										<circle class="text" cx="170" cy="170" r="160" stroke="#E2007C"/>
 										<circle cx="170" cy="170" r="135" stroke="#404041"/>
 										<circle cx="170" cy="170" r="110" stroke="#E2007C"/>
 										<circle cx="170" cy="170" r="85" stroke="#404041"/>
 									</svg>
 								</div>
-							</span>
+								</span>
+
+							</div>
+							<div id="currentPasswordAlert" class="alert alert-danger" style="display: none;"></div>
+						</div>
+
+					</div>
+					<!--Error div-->
+
+					<!--Update Password div-->
+					<div class="form-group">
+						<label class="col-lg-3 control-label" inputid="newPasswordInput">Change Password</label>
+						<div class="col-lg-8">
+							<div class="input-group">
+								<input id="newPasswordInput" class="form-control" oninput="displayFirstnameError()" name="firstname" placeholder="(OPTIONAL) Insert new password..." type="password">
+								<span class="input-group-addon">
+                                <span id="newPasswordGlyph" class="glyphicon glyphicon-minus"></span>
+							
+
+								</span>
+							</div>
+							<div id="newPasswordAlert" class="alert alert-danger" style="display: none;"></div>
 						</div>
 					</div>
+
+
+					<!--Error div-->
+
+					<!-- Form buttons-->
 					<div class="form-group">
-						<label class="col-md-3 control-label" id="newpassword">Update Password</label>
-						<div class="col-md-7">
-							<input id="passwordInput" class="form-control" value="" placeholder="new password..." type="text">
-						</div>
-						<div class="col-lg-1">
-							<span class="glyphContainer" style="float: right;">
-								
-							</span>
+						<label class="col-md-3 control-label"></label>
+						<div class="col-md-8">
+							<button class="btn btn-primary" value="submit" id="updateuserinfo">Save</button>
+							<span></span>
+							<input class="btn btn-default" value="Reset" type="reset">
 						</div>
 					</div>
-					<div class="form-group">
-				<label class="col-md-3 control-label"></label>
-				<div class="col-md-8">
-					<button class="btn btn-primary" value="submit" id="updateuserinfo">Save</button>
-					<span></span>
-					<input class="btn btn-default" value="Reset" type="reset">
-				</div>
 			</div>
-			</div>
-			
+
 			</form>
 		</div>
 	</div>
 	</div>
-
+	<!-- Reservation table-->
 	<div class="container" style="text-align: center;">
 		<h4 style="text-align: right; margin-right: 70px;"> Your Reservations.</h4>
 		<table class="table table-hover">
@@ -248,19 +270,19 @@ $image = $results[ 0 ][ 'imageLink' ];
 			</thead>
 			<tbody>
 				<?php 
-		$contentquery = "SELECT reservation.reservationID, functions.functiontype, reservation.date, reservation.time , reservation.guestno , reservation.comment  FROM reservation INNER JOIN functions ON reservation.functionID = functions.functionID WHERE date >= CURRENT_DATE AND memberID = ". $_SESSION["userID"];
-			$stmt = $conn->prepare( $contentquery );
-	$stmt->execute();
-	$staticresult = $stmt->fetchAll( PDO::FETCH_ASSOC );
-	//echo '<div id="contentgroup">';
-	foreach ( $staticresult as $row ) {
-		echo '<tr>', '<td>', $row[ 'reservationID' ], '</td>';
-		echo '<td>', $row['functiontype'], '</td>';
-	echo '<td>', $row['date'], '</td>';
-		echo '<td>', $row['time'], '</td>';
-		echo '<td>', $row['guestno'], '</td>';
-		echo '<td>', $row['comment'], '</td>';}
-		?>
+            $contentquery = "SELECT reservation.reservationID, functions.functiontype, reservation.date, reservation.time , reservation.guestno , reservation.comment  FROM reservation INNER JOIN functions ON reservation.functionID = functions.functionID WHERE date >= CURRENT_DATE AND memberID = ". $_SESSION["userID"];
+                $stmt = $conn->prepare( $contentquery );
+        $stmt->execute();
+        $staticresult = $stmt->fetchAll( PDO::FETCH_ASSOC );
+        //echo '<div id="contentgroup">';
+        foreach ( $staticresult as $row ) {
+            echo '<tr>', '<td>', $row[ 'reservationID' ], '</td>';
+            echo '<td>', $row['functiontype'], '</td>';
+        echo '<td>', $row['date'], '</td>';
+            echo '<td>', $row['time'], '</td>';
+            echo '<td>', $row['guestno'], '</td>';
+            echo '<td>', $row['comment'], '</td>';}
+            ?>
 			</tbody>
 		</table>
 	</div>
@@ -268,8 +290,9 @@ $image = $results[ 0 ][ 'imageLink' ];
 	<br>
 	<?php include('footer.php');?>
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Scroll Up</button>
-<script src="../javascript/FormValidation.js" type="text/javascript"></script>
+	<script src="../javascript/FormValidation.js" type="text/javascript"></script>
 	<script>
+		/* Code for button to scroll up*/
 		// When the user scrolls down 20px from the top of the document, show the button
 		window.onscroll = function () {
 			scrollFunction()
@@ -290,5 +313,6 @@ $image = $results[ 0 ][ 'imageLink' ];
 		}
 	</script>
 </body>
+<script src="../javascript/FormValidation.js" type="text/javascript"></script>
 
 </html>

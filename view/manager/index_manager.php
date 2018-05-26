@@ -4,7 +4,7 @@ include( '../pages/navigationbar.php' );
 <?php
 
 //$contentquery = "SELECT * FROM member WHERE memberID:id";
-$contentquery = "SELECT * FROM manager WHERE managerID=:id";
+$contentquery = "SELECT * FROM users WHERE userID=:id";
 $stmt = $conn->prepare( $contentquery );
 $stmt->bindParam( ':id', $_SESSION[ 'userID' ], PDO::PARAM_INT );
 

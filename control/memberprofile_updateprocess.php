@@ -1,7 +1,6 @@
 <?php
-
+session_start();
 include('../model/dbconnection.php');
-include('session.php');
 
 if (isset($_GET['imageLink'])) {
 	$sql = "UPDATE users SET imageLink=:imageLink WHERE userID=".$_SESSION['userID'];
@@ -17,13 +16,15 @@ try {
 	$sql = "UPDATE users SET firstname=:firstname, lastname=:lastname, email=:email, password=:newpassword WHERE userID=" . $_SESSION['userID'];
 	
     // Prepare statement
-	$stmt->prepare($sql);
+	$stmt = $conn->prepare($sql);
+	
+	$pass = password_hash($_POST[ 'newpassword' ], PASSWORD_BCRYPT);
 	
 	// Sanitise inputs
 	$stmt->bindParam( ':firstname', $_POST[ 'firstname' ], PDO::PARAM_STR );
 	$stmt->bindParam( ':lastname', $_POST[ 'lastname' ], PDO::PARAM_STR );
 	$stmt->bindParam( ':email', $_POST[ 'email' ], PDO::PARAM_STR );
-	$stmt->bindParam( ':newpassword', $_POST[ 'newpassword' ], PDO::PARAM_STR );
+	$stmt->bindParam( ':newpassword', $pass , PDO::PARAM_STR );
 	
     // execute the query
     $stmt->execute();

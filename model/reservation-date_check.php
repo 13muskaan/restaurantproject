@@ -1,6 +1,7 @@
 <?php
 header( 'Content-Type: application/json' );
 
+session_start();
 include( 'dbconnection.php' );
 
 $contentquery = "SELECT time FROM reservation WHERE date=\"" . $_GET[ 'date' ] ."\"";

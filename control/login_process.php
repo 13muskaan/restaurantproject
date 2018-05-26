@@ -1,6 +1,6 @@
-<?php include('../model/dbconnection.php');	?>
+<?php session_start();
+include('../model/dbconnection.php');	?>
 <?php
-session_start();
 
 $_SESSION[ 'error' ] = '';
 
@@ -8,21 +8,24 @@ $email = $_POST[ 'email' ];
 $pass = $_POST[ "psw" ];
 $msg = "";
 
-$memberSql = "SELECT * FROM users WHERE email=:email AND password=:pass;";
+$memberSql = "SELECT * FROM users WHERE email=:email";
 $stmt = $conn->prepare( $memberSql );
 $stmt->bindParam( ':email', $email, PDO::PARAM_STR );
-$stmt->bindParam( ':pass', $pass, PDO::PARAM_STR );
 
 $stmt->execute();
 
 $valid = false;
 
+
 if ( $stmt->rowCount() >= 1 ) {
-	$valid = true;
+	$result = $stmt->fetchAll();
+	
+	if (password_verify($pass, $result[0]['password'])) {
+		$valid = true;
 	$_SESSION[ 'login_time' ] = time();
 	$_SESSION[ 'message' ] = 'Login successful!';
 
-	$result = $stmt->fetchAll();
+	
 	$_SESSION[ 'user_type' ] = $result[0]['userType'];
 	
 	$_SESSION['userID'] = $result[ 0 ][ 'userID' ];
@@ -40,6 +43,9 @@ if ( $stmt->rowCount() >= 1 ) {
 	header( "location: ../view/pages/index.php" );
 	}
 	}
+	}
+	
+	
 }
 
 if ( !$valid ) {

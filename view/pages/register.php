@@ -121,19 +121,19 @@
 		</div>
 
 		<form id="register_form">
-			<h1>Registration Form</h1>
-			<div>Name
+			<h1>Register</h1>
+            <p style="text-align:center;"> Please fill in your details, to create an account. <br><strong> Note* your email will be your username</strong></p>
+			<div>
+            <p style="text-align:right">Your first & last name.</p>
 				<p>
 					<div class="input-group">
 						<input id="firstNameInput" placeholder="First name..." oninput="displayFirstNameError()" name="firstname">
 						<span class="input-group-addon">
 							<span id="firstNameGlyph" class="glyphicon glyphicon-minus"></span>
-					
 						</span>
 					</div>
 				</p>
 				<div id="firstNameAlert" class="alert alert-danger" style="display: none;"></div>
-
 				<p>
 					<div class="input-group">
 						<input id="lastNameInput" placeholder="Last name..." oninput="displayLastNameError()" name="lastname">
@@ -144,10 +144,7 @@
 					</div>
 				</p>
 				<div id="lastNameAlert" class="alert alert-danger" style="display: none;"></div>
-
-				Email & Password (*note email will be your username)
-
-
+				<p style="text-align:right"> Your email & password. </p>
 				<div class="form-group">
 					<div class="input-group">
 

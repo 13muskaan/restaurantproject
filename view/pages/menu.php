@@ -2,9 +2,15 @@
 
 
 <title>MY BANYAN TREE | MENU</title>
-	<div class="header">
+<style>
+body{
+	background-image:url(../img/creame.jpg)
+}
+</style>
+<body>
+	<div class="header" style="background-image:url(../img/creame.jpg);">
   <div class="jumbotron">
-    <h1 style="text-align:center;background-image: url(../img/headermap1.jpeg)">Menu</h1>
+    <h1 style="text-align:center;)">Menu</h1>
   </div>     
 </div>
 

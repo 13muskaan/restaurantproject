@@ -76,10 +76,7 @@
 		</script>
 		<?php
 		// inlude database connection & session files here.
-		
-				include('../../model/dbconnection.php');
 				include('../../control/session.php');	
-			
 			?>
 		<!-- 3rd party (BOOTSTRAP)-->
 		<!-- index.php & login.php & navigatiobar.php>&register.php-->
