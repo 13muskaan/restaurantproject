@@ -6,7 +6,7 @@ Server: localhost
 Hosting software to localhost: Mac (MAMP) Windows: (XAMPP)
 Internet access to connect
 PHPMyAdmin database (SQL)
-PHPMyAdmin web link: http://localhost/phpmyadmin/index.php?token=95d3998d641379d1f57ab2132f869034
+PHPMyAdmin web link: http://localhost/phpmyadmin/index.php?token=95d3998d641379d1f57ab2132f869034 (Windows version)
 Database name: restaurantproject	username:"root"		password:""	Privilege: all
 Possible hosting provider: Go Daddy
 Recommended browsers: Safari, Google Chrome, Firefox (For all devices)
@@ -22,12 +22,12 @@ View contents in website:
 
 ADMIN:
 
-username: admin@gmail.com	password: 1234567890
+username: admin@banyan.com	password: 1234567890
 privilege: manage users, manage website contents
 
 MANAGER: 
 
-username: manager@gmail.com	password: 12334567890
+username: manager@banyan.com	password: 12334567890
 privilege: only manage reservations
 
 GITHUB URL: https://github.com/13muskaan/restaurantproject
