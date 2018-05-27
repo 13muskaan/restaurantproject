@@ -440,7 +440,7 @@ include( 'navigationbar.php' );
 		echo '<form action="../../control/reservation_process.php" method="post">
 
 			<label class="control-label" for="date">Date</label>
-			<input class="form-control" id="date" name="date" placeholder="Select a date: YYYY-MM-DD" type="text">
+			<input class="form-control" id="dateSelect" name="date" placeholder="Select a date: YYYY-MM-DD" type="text">
 
 	
 	<label for="time">Select time</label>
@@ -461,13 +461,13 @@ include( 'navigationbar.php' );
 	<div style="display: none;" id="timeSelectDiv">
 	<div>
 	<label class="radio-inline">
-      <input type="radio" name="time" onChange="EnableFunction()" value="09:00:00" id="timeCheckboxMor" disabled>Morning<br>9am
+      <input type="radio" name="time" onChange="EnableFunction(0)" value="09:00:00" id="timeCheckboxMor" disabled>Morning<br>9am
     </label>
     <label class="radio-inline">
-      <input type="radio" name="time" onChange="EnableFunction()" value="12:00:00" id="timeCheckboxAft" disabled>Afternoon<br>12pm
+      <input type="radio" name="time" onChange="EnableFunction(1)" value="12:00:00" id="timeCheckboxAft" disabled>Afternoon<br>12pm
     </label>
     <label class="radio-inline">
-      <input type="radio" name="time" onChange="EnableFunction()" value="17:00:00" id="timeCheckboxEve" disabled>Evening<br>5pm
+      <input type="radio" name="time" onChange="EnableFunction(2)" value="17:00:00" id="timeCheckboxEve" disabled>Evening<br>5pm
     </label>
 	</div>
 	</div>
@@ -484,14 +484,14 @@ include( 'navigationbar.php' );
 <div style="display: none" id="submitDiv">
 			<label for="guests">No. of guests</label>
 			<div class="slidecontainer">
-  <input name="guestNo" type="range" min="30" max="120" value="30" class="slider" id="GuestSlider">
+  <input onChange="setGuestNo()" name="guestNo" type="range" min="30" max="120" value="30" class="slider" id="GuestSlider">
   <br><p style="text-align: center">Value: <span id="GuestNumber"></span></p>
 </div>
 	<br>
 
 
 	<label for="subject">Comment</label>
-	<textarea id="comment" name="comment" placeholder="Write your message here..." style="height:200px; width:100%"></textarea>
+	<textarea onChange="setComment()" id="comment" name="comment" placeholder="Write your message here..." style="height:200px; width:100%"></textarea>
 
 	<br>
 	</div>

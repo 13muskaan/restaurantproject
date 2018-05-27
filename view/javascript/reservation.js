@@ -9,6 +9,12 @@ var timeDiv;
 var functionDiv;
 var submitDiv;
 
+var dateInput;
+var timeInput;
+var functionInput;
+var guestNoInput;
+var commentInput;
+
 
 // Slider Code
 var slider = document.getElementById("GuestSlider");
@@ -30,7 +36,7 @@ function CheckDate() {
 	//Disable times if enabled
 	DisableTime();
 	
-	var date = document.getElementById("date");
+	var date = document.getElementById("dateSelect");
 	var ajaxurl = "../../model/reservation-date_check.php?date=" + date.value;
 
 	//Display loader
@@ -52,6 +58,8 @@ function CheckDate() {
 			console.log(d);
 		}
 	}); //End AJAX	
+	
+	sessionStorage.setItem("selectedDate", date.value);
 }
 
 function EnableTimes(results) {
@@ -93,19 +101,60 @@ function EnableTimes(results) {
 		}
 
 	}
+	
+	switch (sessionStorage.getItem("selectedTime")) 
+			{
+		case "0":
+			timeInput.mor.checked = true;
+			EnableFunction(0);
+			break;
+		case "1":
+			timeInput.aft.checked = true;
+			EnableFunction(1);
+			break;
+		case "2":
+			timeInput.eve.checked = true;
+			EnableFunction(2);
+	}
+	
 
 }
 
 
 
-function EnableFunction() {
-	console.log("FISH");
+function EnableFunction(timeSelection) {
+	sessionStorage.setItem("selectedTime", timeSelection);
 	functionDiv.style.display = "block";
+	
+	if (sessionStorage.getItem("selectedFunction") != null) {
+		selectItemByValue(functionInput, sessionStorage.getItem("selectedFunction"));
+		EnableSubmit();
+	}
 }
 
 function EnableSubmit() {
+	
+	sessionStorage.setItem("selectedFunction", functionInput.value);
 	submitDiv.style.display = "block";
 	document.getElementById("submit").disabled = false;
+	
+	if (sessionStorage.getItem("guestNo") != null) {
+		guestNoInput.value = sessionStorage.getItem("guestNo");
+		document.getElementById("GuestNumber").innerHTML = sessionStorage.getItem("guestNo");
+	}
+	
+	if (sessionStorage.getItem("comment") != null) {
+		commentInput.value = sessionStorage.getItem("comment");
+	}
+}
+
+function setGuestNo() {
+	sessionStorage.setItem("guestNo", guestNoInput.value);
+	
+}
+
+function setComment() {
+	sessionStorage.setItem("comment", commentInput.value);
 }
 
 function DisableTime(){
@@ -124,7 +173,7 @@ function DisableSubmit() {
 }
 
 $(document).ready( function() {
-	document.getElementById("date").onchange = function () {CheckDate();};
+	document.getElementById("dateSelect").onchange = function () {CheckDate();};
 	loader = document.getElementById("loader");
 	
 	loader.style.display = "none";
@@ -132,4 +181,32 @@ $(document).ready( function() {
 	timeDiv = document.getElementById("timeSelectDiv");
 	functionDiv = document.getElementById("functionSelectDiv");
 	submitDiv = document.getElementById("submitDiv");
+	
+	dateInput = document.getElementById("dateSelect");
+	timeInput = {mor:null, aft:null, eve:null};
+	timeInput.mor = document.getElementById("timeCheckboxMor");
+	timeInput.aft = document.getElementById("timeCheckboxAft");
+	timeInput.eve = document.getElementById("timeCheckboxEve");
+	functionInput = document.getElementById("functionID");
+	guestNoInput = document.getElementById("GuestSlider");
+	commentInput = document.getElementById("comment");
+	
+	if (sessionStorage.getItem("selectedDate") != null) {
+		dateInput.value = sessionStorage.getItem("selectedDate");
+		CheckDate();
+	}
 });
+
+
+
+
+
+
+function selectItemByValue(elmnt, value){
+
+    for(var i = 0; i < elmnt.options.length; i++)
+    {
+      if(elmnt.options[i].value == value)
+        elmnt.selectedIndex = i;
+    }
+  }

@@ -2,7 +2,6 @@
 header( 'Content-Type: application/json' );
 //Menu retrieval code
 //Ajax JSON object
-
 include( 'dbconnection.php' );
 
 $contentquery = "SELECT * FROM menu limit " . $_GET['num'] * $_GET['page'] . ", " . $_GET['num'] . ";";

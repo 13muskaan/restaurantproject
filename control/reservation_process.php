@@ -67,7 +67,7 @@ if ( !DateCorrect( $_POST[ 'date' ], $date, $errorSpec ) ) {
 
 	} else {
 
-		$sql = "INSERT INTO reservation ( date, time, guestno, comment, memberID, functionID) VALUES ( :date, :time, :guestno, :comment, :memberID, :functionID);";
+		$sql = "INSERT INTO reservation ( date, time, guestno, comment, userID, functionID) VALUES ( :date, :time, :guestno, :comment, :userID, :functionID);";
 		$stmt = $conn->prepare( $sql );
 
 		print_r( "Date: " . $date );
@@ -77,7 +77,7 @@ if ( !DateCorrect( $_POST[ 'date' ], $date, $errorSpec ) ) {
 		$stmt->bindParam( ':date', $date, PDO::PARAM_STR );
 		$stmt->bindParam( ':time', $_POST[ 'time' ], PDO::PARAM_STR );
 		$stmt->bindParam( ':comment', $_POST[ 'comment' ], PDO::PARAM_STR );
-		$stmt->bindParam( ':memberID', $_SESSION[ 'userID' ], PDO::PARAM_INT );
+		$stmt->bindParam( ':userID', $_SESSION[ 'userID' ], PDO::PARAM_INT );
 
 		$stmt->execute();
 		if ( $conn->lastInsertId() >= 0 ) {

@@ -128,6 +128,95 @@
 	border-radius: 4px;
 	background: #EEE;
 }
+		/*css for stars*/
+		
+		.glyphicon-star {
+  font-size: 36px;
+  color: #e67e22;
+		}
+		
+		.green {
+			color:#008000;
+		}
+		
+		.red {
+			color:#800080;
+		}
+		
+		.blue {
+			color:#000080;
+		}
+		
+		.cyan {
+			color:#008080
+		}
+		
+		.yellow {
+			color:#080800
+		}
+		
+		.small {
+			font-size: 16px;
+		}
+		
+		.empty {
+    color: #bdc3c7;
+		}
+		.quarter {
+    position: relative;
+		}
+    .quarter:before {
+      position: relative;
+      z-index: 9;
+      width: 23%;
+      display: block;
+      overflow: hidden;
+    }
+    .quarter:after {
+      content: '\e006';
+      position: absolute;
+      z-index: 8;
+      color: #bdc3c7;
+      top: 0;
+      left: 0;
+		}
+		.half {
+    position: relative;
+		}
+    .half:before {
+      position: relative;
+      z-index: 9;
+      width: 47%;
+      display: block;
+      overflow: hidden;
+    }
+    .half:after {
+      content: '\e006';
+      position: absolute;
+      z-index: 8;
+      color: #bdc3c7;
+      top: 0;
+      left: 0;
+		}
+			.threequarter {
+    position: relative;
+		}
+    .threequarter:before {
+      position: relative;
+      z-index: 9;
+      width: 72%;
+      display: block;
+      overflow: hidden;
+    }
+    .threequarter:after {
+      content: '\e006';
+      position: absolute;
+      z-index: 8;
+      color: #bdc3c7;
+      top: 0;
+      left: 0;
+		}
+			
 
 	</style>
 	<!--<html lang="en">-->
@@ -142,8 +231,8 @@
 
 	<body>
 	<div class="header">
-  <div class="jumbotron">
-    <h1 style="text-align:center;background-image: url(../img/headermap1.jpeg)">Reviews</h1>
+  <div class="jumbotron" style="background-image: url(../img/headermap1.jpeg)">
+    <h1 style="text-align:center;">Reviews</h1>
   </div>     
 </div>
 <div class="container">
@@ -169,27 +258,27 @@
 						<label for="guests">Food Quality</label>
 			<div class="slidecontainer">
   <input name="food" type="range" min="0" max="5" value="5" class="slider" id="FoodRange">
-  <br><p style="text-align: center">Rating: <span id="FoodNumber"></span></p>
+  <br><p style="text-align: center"><div class="container container-star" id="formFood"></div></p>
 </div><br>
 						<label for="guests">Service</label>
 			<div class="slidecontainer">
   <input name="guestNo" type="range" min="0" max="5" value="5" class="slider" id="GuestSlider">
-  <br><p style="text-align: center">Value: <span id="GuestNumber"></span></p>
+  <br><p style="text-align: center"><div class="container container-star" id="formService"></div></p>
 </div><br>
 						<label for="guests">Location</label>
 			<div class="slidecontainer">
   <input name="guestNo" type="range" min="0" max="5" value="5" class="slider" id="GuestSlider">
-  <br><p style="text-align: center">Value: <span id="GuestNumber"></span></p>
+  <br><p style="text-align: center"><div class="container container-star" id="formLocation"></div></p>
 </div><br>
 						<label for="guests">Price</label>
 			<div class="slidecontainer">
   <input name="guestNo" type="range" min="0" max="5" value="5" class="slider" id="GuestSlider">
-  <br><p style="text-align: center">Value: <span id="GuestNumber"></span></p>
+  <br><p style="text-align: center"><div class="container container-star" id="formPrice"></div></span></p>
 </div><br>
 						<label for="guests">Cleanliness</label>
 			<div class="slidecontainer">
   <input name="guestNo" type="range" min="0" max="5" value="5" class="slider" id="GuestSlider">
-  <br><p style="text-align: center">Value: <span id="GuestNumber"></span></p>
+  <br><p style="text-align: center"><div class="container container-star" id="formCleanliness"></div></p>
 </div><br>
 						
                         <div class="text-right">
@@ -210,26 +299,15 @@
 					<div class="rating-block">
 						<h4>Average user rating</h4>
 						<h2 class="bold padding-bottom-7">4.3 <small>/ 5</small></h2>
-						<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-					</button>
-						
-						<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-					</button>
-
-						<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-					</button>
-
-						<button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-					</button>
-					
-						<button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-					</button>
-					
+						<div class="container container-star">
+							
+							<span class="glyphicon glyphicon-star green" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star red" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star yellow quarter" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star blue half" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star cyan threequarter" aria-hidden="true"></span>
+							
+						</div>
 					</div>
 				</div>
 				<div class="col-sm-3">
@@ -239,12 +317,7 @@
 							<div style="height:9px; margin:5px 0;">Food <span class="glyphicon glyphicon-star"></span>
 							</div>
 						</div>
-						<div class="pull-left" style="width:180px;">
-							<div class="progress" style="height:9px; margin:8px 0;">
-								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 100%">
-								</div>
-							</div>
-						</div>
+						
 						<div class="pull-right" style="margin-left:10px;">1</div>
 					</div>
 					<div class="pull-left">
@@ -252,12 +325,7 @@
 							<div style="height:9px; margin:5px 0;">Service <span class="glyphicon glyphicon-star"></span>
 							</div>
 						</div>
-						<div class="pull-left" style="width:180px;">
-							<div class="progress" style="height:9px; margin:8px 0;">
-								<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
-								</div>
-							</div>
-						</div>
+						
 						<div class="pull-right" style="margin-left:10px;">1</div>
 					</div>
 					<div class="pull-left">
@@ -265,12 +333,7 @@
 							<div style="height:9px; margin:5px 0;">Location <span class="glyphicon glyphicon-star"></span>
 							</div>
 						</div>
-						<div class="pull-left" style="width:180px;">
-							<div class="progress" style="height:9px; margin:8px 0;">
-								<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
-								</div>
-							</div>
-						</div>
+						
 						<div class="pull-right" style="margin-left:10px;">0</div>
 					</div>
 					<div class="pull-left">
@@ -278,12 +341,7 @@
 							<div style="height:9px; margin:5px 0;">Price <span class="glyphicon glyphicon-star"></span>
 							</div>
 						</div>
-						<div class="pull-left" style="width:180px;">
-							<div class="progress" style="height:9px; margin:8px 0;">
-								<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
-								</div>
-							</div>
-						</div>
+						
 						<div class="pull-right" style="margin-left:10px;">0</div>
 					</div>
 					<div class="pull-left">
@@ -291,12 +349,7 @@
 							<div style="height:9px; margin:5px 0;">Cleanliness <span class="glyphicon glyphicon-star"></span>
 							</div>
 						</div>
-						<div class="pull-left" style="width:180px;">
-							<div class="progress" style="height:9px; margin:8px 0;">
-								<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
-								</div>
-							</div>
-						</div>
+						
 						<div class="pull-right" style="margin-left:10px;">0</div>
 					</div>
 				</div>
@@ -316,160 +369,73 @@
 					<hr/>
 					<div class="review-block">
 						<div class="row">
-							<div class="col-sm-3">
+							<div class="col-sm-2">
 								<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
 								<div class="review-block-name"><a href="#">nktailor</a>
 								</div>
 								<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
 							</div>
-							<div class="col-sm-9">
+							<div class="col-sm-2">
+								<div class="row">Food </div> <div class="row">
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+								</div>
+								<div class="row">Service </div> <div class="row">
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small half" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small empty" aria-hidden="true"></span>
+								</div>
+								<div class="row">Location </div> <div class="row">
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+								</div>
+								<div class="row">Price </div> <div class="row">
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+								</div>
+								<div class="row">Cleanliness </div> <div class="row">
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star small" aria-hidden="true"></span>
+								</div>
+								
+							</div>
+							<div class="col-sm-8">
 								<div class="review-block-rate">
-									<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
-									<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
-									<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
-									<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
-									<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
+									<!-- AVERAGE -->
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									
 								</div>
 								<div class="review-block-title">this was nice in buy</div>
 								<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
 							</div>
 						</div>
 						<hr/>
-						<div class="row">
-							<div class="col-sm-3">
-								<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-								<div class="review-block-name"><a href="#">nktailor</a>
-								</div>
-								<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
-							</div>
-							<div class="col-sm-9">
-								<div class="review-block-rate">
-									<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
-									<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
-									<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
-									<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
-									<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
-								</div>
-								<div class="review-block-title">this was nice in buy</div>
-								<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
-							</div>
-						</div>
-						<hr/>
-						<div class="row">
-							<div class="col-sm-3">
-								<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-								<div class="review-block-name"><a href="#">nktailor</a>
-								</div>
-								<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
-							</div>
-							<div class="col-sm-9">
-								<div class="review-block-rate">
-									<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
-									<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
-									<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
-									<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
-									<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								
-
-
-
-								</div>
-								<div class="review-block-title">this was nice in buy</div>
-								<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
 
 		</div>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Scroll Up</button>
+<script src="../javascript/review_stars.js" type="text/javascript"></script>
+
 <script>
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};

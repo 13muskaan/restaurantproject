@@ -6,6 +6,10 @@ $password = "";
 $rootuser = "root";
 $rootpassword = "";
 
+if (session_status() != PHP_SESSION_ACTIVE) {
+	session_start();
+}
+
 try {
 	$connroot = new PDO( "mysql:host=$servername;dbname=restaurantproject", $rootuser, $rootpassword );
 	// set the PDO error mode to exception
