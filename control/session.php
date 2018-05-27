@@ -23,6 +23,6 @@ $_SERVER[ 'REQUEST_URI' ] . "',  '" . $_SERVER[ 'HTTP_HOST' ] . "'," . $_SESSION
 include('../../model/dbconnection.php');
 
 $stmt = $connroot->prepare( $log_sql );
-$stmt->execute();
+//$stmt->execute();
 
 ?>
