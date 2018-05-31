@@ -53,7 +53,7 @@
 </div>
 	<div class="container" style="width:60%">
 		<h2 style="text-align:center;"> Locate us.</h2>
-<div class="col-md-3" style="width:100%;left:35%;">
+<div class="col-md-3" style="width:inherit;left:35%;position:!important;">
   <form class="navbar-form" role="search"action="http://maps.google.com/maps" method="get" target="_blank">
    <div class="input-group add-on">
    <input class ="form-control" placeholder="Enter your location..."type="text" name="saddr" />
@@ -62,7 +62,7 @@
    <input type="submit" class="btn btn-danger"<i class="glyphicon glyphicon-search" value="Get directions"> </i></input>
    </div></div>
 </form>
-  </div> <br><br> <br><br>
+  </div>
 			<hr style="margin-bottom:5px !important; margin-top:5px !important; width:90%; " />
 
 <div id="map" style="position:fixed; padding-top:10px; left:25%;"></div>

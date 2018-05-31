@@ -30,6 +30,9 @@ MANAGER:
 username: manager@banyan.com	password: 12334567890
 privilege: only manage reservations
 
+MEMBERS:
+privilege: manage user account, create reservation, create a review, view contents on website.
+
 GITHUB URL: https://github.com/13muskaan/restaurantproject
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -39,9 +42,6 @@ ISSUES:
 
 - managers at this point can't: manage reservations
 - admins at this point cannot:  delete users, update user information, view reviews, manage reviews, manage functions,  insert files
-- members at this point can't: view reviews, post reviews, view functions, download content
+- members at this point can't:  view functions, download content
 
-- Index files are empty for admin and user
-- Contact page will include an Google Maps API and restaurant information.
-- Session file needs to be created to store user's session data to the database. 
-- Update User Info is empty for members. Used for members update their information e.g. password (name could be change to profile in future)
+- Index files are empty for admin and manager
