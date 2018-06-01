@@ -145,7 +145,7 @@
 						<label class="col-lg-3 control-label" placeholder "Firstname...">First name</label>
 						<div class="col-lg-8">
 							<div class="input-group">
-								<input id="firstNameInput" class="form-control" oninput="displayFirstnameError()" name="firstname" value="<?php echo $firstname?>" type="text">
+								<input id="firstNameInput" class="form-control" oninput="displayFirstNameError()" name="firstname" value="<?php echo $firstname?>" type="text">
 								<span class="input-group-addon">
                                 <span id="firstNameGlyph" class="glyphicon glyphicon-minus"></span>
 							
@@ -199,7 +199,7 @@
 						<label class="col-md-3 control-label" id="password">Current Password</label>
 						<div class="col-lg-8">
 							<div class="input-group">
-								<input id="currentPasswordInput" class="form-control" placeholder="Current password..." onchange="validateCurrentPassword()">
+								<input id="currentPasswordInput" class="form-control" placeholder="Current password..." onchange="checkPasswordMatches()">
 								<span class="input-group-addon">
 										<span id="currentPasswordGlyph" class="glyphicon glyphicon-minus"></span>
 							
@@ -225,14 +225,14 @@
 						<label class="col-lg-3 control-label" inputid="newPasswordInput">Change Password</label>
 						<div class="col-lg-8">
 							<div class="input-group">
-								<input id="newPasswordInput" class="form-control" oninput="displayFirstnameError()" name="firstname" placeholder="(OPTIONAL) Insert new password..." type="password">
+								<input id="passwordInput" class="form-control" oninput="displayPasswordError()" name="newpassword" placeholder="(OPTIONAL) Insert new password..." type="password">
 								<span class="input-group-addon">
-                                <span id="newPasswordGlyph" class="glyphicon glyphicon-minus"></span>
+                                <span id="passwordGlyph" class="glyphicon glyphicon-minus"></span>
 							
 
 								</span>
 							</div>
-							<div id="newPasswordAlert" class="alert alert-danger" style="display: none;"></div>
+							<div id="passwordAlert" class="alert alert-danger" style="display: none;"></div>
 						</div>
 					</div>
 
@@ -243,7 +243,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label"></label>
 						<div class="col-md-8">
-							<button class="btn btn-primary" value="submit" id="updateuserinfo">Save</button>
+							<button class="btn btn-primary" value="submit" id="submitButton">Save</button>
 							<span></span>
 							<input class="btn btn-default" value="Reset" type="reset">
 						</div>
@@ -270,7 +270,7 @@
 			</thead>
 			<tbody>
 				<?php 
-            $contentquery = "SELECT reservation.reservationID, functions.functiontype, reservation.date, reservation.time , reservation.guestno , reservation.comment  FROM reservation INNER JOIN functions ON reservation.functionID = functions.functionID WHERE date >= CURRENT_DATE AND memberID = ". $_SESSION["userID"];
+            $contentquery = "SELECT reservation.reservationID, function.functiontype, reservation.date, reservation.time , reservation.guestno , reservation.comment  FROM reservation INNER JOIN function ON reservation.functionID = function.functionID WHERE date >= CURRENT_DATE AND reservation.userID = ". $_SESSION["userID"];
                 $stmt = $conn->prepare( $contentquery );
         $stmt->execute();
         $staticresult = $stmt->fetchAll( PDO::FETCH_ASSOC );

@@ -450,15 +450,17 @@ function checkPasswordMatches(userID, pass) {
 	passwordLoader.style.display = "block";
 	glyphs[4].style.display = "none";
 	
-	
+	console.log("FISH");
 
-	var checkurl = "../../control/userInfo_check_password_matches.php?userID= " + userID + "&password=" + pass;
+	var checkurl = "../../control/check_password_matches.php?userID= " + userID + "&password=" + pass;
+	
 	$.ajax({
 		url: checkurl,
 		method: 'get',
 		datatype: 'json',
 		success: function (res) {
-			
+			console.log("fish2");
+			console.log(res);
 			displayPasswordMatches(res.passwordMatches);
 		}
 	});

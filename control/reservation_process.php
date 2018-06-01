@@ -72,6 +72,8 @@ if ( !DateCorrect( $_POST[ 'date' ], $date, $errorSpec ) ) {
 
 		print_r( "Date: " . $date );
 
+		print_r($_POST);
+		
 		$stmt->bindParam( ':functionID', $_POST[ 'functionID' ], PDO::PARAM_INT );
 		$stmt->bindParam( ':guestno', $_POST[ 'guestNo' ], PDO::PARAM_INT );
 		$stmt->bindParam( ':date', $date, PDO::PARAM_STR );

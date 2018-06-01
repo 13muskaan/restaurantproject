@@ -2,6 +2,7 @@
 <head>
 
 	<script src="../javascript/review_post.js"></script>
+	<link href="../css/modal.css" rel="stylesheet">
 
 	<title>MY BANYAN TREE | REVIEW</title>
 	<style>
@@ -74,7 +75,7 @@
 		}
 		/*button to go up*/
 		
-		#myBtn {
+		#scrollUpButton {
 			display: none;
 			position: fixed;
 			bottom: 20px;
@@ -88,6 +89,7 @@
 			cursor: pointer;
 			padding: 15px;
 			border-radius: 80px;
+			width:200px;
 		}
 		/*post a review*/
 		
@@ -245,11 +247,18 @@
 
 <body>
 	<div class="header">
-		<div class="jumbotron" style="background-image: url(../img/headermap1.jpeg)">
+		<div class="jumbotron">
 			<h1 style="text-align:center;">Reviews</h1>
 		</div>
 	</div>
-	<div class="container">
+	
+	
+	<?php 
+	
+	if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] == 'anon') {
+		require('../../model/login_model.php');
+	} else {
+		echo '<div class="container">
 		<div class="row" style="margin-top:40px; background-color: white;">
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
@@ -257,9 +266,6 @@
 					<div class="text-right">
 						<a class="" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
                    <span class="glyphicon glyphicon-remove"></span></a>
-					
-
-
 
 						<a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Leave a Review</a>
 					</div>
@@ -323,11 +329,13 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
-	</div>
-
+	</div>';
+	}
+	
+	?>
+	
 
 	<div class="row">
 		<div class="col-md-3"></div>
@@ -410,7 +418,7 @@
 		</div>
 
 </div>
-	<button onclick="topFunction()" id="myBtn" title="Go to top">Scroll Up</button>
+	<button onclick="topFunction()" id="scrollUpButton" title="Go to top">Scroll Up</button>
 	<script src="../javascript/review.js" type="text/javascript"></script>
 
 	<script>
@@ -421,9 +429,9 @@
 
 		function scrollFunction() {
 			if ( document.body.scrollTop > 20 || document.documentElement.scrollTop > 20 ) {
-				document.getElementById( "myBtn" ).style.display = "block";
+				document.getElementById( "scrollUpButton" ).style.display = "block";
 			} else {
-				document.getElementById( "myBtn" ).style.display = "none";
+				document.getElementById( "scrollUpButton" ).style.display = "none";
 			}
 		}
 

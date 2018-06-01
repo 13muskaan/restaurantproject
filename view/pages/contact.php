@@ -14,15 +14,6 @@
 		}
 		/*backgroung img header*/
 		.jumbotron{
-			    border: 2px solid black;
-
-    background: url(../img/headermap1%20uj.png);
-    background-repeat: no-repeat;
-    background-size: auto;
-	background-position:center;
-	width:100%;
-	opacity:0.5;
-			}
 		}
 	</style>
 	<script>

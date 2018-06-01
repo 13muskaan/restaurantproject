@@ -1,29 +1,30 @@
 <?php
 include( '../model/dbconnection.php' );
 
-try {
-	$sql = "UPDATE member SET firstname=:firstname, lastname=:lastname, email=:email, password=:password WHERE memberID=" . $_GET[ 'id' ];
 
-	// Prepare statement (Bindparam)
-	$stmt = $conn->prepare( $sql );
+	try {
+		$sql = "UPDATE member SET firstname=:firstname, lastname=:lastname, email=:email, password=:password WHERE memberID=" . $_GET[ 'id' ];
 
-	$stmt->bindParam( ':firstname', $_POST[ 'firstname' ], PDO::PARAM_STR );
-	$stmt->bindParam( ':lastname', $_POST[ 'lastname' ], PDO::PARAM_STR );
-	$stmt->bindParam( ':email', $_POST[ 'email' ], PDO::PARAM_STR );
-	$stmt->bindParam( ':password', $_POST[ 'password' ], PDO::PARAM_STR );
+		// Prepare statement (Bindparam)
+		$stmt = $conn->prepare( $sql );
 
-	// execute the query
-	$stmt->execute();
+		$stmt->bindParam( ':firstname', $_POST[ 'firstname' ], PDO::PARAM_STR );
+		$stmt->bindParam( ':lastname', $_POST[ 'lastname' ], PDO::PARAM_STR );
+		$stmt->bindParam( ':email', $_POST[ 'email' ], PDO::PARAM_STR );
+		$stmt->bindParam( ':password', $_POST[ 'password' ], PDO::PARAM_STR );
 
-	// echo a message to say the UPDATE succeeded
-	echo $stmt->rowCount() . " records UPDATED successfully";
-} catch ( PDOException $e ) {
-	echo $sql . "<br>" . $e->getMessage();
-}
+		// execute the query
+		$stmt->execute();
 
-$conn = null;
+		// echo a message to say the UPDATE succeeded
+		echo $stmt->rowCount() . " records UPDATED successfully";
+	} catch ( PDOException $e ) {
+		echo $sql . "<br>" . $e->getMessage();
+	}
 
-header( 'location: user_manage.php' );
+	$conn = null;
+
+	header( 'location: user_manage.php' );
 ?>
 
 <body>

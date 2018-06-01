@@ -1,5 +1,6 @@
 <!doctype html>
 <?php include('header.php');
+//require('../../control/user_privilage_defender.php');
 
 if ( !isset($_SESSION[ 'user_type' ]) || ( $_SESSION[ 'user_type' ] == 0 || $_SESSION[ 'user_type' ] == 1 ) ) {
 	$indexLink = '../pages/index.php';

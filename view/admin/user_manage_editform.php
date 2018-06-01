@@ -29,13 +29,12 @@ $stmt = $conn->prepare( $sql );
 $stmt->bindParam( ':id', $_GET[ 'id' ], PDO::PARAM_INT );
 
 $stmt->execute();
-$firstname = $stmt->fetchAll();
-$stmt-> execute();
-$lastname = $stmt->fetchAll();
-$stmt-> execute();
-$email = $stmt->fetchAll();
-$stmt-> execute();
-$password = $stmt->fetchAll();
+$results = $stmt->fetchAll()[0];
+
+$firstname = $results['firstname'];
+$lastname = $results['lastname'];
+$email = $results['email'];
+$password = $results['password'];
 
 
 ?>
@@ -46,16 +45,16 @@ $password = $stmt->fetchAll();
 		<input type="text" id="dishID" name="dishID" value="">-->
 
 		<label for="firstname">Firstname</label>
-		<input type="text" id="firstname" name="firstname" value="<?php echo $firstname[0]['firstname']; ?>">
+		<input type="text" id="firstname" name="firstname" value="<?php echo $firstname; ?>">
 
 		<label for="Lastname">Lastname</label>
-		<input type="text" id="lastname" name="lastname" value="<?php echo $lastname[0]['lastname']; ?>">
+		<input type="text" id="lastname" name="lastname" value="<?php echo $lastname; ?>">
 
 		<label for="email">Email</label>
-		<input type="text" id="email" name="email" value="<?php echo $email[0]['email']; ?>">
+		<input type="text" id="email" name="email" value="<?php echo $email; ?>">
 		
 		<label for="email">Password</label>
-		<input type="text" id="password" name="password" value="<?php echo $password[0]['password']; ?>">
+		<input type="text" id="password" name="password" value="<?php echo $password; ?>">
 
 		<a href="user_manage.php"><button type="button">Go back</button></a>
 		<button type="submit">Submit</button>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2018 at 02:21 PM
+-- Generation Time: Jun 01, 2018 at 01:05 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -85,106 +85,31 @@ INSERT INTO `logdata` (`logID`, `sessionID`, `url`, `ip`, `datestamp`, `userID`)
 (708, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/index.php', '127.0.0.1', '2018-05-27 13:37:25', 1),
 (709, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/login.php', '127.0.0.1', '2018-05-27 13:37:47', -1),
 (710, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/register.php', '127.0.0.1', '2018-05-27 13:37:49', -1),
-(711, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/index.php', '127.0.0.1', '2018-05-27 13:38:11', 2),
-(712, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/index.php', '127.0.0.1', '2018-05-27 13:38:11', 2),
-(713, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 13:41:48', 2),
-(714, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 13:47:25', 2),
-(715, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 13:47:59', 2),
-(716, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 13:48:19', 2),
-(717, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:11:42', 2),
-(718, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:12:16', 2),
-(719, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:12:41', 2),
-(720, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:16:36', 2),
-(721, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:17:35', 2),
-(722, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/function.php', '127.0.0.1', '2018-05-27 14:18:08', 2),
-(723, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:18:26', 2),
-(724, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:33:52', 2),
-(725, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/function.php', '127.0.0.1', '2018-05-27 14:34:04', 2),
-(726, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:34:07', 2),
-(727, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:34:48', 2),
-(728, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:35:05', 2),
-(729, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:35:29', 2),
-(730, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:35:52', 2),
-(731, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:35:56', 2),
-(732, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/contact.php', '127.0.0.1', '2018-05-27 14:35:59', 2),
-(733, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:36:01', 2),
-(734, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/contact.php', '127.0.0.1', '2018-05-27 14:36:12', 2),
-(735, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:36:13', 2),
-(736, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:37:18', 2),
-(737, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:37:38', 2),
-(738, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:37:51', 2),
-(739, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:38:38', 2),
-(740, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:38:58', 2),
-(741, 'tqvaulqd2c9smpki5u2hfq7uql', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:39:03', 2),
 (742, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/register.php', '127.0.0.1', '2018-05-27 14:40:38', -1),
 (743, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:40:42', -1),
-(744, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:40:54', 2),
-(745, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/menu.php', '127.0.0.1', '2018-05-27 14:41:20', 2),
-(746, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 14:41:42', 2),
-(747, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/menu.php', '127.0.0.1', '2018-05-27 14:47:05', 2),
-(748, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 14:47:25', 2),
-(749, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:04:20', 2),
-(750, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:07:48', 2),
-(751, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:07:55', 2),
-(752, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/function.php', '127.0.0.1', '2018-05-27 15:07:56', 2),
-(753, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:07:58', 2),
-(754, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:09:31', 2),
-(755, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:10:07', 2),
-(756, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:10:30', 2),
-(757, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:12:25', 2),
-(758, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:12:36', 2),
-(759, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:12:46', 2),
-(760, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:13:12', 2),
-(761, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:14:04', 2),
-(762, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:14:58', 2),
-(763, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:15:13', 2),
-(764, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:15:26', 2),
-(765, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:15:50', 2),
-(766, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:16:17', 2),
-(767, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:16:29', 2),
-(768, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:16:39', 2),
-(769, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:16:48', 2),
-(770, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:17:34', 2),
-(771, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:17:43', 2),
-(772, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:18:01', 2),
-(773, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:18:10', 2),
-(774, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:22:54', 2),
-(775, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:23:12', 2),
-(776, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:25:48', 2),
-(777, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:27:26', 2),
-(778, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:28:11', 2),
-(779, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:28:34', 2),
-(780, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:28:48', 2),
-(781, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 15:29:02', 2),
-(782, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:01:48', 2),
-(783, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:02:09', 2),
-(784, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/contact.php', '127.0.0.1', '2018-05-27 16:02:24', 2),
-(785, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/function.php', '127.0.0.1', '2018-05-27 16:02:28', 2),
-(786, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 16:02:30', 2),
-(787, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:02:36', 2),
-(788, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:03:13', 2),
-(789, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:12:11', 2),
-(790, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:12:31', 2),
-(791, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:13:29', 2),
-(792, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:13:40', 2),
-(793, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:14:11', 2),
-(794, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:14:59', 2),
-(795, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:15:46', 2),
-(796, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:15:55', 2),
-(797, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:16:00', 2),
-(798, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:16:29', 2),
-(799, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:17:00', 2),
-(800, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:17:18', 2),
-(801, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:17:39', 2),
-(802, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:19:52', 2),
-(803, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:21:45', 2),
-(804, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:29:27', 2),
-(805, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:29:51', 2),
-(806, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 16:30:13', 2),
-(807, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-27 22:20:02', 2),
-(808, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 22:20:06', 2),
-(809, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 22:20:10', 2),
-(810, 'mkhjkd49mt208ev85394h3jca8', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-27 22:20:11', 2);
+(811, '0j0b38ncmu4c3r4b9qd754eu5c', '/restaurantproject_muskaanbakshi_9105462916/view/pages/register.php', '127.0.0.1', '2018-05-28 08:43:40', -1),
+(812, '0j0b38ncmu4c3r4b9qd754eu5c', '/restaurantproject_muskaanbakshi_9105462916/view/pages/index.php', '127.0.0.1', '2018-05-28 08:43:43', -1),
+(813, '0j0b38ncmu4c3r4b9qd754eu5c', '/restaurantproject_muskaanbakshi_9105462916/view/pages/index.php', '127.0.0.1', '2018-05-28 09:16:21', -1),
+(814, '0j0b38ncmu4c3r4b9qd754eu5c', '/restaurantproject_muskaanbakshi_9105462916/view/pages/index.php', '127.0.0.1', '2018-05-28 15:12:54', -1),
+(815, '0j0b38ncmu4c3r4b9qd754eu5c', '/restaurantproject_muskaanbakshi_9105462916/view/pages/menu.php', '127.0.0.1', '2018-05-28 15:13:16', -1),
+(816, '0j0b38ncmu4c3r4b9qd754eu5c', '/restaurantproject_muskaanbakshi_9105462916/view/pages/function.php', '127.0.0.1', '2018-05-28 15:13:31', -1),
+(817, '0j0b38ncmu4c3r4b9qd754eu5c', '/restaurantproject_muskaanbakshi_9105462916/view/pages/menu.php', '127.0.0.1', '2018-05-28 15:13:34', -1),
+(818, '0j0b38ncmu4c3r4b9qd754eu5c', '/restaurantproject_muskaanbakshi_9105462916/view/pages/contact.php', '127.0.0.1', '2018-05-28 15:13:35', -1),
+(819, '0j0b38ncmu4c3r4b9qd754eu5c', '/restaurantproject_muskaanbakshi_9105462916/view/pages/reservation.php', '127.0.0.1', '2018-05-28 15:13:39', -1),
+(820, '0j0b38ncmu4c3r4b9qd754eu5c', '/restaurantproject_muskaanbakshi_9105462916/view/pages/contact.php', '127.0.0.1', '2018-05-28 15:13:41', -1),
+(821, '0j0b38ncmu4c3r4b9qd754eu5c', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-28 15:13:42', -1),
+(822, '0j0b38ncmu4c3r4b9qd754eu5c', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-28 15:13:45', -1),
+(823, '0j0b38ncmu4c3r4b9qd754eu5c', '/restaurantproject_muskaanbakshi_9105462916/view/pages/menu.php', '127.0.0.1', '2018-05-28 15:13:48', -1),
+(824, '0j0b38ncmu4c3r4b9qd754eu5c', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-28 15:13:49', -1),
+(825, '67t16illl8tmb4sn2eef1flju2', '/restaurantproject_muskaanbakshi_9105462916/view/pages/review.php', '127.0.0.1', '2018-05-28 17:06:41', -1),
+(826, 'd0gbqqb78dt1v3luk2b22fn1o6', '/restaurantproject_muskaanbakshi_9105462916/view/pages/login.php', '127.0.0.1', '2018-05-29 11:03:17', -1),
+(827, 'd0gbqqb78dt1v3luk2b22fn1o6', '/restaurantproject_muskaanbakshi_9105462916/view/pages/login.php', '127.0.0.1', '2018-05-29 11:03:17', -1),
+(828, 'd0gbqqb78dt1v3luk2b22fn1o6', '/restaurantproject_muskaanbakshi_9105462916/view/pages/login.php', '127.0.0.1', '2018-05-29 11:03:26', -1),
+(829, 'd0gbqqb78dt1v3luk2b22fn1o6', '/restaurantproject_muskaanbakshi_9105462916/view/pages/login.php', '127.0.0.1', '2018-05-29 11:03:41', -1),
+(830, 'd0gbqqb78dt1v3luk2b22fn1o6', '/restaurantproject_muskaanbakshi_9105462916/view/pages/index.php', '127.0.0.1', '2018-05-29 11:03:49', 0),
+(831, 'd0gbqqb78dt1v3luk2b22fn1o6', '/restaurantproject_muskaanbakshi_9105462916/view/admin/function_manage.php', '127.0.0.1', '2018-05-29 11:04:04', 0),
+(832, 'd0gbqqb78dt1v3luk2b22fn1o6', '/restaurantproject_muskaanbakshi_9105462916/view/pages/memberprofile.php', '127.0.0.1', '2018-05-29 11:05:46', 0),
+(833, 'd0gbqqb78dt1v3luk2b22fn1o6', '/restaurantproject_muskaanbakshi_9105462916/view/pages/login.php', '127.0.0.1', '2018-05-29 11:06:06', -1);
 
 -- --------------------------------------------------------
 
@@ -230,6 +155,13 @@ CREATE TABLE `reservation` (
   `functionID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `reservation`
+--
+
+INSERT INTO `reservation` (`reservationID`, `date`, `time`, `guestno`, `comment`, `userID`, `functionID`) VALUES
+(19, '2018-06-19', '09:00:00.0000', 30, 'gj\'oir.', 3, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -239,6 +171,7 @@ CREATE TABLE `reservation` (
 CREATE TABLE `review` (
   `reviewID` int(10) NOT NULL,
   `reviewtitle` varchar(60) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `foodscore` int(1) NOT NULL,
   `servicescore` int(1) NOT NULL,
   `locationscore` int(1) NOT NULL,
@@ -248,6 +181,14 @@ CREATE TABLE `review` (
   `userID` int(10) NOT NULL,
   `approverID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`reviewID`, `reviewtitle`, `date`, `foodscore`, `servicescore`, `locationscore`, `pricescore`, `cleanlinessscore`, `reviewcontent`, `userID`, `approverID`) VALUES
+(1, 'WOW', '2018-05-30 14:00:00', 5, 5, 4, 5, 5, 'WOWOWOWOWOWOWOWOW', 1, 1),
+(2, 'HAH', '2018-05-30 14:00:00', 2, 4, 3, 1, 4, 'HAHAHAHAHAHAHAHAHAH', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -273,7 +214,7 @@ INSERT INTO `users` (`userID`, `userType`, `firstname`, `lastname`, `email`, `pa
 (-1, 0, 'Anon', 'ymous', '', '', '../img/userPictures/defaultUser.png'),
 (0, 3, 'Admin', 'God', 'admin@banyan.com', '$2y$10$lrJQyfyEG3.JW5P.JTEULeSLr0GbJMKN8To/1qMqOBU76LF0T4/Kq', '../img/userPictures/defaultUser.png'),
 (1, 2, 'Manager', 'Guy', 'manager@banyan.com', '$2y$10$VYFOhr3nzn0hHv3zn24lNOXAN6FZYrlafvjusuK2V/IEyvYGe1Ica', '../img/userPictures/defaultUser.png'),
-(2, 1, 'Generic', 'Joe', 'member@gmail.com', '$2y$10$ZyV1dCyT8ZxaTC.2bAq49eXFqrEka6/aNHdvJBuiIhkPNlzn3g/DK', '../img/userPictures/defaultUser.png');
+(3, 1, 'Muskaan', 'Bakshi', 'muskanbakshi@gmail.com', '$2y$10$1Pb1o1B1DwstlZT.cNoZpO/FNQqXrku6.6W/gW2k/5dkPCTR7kNN2', '../img/userPictures/defaultUser.png');
 
 -- --------------------------------------------------------
 
@@ -358,7 +299,7 @@ ALTER TABLE `usertypes`
 -- AUTO_INCREMENT for table `logdata`
 --
 ALTER TABLE `logdata`
-  MODIFY `logID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=811;
+  MODIFY `logID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=834;
 
 --
 -- AUTO_INCREMENT for table `menu`
@@ -370,19 +311,19 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservationID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `reservationID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `reviewID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `reviewID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -404,7 +345,7 @@ ALTER TABLE `logdata`
 -- Constraints for table `reservation`
 --
 ALTER TABLE `reservation`
-  ADD CONSTRAINT `reservationfunction` FOREIGN KEY (`functionID`) REFERENCES `functions` (`functionID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reservationfunction` FOREIGN KEY (`functionID`) REFERENCES `function` (`functionID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --

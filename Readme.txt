@@ -40,8 +40,6 @@ GITHUB URL: https://github.com/13muskaan/restaurantproject
 
 ISSUES:
 
-- managers at this point can't: manage reservations
-- admins at this point cannot:  delete users, update user information, view reviews, manage reviews, manage functions,  insert files
-- members at this point can't:  view functions, download content
-
-- Index files are empty for admin and manager
+- managers at this point can't:
+- admins at this point cannot: 
+- members at this point can't: manage their own profile (fix ajax)

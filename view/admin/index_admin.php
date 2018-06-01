@@ -10,7 +10,11 @@
 <body>
 	Welcome Admin! This is the index page of admin.
 
+	
+	
+	<?php DefendPage($usertype['usertypename'],'admin'); ?>
 	<?php include('../pages/footer.php');?>
+	
 </body>
 
 </html>

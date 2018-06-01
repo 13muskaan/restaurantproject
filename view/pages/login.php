@@ -6,13 +6,9 @@
 	<title>MY BANYAN TREE | LOGIN</title>
 
 	<style>
-		body {
+			body {
 			font-family: Arial, Helvetica, sans-serif;
 			text-align: center;
-		}
-		
-		form {
-			border: 3px solid black;
 		}
 		
 		input[type=text],
@@ -40,13 +36,13 @@
 		
 		button:hover {
 			opacity: 0.8;
-		}	
-.
-		.container {
+		}
+		
+		. .container {
 			width: 20%;
 			padding: 16px;
 		}
-				
+		
 		.imgcontainer {
 			text-align: center;
 			margin: 24px 0 12px 0;
@@ -71,6 +67,7 @@
 	</style>
 </head>
 <br> <br>
+
 <body>
 	<h2>Login</h2>
 	<p> Welcome Back! Please fill in your user cresidentials.</p>
@@ -97,14 +94,7 @@
 	<div id="form">
 		<form action="../../control/login_process.php" method="post" id="login_form">
 
-<div class="container" align="center">
-				<div class="col-md-4 col-sm-6 col-xs-12">
-					<div class="text-center">
-						<img src="<?php echo $image ['$_SESSION']?>" class="avatar img-circle img-thumbnail" alt="avatar">
-
-					</div>
-				</div
-				<br><br><br>
+			<div class="container" align="center">
 				<label for="email"><b>Email</b></label>
 				<input type="text" placeholder="Enter Email" name="email" value="<?php if (isset($email)) {echo $email;}?>" required>
 				<label for="psw"><b>Password</b></label>
@@ -124,6 +114,13 @@
 			</div>
 		</form>
 	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
 	<script src="../javascript/login.js" type="text/javascript"></script>
 	<?php include('footer.php');?>
 </body>
