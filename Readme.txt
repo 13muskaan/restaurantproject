@@ -22,12 +22,12 @@ View contents in website:
 
 ADMIN:
 
-username: admin@banyan.com	password: 1234567890
+username: admin@banyan.com	password: Password1
 privilege: manage users, manage website contents
 
 MANAGER: 
 
-username: manager@banyan.com	password: 12334567890
+username: manager@banyan.com	password: Password1
 privilege: only manage reservations
 
 MEMBERS:
@@ -37,9 +37,14 @@ GITHUB URL: https://github.com/13muskaan/restaurantproject
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-
 ISSUES:
+- Managers at this point can't: manage their own profile (fix Ajax)
+- Admin at this point cannot: manage their own profile (fix Ajax)
+- Members at this point can't: manage their own profile (fix Ajax)
 
-- managers at this point can't:
-- admins at this point cannot: 
-- members at this point can't: manage their own profile (fix ajax)
+FUTURE FEATURE DEVELOPMENT:
+
+-	Host website on a hosting provider (GO Daddy)
+-	Upload images of restaurant (e.g. party, dishes etc.)
+-	Upload files (e.g. takeaway etc.,)
+-	Modify design (include more colours)
