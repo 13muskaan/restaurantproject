@@ -1,5 +1,5 @@
 <?php
-include( '../model/dbconnection.php' );
+include( '../../model/dbconnection.php' );
 
 try {
 
@@ -32,10 +32,10 @@ $conn = null;
 
 header( 'location: menuitem_manage.php' );
 
-?>
-<head>
+?><head>
 	<title>Menu Item Inserted</title>
-</head> <
+</head> 
+<
 Body >
 	<hr><a href="menuitem_manage.php"><button type="button">Go back</button></a>
 	</Body>

@@ -13,7 +13,6 @@
 					<ul class="list-group">
 						
 										<?php
-										include( '../../model/dbconnection.php' );
 										$contentquery = "SELECT * FROM function";
 										//$conn = dbConnect();
 										$stmt = $conn->prepare( $contentquery );

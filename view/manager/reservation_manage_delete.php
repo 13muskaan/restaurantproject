@@ -1,5 +1,4 @@
 <?php
-session_start();
 require( '../../model/dbconnection.php' );
 $id = htmlspecialchars( $_GET[ "id" ] );
 

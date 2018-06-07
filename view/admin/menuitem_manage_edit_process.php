@@ -1,5 +1,5 @@
 <?php
-include( '../model/dbconnection.php' );
+include( '../../model/dbconnection.php' );
 
 try {
 	$sql = "UPDATE menu SET dishtitle=:dishtitle, dishdescription=:dishdescription, dishprice=:dishprice WHERE dishID=" . $_GET[ 'id' ];
@@ -23,7 +23,3 @@ $conn = null;
 
 header( 'location: menuitem_manage.php' );
 ?>
-
-<body>
-	<a href="menuitem_manage.php"><button type="button">Go back</button></a>
-</body>

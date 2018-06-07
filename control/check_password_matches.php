@@ -1,5 +1,6 @@
 <?php
 	header( 'Content-Type: application/json' );
+	include('../model/dbconnection.php');
 
 	$valifySQL = "SELECT password FROM users WHERE userID=" . $_GET[ 'userID' ];
 

@@ -11,17 +11,17 @@ var currentPasswordIndex = 4;
 var possibleInputIDs = ["firstNameInput", "lastNameInput", "emailInput", "passwordInput", "currentPasswordInput"];
 var possibleAlertIDs = ["firstNameAlert", "lastNameAlert", "emailAlert", "passwordAlert", "currentPasswordAlert"];
 var possibleGlyphIDs = ["firstNameGlyph", "lastNameGlyph", "emailGlyph", "passwordGlyph", "currentPasswordGlyph"];
-var inputs = [null,null,null,null,null]; //array of element
-var alerts = [null,null,null,null,null]; //array of element
-var glyphs = [null,null,null,null,null]; //array of element
+var inputs = [null, null, null, null, null]; //array of element
+var alerts = [null, null, null, null, null]; //array of element
+var glyphs = [null, null, null, null, null]; //array of element
 
 var emailLoader; //element
 var passwordLoader; //element
 
 var glyphIcons = ["glyphicon glyphicon-minus", "glyphicon glyphicon-ok", "glyphicon glyphicon-remove"]; //array of string
-var glyphColors = ["#555", "#00aa00","#aa0000"];
+var glyphColors = ["#555", "#00aa00", "#aa0000"];
 
-var inputBackgroundColors = ["#ffffff","#ccffcc","#ffcccc"];
+var inputBackgroundColors = ["#ffffff", "#ccffcc", "#ffcccc"];
 var inputBorderColors = ["#000", "#55aa55", "#cc5555"];
 
 var submitButtonColors = ["#999999", "#ff0000", "#999999"];
@@ -30,37 +30,65 @@ var empty = 0;
 var valid = 1;
 var error = 2;
 
+var imageInput;
+var imageAlert;
+var imageSubmit;
 
 function updateInputGlyphs(element, setting) { //Element is a number which refers to the input element, setting is the type of glyph to set
 	"use strict";
 
 	glyphs[element].className = glyphIcons[setting];
 	glyphs[element].style.color = glyphColors[setting];
-	
+
 	inputs[element].style.backgroundColor = inputBackgroundColors[setting];
 	inputs[element].style.borderColor = inputBorderColors[setting];
-	
+
 	updateSubmitButton();
 }
 
 function updateSubmitButton() {
 	"use strict";
 	var submitButton = document.getElementById("submitButton");
-	
+
 	submitButton.disabled = false;
 	submitButton.style.backgroundColor = submitButtonColors[valid];
-	
-	for (var i = 0; i < glyphs.length ;i++) {
-		if (glyphs[i] != null && glyphs[i].className != glyphIcons[valid]) {
-			
-			
-			submitButton.style.backgroundColor = submitButtonColors[(glyphs[i].className == glyphIcons[error]) ? error : empty];
-			
-			submitButton.disabled = true;
-			return;
+
+	var i;
+
+	if (CheckPasswordOptional()) {
+		for (i = 0; i < glyphs.length; i++) { //Passwords are only optional when updating user info
+			if (glyphs[i] != null && 
+				(glyphs[i].className == glyphIcons[error] || (glyphs[i].id != "passwordGlyph" && inputs[i].value == "") ||
+				 (glyphs[i].id == "currentPasswordGlyph" && glyphs[i].className != glyphIcons[valid]))) { //Only need to see if any glyph has an error
+
+
+				submitButton.style.backgroundColor = submitButtonColors[(glyphs[i].className == glyphIcons[error]) ? error : empty];
+
+				submitButton.disabled = true;
+				return;
+			}
+		}
+	} else {
+		for (i = 0; i < glyphs.length; i++) {
+			if (glyphs[i] != null && glyphs[i].className != glyphIcons[valid]) {
+
+				submitButton.style.backgroundColor = submitButtonColors[(glyphs[i].className == glyphIcons[error]) ? error : empty];
+
+				submitButton.disabled = true;
+				return;
+			}
 		}
 	}
-	
+}
+
+function CheckPasswordOptional() {
+	for (var i = 0; i < inputs.length; i++) {
+		if (inputs[i] != null && inputs[i].id == "currentPasswordInput") {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 function hideAlertBoxes() {
@@ -114,11 +142,11 @@ function validatePassword() {
 	var returnVal = "";
 
 	updateInputGlyphs(passwordIndex, valid);
-	
+
 	for (var i = 0; i < checks.length; i++) {
 		if (!checks[i]) {
 			returnVal = returnVal + ErrorTextStrings[i];
-			
+
 			updateInputGlyphs(passwordIndex, error);
 		}
 	}
@@ -136,9 +164,9 @@ function displayPasswordError() {
 	if (passVal === "") {
 		//Use -PasswordErrorDiv-.display.style = "none";
 		errorDiv.style.display = 'none';
-		
+
 		return;
-		
+
 	} else {
 		//Make bootstap display the error div, with the value of passVal inside it.
 		//Use -PasswordErrorDiv-.display.style = "block";
@@ -146,14 +174,19 @@ function displayPasswordError() {
 		//Use -PasswordErrorDiv-.innerHTML = passVal;
 		errorDiv.innerHTML = "<p><strong>ERROR:</strong> Password is invalid, because:</p>" + passVal;
 
-		
+
 	}
 }
 
 //email
+function validateEmailWhenInEdit() {
+
+
+}
+
 function validateEmail() {
 	"use strict";
-	
+
 	var ErrorTextString = "Email is not formatted correctly.";
 
 	var email = inputs[emailIndex].value;
@@ -180,8 +213,8 @@ function checkEmailAlreadyExists(email) {
 
 	//Display Loader
 	emailLoader.style.display = "block";
-	
-	
+
+
 
 	var checkurl = "../../control/register_check_email_exists.php?email=" + email;
 	$.ajax({
@@ -189,7 +222,7 @@ function checkEmailAlreadyExists(email) {
 		method: 'get',
 		datatype: 'json',
 		success: function (res) {
-			
+
 			displayEmailExists(res.emailexists);
 		}
 	});
@@ -197,21 +230,21 @@ function checkEmailAlreadyExists(email) {
 
 function displayEmailExists(emailExists) {
 	"use strict";
-	
+
 	//Hide Loader
 	emailLoader.style.display = "none";
 	glyphs[2].style.display = "block";
-	
+
 	var errorDiv = document.getElementById("emailAlert");
 	if (emailExists) {
 		//Display the Red X glyph
 		updateInputGlyphs(emailIndex, error);
-		
+
 		errorDiv.style.display = 'block';
 		errorDiv.innerHTML = "<strong>ERROR:</strong> Email already exists.";
 	} else {
 		//Display the green tick glyph
-		
+
 		updateInputGlyphs(emailIndex, valid);
 		errorDiv.style.display = 'none';
 	}
@@ -289,7 +322,7 @@ function validateFirstName() {
 	var returnVal = "";
 
 	updateInputGlyphs(firstNameIndex, valid);
-	
+
 	for (var i = 0; i < checks.length; i++) {
 		if (!checks[i]) {
 			returnVal = returnVal + ErrorTextStrings[i];
@@ -354,7 +387,7 @@ function validateLastName() {
 	var returnVal = "";
 
 	updateInputGlyphs(lastNameIndex, valid);
-	
+
 	for (var i = 0; i < checks.length; i++) {
 		if (!checks[i]) {
 			returnVal = returnVal + ErrorTextStrings[i];
@@ -375,15 +408,15 @@ function displayImageError() {
 
 	if (imgVal === "") {
 		errorDiv.style.display = 'none';
-		
+
 		return;
-		
+
 	} else {
 		//Make bootstap display the error div, with the value of passVal inside it.
 		//Use -PasswordErrorDiv-.display.style = "block";
 		errorDiv.style.display = 'block';
 		//Use -PasswordErrorDiv-.innerHTML = passVal;
-		errorDiv.innerHTML = "<p><strong>ERROR:</strong> Chosen Image is invalid, because:</p>" + imgVal;	
+		errorDiv.innerHTML = "<p><strong>ERROR:</strong> Chosen Image is invalid, because:</p>" + imgVal;
 	}
 }
 
@@ -392,7 +425,7 @@ function validateImage() {
 	"use strict";
 	var ErrorTextStrings = [
 		"<p>- Must be an accepted file type:</p><ul><li>png</li><li>jpg</li><li>jpeg</li><li>gif</li></ul>",
-		"<p>- Must be under 1MB</p>"
+		"<p>- Must be under 100kb</p>"
 	];
 
 	var image = document.getElementById('fileToUpload').files[0];
@@ -408,16 +441,16 @@ function validateImage() {
 	];
 
 	checks[0] = (
-		image.type == 'jpg' || 
-		image.type == "png" || 
-		image.type == "jpeg" || 
+		image.type == 'jpg' ||
+		image.type == "png" ||
+		image.type == "jpeg" ||
 		image.type == "gif");
 
-	checks[1] = image.size <= 1024 * 1024 ;
-	
+	checks[1] = image.size <= 100 * 1024;
+
 	//Setup the return variable - a string that contains the errors
 	var returnVal = "";
-	
+
 	for (var i = 0; i < checks.length; i++) {
 		if (!checks[i]) {
 			returnVal = returnVal + ErrorTextStrings[i];
@@ -437,8 +470,7 @@ function validateCurrentPassword(userID) {
 	if (passwordInput == "") {
 		return;
 	}
-		checkPasswordMatches(userID, passwordInput);
-		return;
+	checkPasswordMatches(userID, passwordInput);
 }
 
 
@@ -449,18 +481,14 @@ function checkPasswordMatches(userID, pass) {
 	//Display Loader
 	passwordLoader.style.display = "block";
 	glyphs[4].style.display = "none";
-	
-	console.log("FISH");
 
 	var checkurl = "../../control/check_password_matches.php?userID= " + userID + "&password=" + pass;
-	
+
 	$.ajax({
 		url: checkurl,
 		method: 'get',
 		datatype: 'json',
 		success: function (res) {
-			console.log("fish2");
-			console.log(res);
 			displayPasswordMatches(res.passwordMatches);
 		}
 	});
@@ -468,38 +496,44 @@ function checkPasswordMatches(userID, pass) {
 
 function displayPasswordMatches(passwordMatches) {
 	"use strict";
-	
+
 	//Hide Loader
 	passwordLoader.style.display = "none";
 	glyphs[4].style.display = "block";
-	
+
 	var errorDiv = document.getElementById("currentPasswordAlert");
 	if (!passwordMatches) {
 		//Display the Red X glyph
 		updateInputGlyphs(currentPasswordIndex, error);
-		
+
 		errorDiv.style.display = 'block';
 		errorDiv.innerHTML = "<strong>ERROR:</strong> Password doesn't match.";
 	} else {
 		//Display the green tick glyph
-		
+
 		updateInputGlyphs(currentPasswordIndex, valid);
 		errorDiv.style.display = 'none';
 	}
 }
 
 
-$(document).ready( function() {
-	
+$(document).ready(function () {
+
 	for (var i = 0; i < possibleInputIDs.length; i++) {
 		inputs[i] = document.getElementById(possibleInputIDs[i]);
 		alerts[i] = document.getElementById(possibleAlertIDs[i]);
 		glyphs[i] = document.getElementById(possibleGlyphIDs[i]);
 	}
-	
-	
+
+
 	emailLoader = document.getElementById("emailLoader");
 	passwordLoader = document.getElementById("passwordLoader");
 	
+	imageInput = document.getElementById("imageInput");
+	imageAlert = document.getElementById("imageAlert");
+	imageSubmit = document.getElementById("imageSubmitButton");
+	
+	imageInput.onchange = displayImageError();
+
 	updateSubmitButton();
 });

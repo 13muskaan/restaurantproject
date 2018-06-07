@@ -20,8 +20,7 @@
 
 </head>
 <?php
-include( '../view/pages/navigationbar.php' );
-include( '../model/dbconnection.php' );
+include( '../pages/navigationbar.php' );
 
 $sql = "SELECT * FROM menu WHERE dishID=:id";
 
@@ -51,7 +50,7 @@ $menuitem = $stmt->fetchAll();
 		<a href="menuitem_manage.php"><button type="button">Go back</button></a>
 		<button type="submit">Submit</button>
 	</form>
-	<?php include('../view/pages/footer.php');?>
+	<?php include('../pages/footer.php');?>
 </body>
 
 </html>

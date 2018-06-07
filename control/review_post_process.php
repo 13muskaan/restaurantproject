@@ -2,8 +2,6 @@
 
 include("../model/dbconnection.php");
 
-print_r($_POST);
-
 $insert_sql = "INSERT INTO review (reviewtitle, reviewcontent, foodscore, servicescore, locationscore, pricescore, cleanlinessscore, userID) VALUES (:reviewtitle, :reviewcontent, :foodscore, :servicescore, :locationscore, :pricescore, :cleanlinessscore," . $_SESSION['userID'].");";
 
 $stmt = $connroot->prepare( $insert_sql );

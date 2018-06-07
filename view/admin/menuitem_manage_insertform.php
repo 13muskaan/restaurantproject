@@ -19,7 +19,7 @@
 	</style>
 
 </head>
-<?php include('../view/pages/navigationbar.php');?>
+<?php include('../pages/navigationbar.php');?>
 
 <body>
 	<form action="menuitem_manage_insert_process.php" method="post">
@@ -37,6 +37,6 @@
 		<a href="menuitem_manage.php"><button type="button">Go back</button></a>
 		<button type="submit">Submit</button>
 	</form>
-	<?php include('../view/pages/footer.php');?>
+	<?php include('../pages/footer.php');?>
 
 </body>

@@ -121,11 +121,12 @@
 				<div class="text-center">
 					<img src="<?php echo $image ?>" class="avatar img-circle img-thumbnail" alt="avatar">
 					<h6>Upload a different photo...</h6>
-					<form action="../../control/upload_file.php" method="POST" enctype="multipart/form-data">
+					<form id="imageInput" change="displayImageError()" action="../../control/upload_file.php" method="POST" enctype="multipart/form-data">
 						<input type="file" name="image" id="fileToUpload" size="50" class="text-center center-block well well-sm">
 
-						<button type="submit" class="btn btn-primary" id="imageSubmit">Submit Image</button>
+						<button type="submit" class="btn btn-primary" id="imageSubmitButton">Submit Image</button>
 					</form>
+					<div id="imageAlert" class="alert alert-danger" style="display: none;"></div>
 				</div>
 			</div>
 			<!-- edit form column -->
@@ -180,7 +181,7 @@
 
 								<span class="input-group-addon">
                               <span id= "emailGlyph" class="glyphicon glyphicon-minus"></span>
-								<div id="emailLoader" class="textloadercontainer" align="right">
+								<div id="emailLoader" class="textloadercontainer" style="display: none;" align="right">
 									<svg class="textloader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" width="20px">
 										<circle class="text" cx="170" cy="170" r="160" stroke="#E2007C"/>
 										<circle cx="170" cy="170" r="135" stroke="#404041"/>
@@ -199,11 +200,11 @@
 						<label class="col-md-3 control-label" id="password">Current Password</label>
 						<div class="col-lg-8">
 							<div class="input-group">
-								<input id="currentPasswordInput" class="form-control" placeholder="Current password..." onchange="checkPasswordMatches()">
+								<input id="currentPasswordInput" class="form-control" placeholder="Current password..." onchange="validateCurrentPassword(<?php echo $_SESSION['userID']; ?>)">
 								<span class="input-group-addon">
 										<span id="currentPasswordGlyph" class="glyphicon glyphicon-minus"></span>
 							
-								<div id="passwordLoader" class="textloadercontainer" align="right">
+								<div id="passwordLoader" class="textloadercontainer" align="right" style="display: none;">
 									<svg class="textloader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" width="20px">
 										<circle class="text" cx="170" cy="170" r="160" stroke="#E2007C"/>
 										<circle cx="170" cy="170" r="135" stroke="#404041"/>

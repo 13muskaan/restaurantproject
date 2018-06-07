@@ -20,13 +20,10 @@ include( '../pages/navigationbar.php' );
 					<ul class="list-group">
 						
 										<?php
-										include( '../../model/dbconnection.php' );
 										$contentquery = "SELECT * FROM reservation";
-										//$conn = dbConnect();
 										$stmt = $conn->prepare( $contentquery );
 										$stmt->execute();
 										$staticresult = $stmt->fetchAll( PDO::FETCH_ASSOC );
-										//echo '<div id="contentgroup">';
 										foreach( $staticresult as $row ) {
 											echo '<li class="list-group-item">
 							<div class="row">
@@ -40,7 +37,7 @@ include( '../pages/navigationbar.php' );
 											echo '<div class="mic-info"> <span> Function Description:', $row[ 'time' ], $row['guestno'], $row[ 'comment' ], $row[ 'userID' ], $row[ 'functionID'],'
                                     </div>
 									</div>';
-											echo '<a href="reservation_manage_deleteprocess.php?id=' . $row[ 'reservationID' ] . '" class="deletebutton"><button type="btn">Delete</button></a>';
+											echo '<a href="reservation_manage_delete.php?id=' . $row[ 'reservationID' ] . '" class="deletebutton"><button type="btn">Delete</button></a>';
 											echo '</div></div></li>';}
 										?>
 									</div>
@@ -50,8 +47,5 @@ include( '../pages/navigationbar.php' );
 			</div>
 		</div>
 	</div>
-	<?php include('../pages/footer.php');?>
-</body>
-
 	<?php include('../pages/footer.php');?>
 </body>

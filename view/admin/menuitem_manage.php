@@ -12,7 +12,6 @@
 		<h1 style="text-align: center;"> My Banyan menu.</h1>
 		<div class="container">
 			<?php
-			include( '../../model/dbconnection.php' );
 			$contentquery = "SELECT * FROM menu";
 			//$conn = dbConnect();
 			$stmt = $conn->prepare( $contentquery );

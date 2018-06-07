@@ -89,44 +89,16 @@ $password = $results[0]['password'];
 	}
 }
 				?>
-				<form class="form-horizontal" role="form" method="post" id=action="../../control/memberprofile_updateprocess.php?id=<?php echo $_SESSION['userID'];?>">
-					<h4>Manage Your Profile.</h4>
-					
-					<div class="form-group">
-						<label class="col-lg-3 control-label" id="email">Email</label>
-						<div class="col-lg-8">
-							<input class="form-control" value="<?php echo $email?>" type="text">
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label" id="password">Password</label>
-						<div class="col-md-8">
-							<input class="form-control" value="<?php echo $password?>" type="text">
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label"></label>
-						<div class="col-md-8">
-							<input class="btn btn-primary" value="save changes" type="button" onClick="../../control/memberprofile)updateprocess.php">
-
-							<span></span>
-							<input class="btn btn-default" value="Cancel" type="reset">
-						</div>
-					</div>
-				</form>
 			</div>
 		</div>
 	</div>
 	<h4 style="text-align: center;">Upcoming reservations:</h4>
 	<?php
 	$contentquery = "SELECT * FROM reservation WHERE date >= CURRENT_DATE";
-	//$conn = dbConnect();
 	$stmt = $conn->prepare( $contentquery );
 	$stmt->execute();
 	$staticresult = $stmt->fetchAll( PDO::FETCH_ASSOC );
-	//echo '<div id="contentgroup">';
 	foreach ( $staticresult as $row ) {
-		//echo '<div class="contentItem" dishe_id="' . '">';
 		echo '<h3><span>', 'Reservation ID:', $row[ 'reservationID' ], ' Date:', $row[ 'date' ], ' </span>';
 		echo '<div class="mic-info"> <span> Time:', $row[ 'time' ], ' Guest No:', $row[ 'guestno' ], ' Comments:' . $row[ 'comment' ], '
                                     </h3>

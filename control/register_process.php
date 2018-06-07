@@ -1,13 +1,7 @@
 <?php
-session_start(); //YOU SHOULD REPLACE THIS WITH SESSIONHANDLER.PHP - Steve
 include( '../model/dbconnection.php' );
 
-print_r($_POST);
-
 $insert_sql = "INSERT INTO users (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)";
-//$conn = dbConnect();
-
-// INSERT INTO member (firstname, lastname, email, password) VALUES ('first_name', 'last_name', 'email', 'user_password'
 
 $hash = password_hash( $_POST[ 'password' ], PASSWORD_BCRYPT) ;
 

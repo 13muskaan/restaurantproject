@@ -34,15 +34,15 @@
 			</svg>
 
 		</div>
-		<div id="form">
+		<h1 style="text-align: center"> Login </h1>
+		<div id="form" style="width: 100%;object-position: center;">
 			<form action="../../control/login_process.php?originpage=<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" id="login_form">
-
-				<div class="mcontainer">
-					<label for="email"><b>Email</b></label>
-					<input type="text" placeholder="Enter Email" name="email" style="height: 20px;" required>
+				<div class="mcontainer" style="text-align: center">
+					<label for="email" style="width"><b>Email</b></label>
+					<input type="text" placeholder="Enter Email" name="email" style="height: 40px;" required>
 
 					<label for="psw"><b>Password</b></label>
-					<input style="height: 20px;" type="password" placeholder="Enter Password" name="psw" required>
+					<input style="height: 40px;" type="password" placeholder="Enter Password" name="psw" required style="text-align: center;">
 
 					<button type="submit" onClick="SubmitButton()">Login</button>
 
@@ -51,7 +51,7 @@
 
 
 		</div>
-		<script src="../javascript/login.js" type="text/javascript"></script>
+		<script src="../view/javascript/login.js" type="text/javascript"></script>
 		<div class="mcontainer" style="background-color:#f1f1f1">
 			<button type="button" onclick="document.getElementById(\'id01\').style.display=\'none\'" class="cancelbtn">Cancel</button>
 		</div>

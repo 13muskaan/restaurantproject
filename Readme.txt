@@ -37,12 +37,12 @@ GITHUB URL: https://github.com/13muskaan/restaurantproject
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-ISSUES:
-- Managers at this point can't: manage their own profile (fix Ajax)
-- Admin at this point cannot: manage their own profile (fix Ajax)
-- Members at this point can't: manage their own profile (fix Ajax)
 
-FUTURE FEATURE DEVELOPMENT:
+ISSUES:
+
+- managers at this point can't:
+- admins at this point cannot: 
+- members at this point can't:
 
 -	Host website on a hosting provider (GO Daddy)
 -	Upload images of restaurant (e.g. party, dishes etc.)

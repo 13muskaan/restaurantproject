@@ -1,6 +1,5 @@
 <?php
 header( 'Content-Type: application/json' );
-session_start();
 include( '../model/dbconnection.php' );
 
 $sql = 'SELECT * FROM users where email=:email';
