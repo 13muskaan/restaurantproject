@@ -4,7 +4,7 @@ include("../model/dbconnection.php");
 
 $insert_sql = "INSERT INTO review (reviewtitle, reviewcontent, foodscore, servicescore, locationscore, pricescore, cleanlinessscore, userID) VALUES (:reviewtitle, :reviewcontent, :foodscore, :servicescore, :locationscore, :pricescore, :cleanlinessscore," . $_SESSION['userID'].");";
 
-$stmt = $connroot->prepare( $insert_sql );
+$stmt = $conn->prepare( $insert_sql );
 
 $stmt->bindParam( ':reviewtitle', $_POST[ 'reviewtitle' ], PDO::PARAM_STR );
 $stmt->bindParam( ':reviewcontent', $_POST[ 'reviewcontent' ], PDO::PARAM_STR );
@@ -20,7 +20,7 @@ $stmt->bindParam( ':cleanlinessscore', $_POST[ 'cleanliness' ], PDO::PARAM_INT )
 
 $stmt->execute();
 
-if ( $connroot->lastInsertId() > 0 ) {
+if ( $conn -> lastInsertId() > 0 ) {
 	
 } else {
 	$_SESSION[ 'error' ] = 'Database error - Failed to insert review data';

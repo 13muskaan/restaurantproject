@@ -53,9 +53,6 @@ function showstarsinelem(starelem, startype, score) {
 		starstrings += nextstar + spanHTML[1];
 	}
 	
-	console.log(starelem.id);
-	console.log(starstrings);
-	
 	starelem.innerHTML = starstrings;
 }
 

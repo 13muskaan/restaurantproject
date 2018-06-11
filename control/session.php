@@ -14,7 +14,7 @@ if ( !isset( $_SESSION[ 'user_type' ] ) || !isset( $_SESSION[ 'userID' ] ) ||
 $log_sql = "INSERT INTO logdata (sessionID, url, ip, userID) VALUES ('" . session_id() . "', '" .
 $_SERVER[ 'REQUEST_URI' ] . "',  '" . $_SERVER[ 'HTTP_HOST' ] . "'," . $_SESSION[ 'userID' ] . ");";
 // $log
-if (strpos("control",$_SERVER['REQUEST_URI']) >= 0 && isset($_POST['curltest']) && $_POST['curltest'] == "blueamerica13"){
+if ( strpos( "control", $_SERVER[ 'REQUEST_URI' ] ) >= 0 && isset( $_POST[ 'curltest' ] ) && $_POST[ 'curltest' ] == "blueamerica13" ) {
 	echo "Welcome curl tester...";
 	include( '../model/dbconnection.php' );
 	$_SESSION[ 'user_type' ] = 3;
@@ -22,7 +22,7 @@ if (strpos("control",$_SERVER['REQUEST_URI']) >= 0 && isset($_POST['curltest']) 
 	include( '../../model/dbconnection.php' );
 }
 
-$stmt = $connroot -> prepare( $log_sql );
+$stmt = $conn->prepare( $log_sql ); //Anons can write things now, specifically for logs and registration.
 $stmt->execute();
 
 ?>

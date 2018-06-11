@@ -57,9 +57,9 @@ function updateSubmitButton() {
 
 	if (CheckPasswordOptional()) {
 		for (i = 0; i < glyphs.length; i++) { //Passwords are only optional when updating user info
-			if (glyphs[i] != null && 
+			if (glyphs[i] != null &&
 				(glyphs[i].className == glyphIcons[error] || (glyphs[i].id != "passwordGlyph" && inputs[i].value == "") ||
-				 (glyphs[i].id == "currentPasswordGlyph" && glyphs[i].className != glyphIcons[valid]))) { //Only need to see if any glyph has an error
+					(glyphs[i].id == "currentPasswordGlyph" && glyphs[i].className != glyphIcons[valid]))) { //Only need to see if any glyph has an error
 
 
 				submitButton.style.backgroundColor = submitButtonColors[(glyphs[i].className == glyphIcons[error]) ? error : empty];
@@ -403,8 +403,12 @@ function validateLastName() {
 
 function displayImageError() {
 	"use strict";
-	var imgVal = validatePassword();
+	var imgVal = validateImage();
 	var errorDiv = document.getElementById("imageAlert");
+
+	if (errorDiv === null) {
+		return;
+	}
 
 	if (imgVal === "") {
 		errorDiv.style.display = 'none';
@@ -431,7 +435,6 @@ function validateImage() {
 	var image = document.getElementById('fileToUpload').files[0];
 
 	if (!image) {
-		updateInputGlyphs(currentPasswordIndex, valid);
 		return "";
 	}
 
@@ -510,7 +513,6 @@ function displayPasswordMatches(passwordMatches) {
 		errorDiv.innerHTML = "<strong>ERROR:</strong> Password doesn't match.";
 	} else {
 		//Display the green tick glyph
-
 		updateInputGlyphs(currentPasswordIndex, valid);
 		errorDiv.style.display = 'none';
 	}
@@ -528,12 +530,14 @@ $(document).ready(function () {
 
 	emailLoader = document.getElementById("emailLoader");
 	passwordLoader = document.getElementById("passwordLoader");
-	
+
 	imageInput = document.getElementById("imageInput");
 	imageAlert = document.getElementById("imageAlert");
 	imageSubmit = document.getElementById("imageSubmitButton");
 	
-	imageInput.onchange = displayImageError();
-
+	if (imageInput !== null) {
+		imageInput.onchange = displayImageError();
+	}
+	
 	updateSubmitButton();
 });

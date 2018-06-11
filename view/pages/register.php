@@ -120,16 +120,18 @@
 
 		</div>
 
-		<form id="register_form">
+		<form id="register_form" action="../../control/register_process.php" method="post">
 			<h1>Register</h1>
-            <p style="text-align:center;"> Please fill in your details, to create an account. <br><strong> Note* your email will be your username</strong></p>
+			<p style="text-align:center;"> Please fill in your details, to create an account. <br><strong> Note* your email will be your username</strong>
+			</p>
 			<div>
-            <p style="text-align:right">Your first & last name.</p>
+				<p style="text-align:right">Your first & last name.</p>
 				<p>
 					<div class="input-group">
 						<input id="firstNameInput" placeholder="First name..." oninput="displayFirstNameError()" name="firstname">
 						<span class="input-group-addon">
 							<span id="firstNameGlyph" class="glyphicon glyphicon-minus"></span>
+					
 						</span>
 					</div>
 				</p>
@@ -140,6 +142,7 @@
 						<span class="input-group-addon">
 							<span id="lastNameGlyph" class="glyphicon glyphicon-minus"></span>
 					
+
 						</span>
 					</div>
 				</p>
@@ -152,6 +155,7 @@
 						<span class="input-group-addon">
 							<span id= "emailGlyph" class="glyphicon glyphicon-minus"></span>
 					
+
 
 						<div id="emailLoader" class="textloadercontainer" align="right" style="display: none;">
 							<svg class="textloader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" width="30px">
@@ -178,6 +182,7 @@
 						<span class="input-group-addon">
 							<span id="passwordGlyph" class="glyphicon glyphicon-minus"></span>
 					
+
 						</span>
 					</div>
 				</p>
@@ -185,15 +190,12 @@
 				<div id="passwordAlert" class="alert alert-danger" style="display: none;"></div>
 
 			</div>
-			<p></p>
+			<div style="float:right; display: inline-block; padding: 10px;">
+
+				<button id="submitButton" type="submit" disabled>Submit</button>
+
+			</div>
 		</form>
-
-
-		<div style="float:right; display: inline-block; padding: 10px;">
-
-			<button id="submitButton" type="submit" onClick="submitData()" disabled>Submit</button>
-
-		</div>
 
 		<br>
 		<!-- Single line buffer -->

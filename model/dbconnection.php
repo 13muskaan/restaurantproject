@@ -1,36 +1,34 @@
 <?php
 $servername = "localhost";
-$username = "";
+$username = "anon";
 $password = "";
-
-$rootuser = "root";
-$rootpassword = "";
 
 if ( session_status() != PHP_SESSION_ACTIVE ) {
 	session_start();
+	
+	if (!isset($_SESSION[ "user_type" ])) {
+		$_SESSION[ "user_type" ] = 0;
+	}
 }
 
 try {
-	$connroot = new PDO( "mysql:host=$servername;dbname=restaurantproject", $rootuser, $rootpassword );
+	$conn = new PDO( "mysql:host=$servername;dbname=restaurantproject", $username, $password ); //Set up as anon to be able to read database
 	// set the PDO error mode to exception
-	$connroot->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+	$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 	//echo "Connected successfully";
-	if ( isset( $_POST[ 'curltest' ] ) && $_POST[ 'curltest' ] == "blueamerica13" ) {
-		$conn = $connroot;
-	} else {
-		$userTypeSQL = "SELECT * FROM usertypes WHERE usertypeID = " . $_SESSION[ "user_type" ];
 
-		$stmt = $connroot->prepare( $userTypeSQL );
-		$stmt->execute();
-		$usertype = $stmt->fetchAll()[ 0 ];
+	$userTypeSQL = "SELECT * FROM usertypes WHERE usertypeID = " . $_SESSION[ "user_type" ]; //Read database to get the current usertype's privilages
 
-		$username = $usertype[ "usertypename" ];
-		$password = $usertype[ "usertypepass" ];
+	$stmt = $conn->prepare( $userTypeSQL );
+	$stmt->execute();
+	$usertype = $stmt->fetchAll()[ 0 ];
 
-		$conn = new PDO( "mysql:host=$servername;dbname=restaurantproject", $username, $password );
-		// set the PDO error mode to exception
-		$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-	}
+	$username = $usertype[ "usertypename" ]; //Set the user's usertype's username and password
+	$password = $usertype[ "usertypepass" ];
+
+	$conn = new PDO( "mysql:host=$servername;dbname=restaurantproject", $username, $password ); //Login as that user.
+	// set the PDO error mode to exception
+	$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
 } catch ( PDOException $e ) {
 	$_SESSION[ 'error' ] = "Connection failed: " . $e->getMessage();

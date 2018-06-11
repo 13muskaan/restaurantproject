@@ -200,7 +200,7 @@
 						<label class="col-md-3 control-label" id="password">Current Password</label>
 						<div class="col-lg-8">
 							<div class="input-group">
-								<input id="currentPasswordInput" class="form-control" placeholder="Current password..." onchange="validateCurrentPassword(<?php echo $_SESSION['userID']; ?>)">
+								<input id="currentPasswordInput" type="password" class="form-control" placeholder="Current password..." onchange="validateCurrentPassword(<?php echo $_SESSION['userID']; ?>)">
 								<span class="input-group-addon">
 										<span id="currentPasswordGlyph" class="glyphicon glyphicon-minus"></span>
 							

@@ -32,7 +32,7 @@
 											echo '<div class="mic-info"> <span> Function Description:', $row[ 'functiondescription' ], 'ApproverID:', $row[ 'userID' ], '
                                     </div>
 									</div>';
-											echo '<a href="function_manage_deleteprocess.php?id=' . $row[ 'userID' ] . '" class="deletebutton"><button type="btn">Delete</button></a>';
+											echo '<a href="function_manage_deleteprocess.php?id=' . $row[ 'functionID' ] . '" class="deletebutton"><button type="btn">Delete</button></a>';
 											echo '</div></div></li>';}
 										?>
 									</div>
