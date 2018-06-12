@@ -12,10 +12,9 @@ if ( session_status() != PHP_SESSION_ACTIVE ) {
 }
 
 try {
-	$conn = new PDO( "mysql:host=$servername;dbname=restaurantproject", $username, $password ); //Set up as anon to be able to read database
+	$conn = new PDO( "mysql:host=$servername;dbname=restaurantproject", $username, $password ); //Login as that user.
 	// set the PDO error mode to exception
 	$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-	//echo "Connected successfully";
 
 	$userTypeSQL = "SELECT * FROM usertypes WHERE usertypeID = " . $_SESSION[ "user_type" ]; //Read database to get the current usertype's privilages
 
@@ -26,9 +25,7 @@ try {
 	$username = $usertype[ "usertypename" ]; //Set the user's usertype's username and password
 	$password = $usertype[ "usertypepass" ];
 
-	$conn = new PDO( "mysql:host=$servername;dbname=restaurantproject", $username, $password ); //Login as that user.
-	// set the PDO error mode to exception
-	$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+
 
 } catch ( PDOException $e ) {
 	$_SESSION[ 'error' ] = "Connection failed: " . $e->getMessage();
